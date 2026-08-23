@@ -10,7 +10,7 @@ participant "FertilityJourney" as m
 database "SQLite" as db
 
 u -> v : Clicks Start New Round
-v --> u : Shows screen for new IVF round
+v --> u : Shows screen for new fertility round
 
 u -> v : Fills in round number
 u -> v : Clicks Start Round
