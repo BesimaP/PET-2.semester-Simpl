@@ -1,0 +1,282 @@
+@startuml
+!pragma layout smetana
+
+package "model" {
+  abstract class Journey {
+    - LocalDate startDate
+    - Status status
+    + void setStatus(Status status)
+    + LocalDate getStartDate()
+    + Status getStatus()
+  }
+
+  class Patient {
+    - int id
+    - String name
+    - LocalDate dateOfBirth
+    - String diagnosis
+    - String username
+    - String password
+    + int getId()
+    + String getName()
+    + String getDiagnosis()
+    + String getUsername()
+    + String getPassword()
+  }
+
+  class Session {
+    - {static} Patient currentPatient
+    - {static} int currentJourneyId
+    - {static} boolean reminderShown
+    + {static} void setCurrentPatient(Patient patient)
+    + {static} Patient getCurrentPatient()
+    + {static} void setCurrentJourneyId(int journeyId)
+    + {static} int getCurrentJourneyId()
+    + {static} boolean isReminderShown()
+    + {static} void setReminderShown(boolean shown)
+  }
+
+  class FertilityJourney {
+    - int roundNumber
+    - int eggsRetrieved
+    - int eggsFertilised
+    - Result result
+    + void setResult(Result result)
+    + int getRoundNumber()
+    + Result getResult()
+  }
+
+  class CancerJourney {
+    - String cancerType
+    - String stage
+    + String getCancerType()
+    + String getStage()
+  }
+
+  class RehabilitationJourney {
+    - String injuryType
+    - String goal
+    + String getInjuryType()
+    + String getGoal()
+  }
+
+  class PsychiatryJourney {
+    - String condition
+    + String getCondition()
+  }
+
+  class OtherJourney {
+    - String description
+    + String getDescription()
+  }
+
+  class Event {
+    - LocalDate date
+    - EventType type
+    - String description
+    + LocalDate getDate()
+    + EventType getType()
+    + String getDescription()
+  }
+
+  class Appointment {
+    - LocalDate date
+    - AppointmentType type
+    - String location
+    - boolean completed
+    + LocalDate getDate()
+    + AppointmentType getType()
+  }
+
+  class MedicationLog {
+    - LocalDate date
+    - String medication
+    - String dose
+    - boolean taken
+    + LocalDate getDate()
+    + String getMedication()
+  }
+
+  class HormoneLog {
+    - LocalDate date
+    - String hormone
+    - double value
+    - String unit
+    + LocalDate getDate()
+    + String getHormone()
+    + double getValue()
+  }
+
+  class DiaryEntry {
+    - LocalDate date
+    - String title
+    - String content
+    + LocalDate getDate()
+    + String getTitle()
+  }
+}
+
+package "enums" {
+  enum Status {
+    ACTIVE
+    COMPLETED
+    PAUSED
+  }
+
+  enum Result {
+    POSITIVE
+    NEGATIVE
+    PENDING
+  }
+
+  enum EventType {
+    CONSULTATION
+    EXAMINATION
+    STIMULATION
+    EGG_RETRIEVAL
+    FERTILISATION
+    TRANSFER
+    PREGNANCY_TEST
+    OTHER
+  }
+
+  enum AppointmentType {
+    SCANNING
+    CONSULTATION
+    EGG_RETRIEVAL
+    TRANSFER
+    BLOOD_TEST
+    OTHER
+  }
+}
+
+package "view" {
+  class StartSystemView
+  class ProfileView
+  class JourneyTypeView
+  class NewRoundView
+  class AppointmentView
+  class HormoneLogView
+  class MedicationLogView
+  class TimelineView
+  class DiaryView
+  class RoundHistoryView
+  class EndRoundView
+  class DashboardView
+}
+
+package "controller" {
+  class StartSystemController {
+    + Patient handleLogin()
+    + boolean hasActiveJourney()
+  }
+
+  class ManageProfileController {
+    + void handleCreatePatient()
+    + void handleEditPatient()
+    + void handleDeletePatient()
+  }
+
+  class JourneyTypeController {
+    + int handleSelectJourney()
+  }
+
+  class NewRoundController {
+    + void handleStartRound()
+  }
+
+  class AppointmentController {
+    + void handleMarkCompleted()
+    + void handleSave()
+    + ArrayList<String> getUpcomingAppointments()
+  }
+
+  class HormoneLogController {
+    + void handleSave()
+    + String getLatestHormoneValue()
+  }
+
+  class MedicationLogController {
+    + void handleSave()
+  }
+
+  class TimelineController {
+    + ArrayList<Event> initialize()
+  }
+
+  class DiaryController {
+    + void handleSave()
+    + int countDiaryEntries()
+  }
+
+  class RoundHistoryController {
+    + ArrayList<String> initialize()
+  }
+
+  class EndRoundController {
+    + void handleEndRound()
+  }
+}
+
+' VIEW -> CONTROLLER
+StartSystemView --> StartSystemController
+ProfileView --> ManageProfileController
+JourneyTypeView --> JourneyTypeController
+NewRoundView --> NewRoundController
+AppointmentView --> AppointmentController
+HormoneLogView --> HormoneLogController
+MedicationLogView --> MedicationLogController
+TimelineView --> TimelineController
+DiaryView --> DiaryController
+RoundHistoryView --> RoundHistoryController
+EndRoundView --> EndRoundController
+DashboardView --> AppointmentController
+DashboardView --> HormoneLogController
+DashboardView --> DiaryController
+DashboardView --> RoundHistoryController
+
+' CONTROLLER -> MODEL
+StartSystemController --> Patient
+StartSystemController --> Session
+ManageProfileController --> Patient
+JourneyTypeController --> Journey
+JourneyTypeController --> Session
+NewRoundController --> FertilityJourney
+NewRoundController --> Session
+AppointmentController --> Appointment
+AppointmentController --> Session
+HormoneLogController --> HormoneLog
+HormoneLogController --> Session
+MedicationLogController --> MedicationLog
+MedicationLogController --> Session
+TimelineController --> Event
+TimelineController --> Session
+DiaryController --> DiaryEntry
+DiaryController --> Session
+RoundHistoryController --> FertilityJourney
+RoundHistoryController --> Session
+EndRoundController --> FertilityJourney
+EndRoundController --> Session
+
+' INHERITANCE
+FertilityJourney --|> Journey
+CancerJourney --|> Journey
+RehabilitationJourney --|> Journey
+PsychiatryJourney --|> Journey
+OtherJourney --|> Journey
+
+' COMPOSITION
+Patient *-- Journey
+Journey *-- Event
+Journey *-- Appointment
+Journey *-- MedicationLog
+Journey *-- DiaryEntry
+Journey *-- HormoneLog
+
+' ENUMS
+Journey -- Status
+FertilityJourney -- Result
+Event -- EventType
+Appointment -- AppointmentType
+
+@enduml

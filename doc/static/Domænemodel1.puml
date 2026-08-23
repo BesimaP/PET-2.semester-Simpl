@@ -1,0 +1,131 @@
+@startuml
+!pragma layout smetana
+
+title Domain Model - Patient Journey
+
+object Event #B3E5FC{
+  date
+  type
+  description
+}
+
+object Appointment #B3E5FC{
+  date
+  type
+  location
+  completed
+}
+
+object MedicationLog #B3E5FC{
+  date
+  medication
+  dose
+  taken
+}
+
+object DiaryEntry #B3E5FC{
+  date
+  title
+  content
+}
+
+object HormoneLog #B3E5FC{
+  date
+  hormone
+  value
+  unit
+}
+
+object "<b>Journey</b>" as Journey #B3E5FC {
+  startDate
+  status
+}
+
+object Patient #B3E5FC{
+  id
+  name
+  dateOfBirth
+  diagnosis
+  username
+  password
+}
+
+object FertilityJourney #B3E5FC{
+  roundNumber
+  eggsRetrieved
+  eggsFertilised
+  result
+}
+
+object CancerJourney #B3E5FC{
+  cancerType
+  stage
+}
+
+object RehabilitationJourney #B3E5FC{
+  injuryType
+  goal
+}
+
+object PsychiatryJourney #B3E5FC{
+  condition
+}
+
+object OtherJourney #B3E5FC{
+  description
+}
+
+object Status #B3E5FC{
+  ACTIVE
+  COMPLETED
+  PAUSED
+}
+
+object Result #B3E5FC{
+  POSITIVE
+  NEGATIVE
+  PENDING
+}
+
+object EventType #B3E5FC{
+  CONSULTATION
+  EXAMINATION
+  STIMULATION
+  EGG_RETRIEVAL
+  FERTILISATION
+  TRANSFER
+  PREGNANCY_TEST
+  OTHER
+}
+
+object AppointmentType #B3E5FC{
+  SCANNING
+  CONSULTATION
+  EGG_RETRIEVAL
+  TRANSFER
+  BLOOD_TEST
+  OTHER
+}
+
+' Inheritance
+FertilityJourney --|> Journey
+CancerJourney --|> Journey
+RehabilitationJourney --|> Journey
+PsychiatryJourney --|> Journey
+OtherJourney --|> Journey
+
+' Has a
+Patient "1" *-- "1..*" Journey : has a
+Journey "1" *-- "0..*" Event : has a
+Journey "1" *-- "0..*" Appointment : has a
+Journey "1" *-- "0..*" MedicationLog : has a
+Journey "1" *-- "0..*" DiaryEntry : has a
+FertilityJourney "1" *-- "0..*" HormoneLog : has a
+
+' Is a
+Journey "1" -- "1" Status : is a
+FertilityJourney "1" -- "1" Result : is a
+Event "1" -- "1" EventType : is a
+Appointment "1" -- "1" AppointmentType : is a
+
+@enduml
