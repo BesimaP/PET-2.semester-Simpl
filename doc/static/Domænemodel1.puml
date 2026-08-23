@@ -3,91 +3,71 @@
 
 title Domain Model - Patient Journey
 
-object Event #B3E5FC{
+object "<b>Patient</b>" as Patient #FFDAB9
+
+object "<b>Journey</b>" as Journey #D6EAD8
+
+object "<b>FertilityJourney</b>" as FertilityJourney #C1E8C1 {
+  roundNumber
+  eggsRetrieved
+  eggsFertilised
+  result
+}
+object "<b>CancerJourney</b>" as CancerJourney #C1E8C1 {
+  cancerType
+  stage
+}
+object "<b>RehabilitationJourney</b>" as RehabilitationJourney #C1E8C1 {
+  injuryType
+  goal
+}
+object "<b>PsychiatryJourney</b>" as PsychiatryJourney #C1E8C1 {
+  condition
+}
+object "<b>OtherJourney</b>" as OtherJourney #C1E8C1 {
+  description
+}
+
+object "<b>Event</b>" as Event #FFF3B0 {
   date
   type
   description
 }
-
-object Appointment #B3E5FC{
+object "<b>Appointment</b>" as Appointment #FFF3B0 {
   date
   type
   location
   completed
 }
-
-object MedicationLog #B3E5FC{
+object "<b>MedicationLog</b>" as MedicationLog #FFF3B0 {
   date
   medication
   dose
   taken
 }
-
-object DiaryEntry #B3E5FC{
+object "<b>DiaryEntry</b>" as DiaryEntry #FFF3B0 {
   date
   title
   content
 }
-
-object HormoneLog #B3E5FC{
+object "<b>HormoneLog</b>" as HormoneLog #FFF3B0 {
   date
   hormone
   value
   unit
 }
 
-object "<b>Journey</b>" as Journey #B3E5FC {
-  startDate
-  status
-}
-
-object Patient #B3E5FC{
-  id
-  name
-  dateOfBirth
-  diagnosis
-  username
-  password
-}
-
-object FertilityJourney #B3E5FC{
-  roundNumber
-  eggsRetrieved
-  eggsFertilised
-  result
-}
-
-object CancerJourney #B3E5FC{
-  cancerType
-  stage
-}
-
-object RehabilitationJourney #B3E5FC{
-  injuryType
-  goal
-}
-
-object PsychiatryJourney #B3E5FC{
-  condition
-}
-
-object OtherJourney #B3E5FC{
-  description
-}
-
-object Status #B3E5FC{
+object "<b>Status</b>" as Status #E3D5F0 {
   ACTIVE
   COMPLETED
   PAUSED
 }
-
-object Result #B3E5FC{
+object "<b>Result</b>" as Result #E3D5F0 {
   POSITIVE
   NEGATIVE
   PENDING
 }
-
-object EventType #B3E5FC{
+object "<b>EventType</b>" as EventType #E3D5F0 {
   CONSULTATION
   EXAMINATION
   STIMULATION
@@ -97,8 +77,7 @@ object EventType #B3E5FC{
   PREGNANCY_TEST
   OTHER
 }
-
-object AppointmentType #B3E5FC{
+object "<b>AppointmentType</b>" as AppointmentType #E3D5F0 {
   SCANNING
   CONSULTATION
   EGG_RETRIEVAL
@@ -106,6 +85,15 @@ object AppointmentType #B3E5FC{
   BLOOD_TEST
   OTHER
 }
+
+Patient : name
+Patient : dateOfBirth
+Patient : diagnosis
+Patient : username
+Patient : password
+
+Journey : startDate
+Journey : status
 
 ' Inheritance
 FertilityJourney --|> Journey
