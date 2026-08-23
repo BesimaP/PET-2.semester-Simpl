@@ -32,4 +32,10 @@ UC4 --> UC9
 UC4 --> UC10
 UC4 --> UC11
 
+note bottom of UC11
+  Efter afsluttet runde kan
+  patienten vende tilbage til
+  UC3 og starte et nyt forløb
+end note
+
 @enduml
