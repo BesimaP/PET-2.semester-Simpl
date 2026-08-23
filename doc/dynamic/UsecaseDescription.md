@@ -1,6 +1,6 @@
 ## UC1: StartSystem
-Systemet starter og viser en login-skærm. 
-Brugeren indtaster brugernavn og adgangskode og klikker Log ind. 
+Systemet starter og viser en login-skærm.
+Brugeren indtaster brugernavn og adgangskode og klikker Log ind.
 Systemet validerer oplysningerne og indlæser patientdata fra SQLite-databasen.
 Hvis patienten har et aktivt forløb vises dashboardet.
 Hvis ingen konto findes sendes brugeren til UC2: ManageProfile.
@@ -36,7 +36,7 @@ Regnvejrsdag:
 
 
 ## UC4: NewRound
-Systemet viser en skærm til ny IVF-runde med dagens dato som startdato.
+Systemet viser en skærm til ny fertilitetsrunde med dagens dato som startdato.
 Brugeren udfylder rundenummeret og klikker Start Round.
 Ny runde oprettes med result PENDING og gemmes i databasen.
 Systemet gemmer en hændelse i event tabellen.
@@ -47,8 +47,8 @@ Regnvejrsdag:
 
 
 ## UC5: Appointment
-Systemet viser en skærm med kommende aftaler i en kalendervisning. 
-Brugeren klikker Tilføj Aftale og udfylder dato, type (scanning, konsultation mv.) og sted. 
+Systemet viser en skærm med kommende aftaler i en kalendervisning.
+Brugeren klikker Tilføj Aftale og udfylder dato, type (scanning, konsultation mv.) og sted.
 Brugeren klikker Gem. Systemet gemmer aftalen i databasen og opdaterer listen.
 Brugeren kan markere en aftale som gennemført.
 Dashboardet viser kommende vigtige datoer.
@@ -59,8 +59,8 @@ Regnvejrsdag:
 - Datoen er i fortiden: Systemet viser en advarsel og beder brugeren bekræfte inden der gemmes.
 
 ## UC6: HormoneLog
-Systemet viser en skærm med hormonværdier for den aktive runde. 
-Brugeren klikker Tilføj Værdi og udfylder hormontype, værdi, enhed og dato. 
+Systemet viser en skærm med hormonværdier for den aktive runde.
+Brugeren klikker Tilføj Værdi og udfylder hormontype, værdi, enhed og dato.
 Brugeren klikker Gem. Systemet gemmer hormonværdien i databasen og opdaterer listen.
 Systemet gemmer en hændelse i event tabellen.
 
@@ -79,7 +79,7 @@ Regnvejrsdag:
 
 
 ## UC8: Timeline
-Systemet viser en skærm med alle hændelser for den aktive runde i kronologisk rækkefølge. 
+Systemet viser en skærm med alle hændelser for den aktive runde i kronologisk rækkefølge.
 Brugeren kan klikke på en hændelse for at se detaljer.
 
 Regnvejrsdag:
@@ -99,7 +99,7 @@ Regnvejrsdag:
 
 
 ## UC10: RoundHistory
-Systemet viser en skærm med alle tidligere IVF-runder. 
+Systemet viser en skærm med alle tidligere fertilitetsrunder.
 Brugeren vælger en runde og systemet viser detaljer inklusiv antal udtagne æg, antal befrugtede æg og resultat.
 
 Regnvejrsdag:
@@ -107,8 +107,8 @@ Regnvejrsdag:
 
 
 ## UC11: EndRound
-Systemet viser en mulighed for at markere den aktive runde som afsluttet. 
-Brugeren vælger et resultat (POSITIVE, NEGATIVE eller PENDING) og klikker End Runde. 
+Systemet viser en mulighed for at markere den aktive runde som afsluttet.
+Brugeren vælger et resultat (POSITIVE, NEGATIVE eller PENDING) og klikker End Runde.
 Systemet opdaterer rundens status til COMPLETED og gemmer det i databasen.
 Systemet gemmer en hændelse i event tabellen.
 
@@ -117,9 +117,9 @@ Regnvejrsdag:
 
 
 ## Fremtidige features
-
 Følgende features er identificeret men ikke implementeret i denne version:
 - Humør-felt på dagbogsnoter (UC9) — for at give patienten et nemt overblik over deres følelsesmæssige forløb
 - Redigér og slet aftaler (UC5) — for at give patienten fuld kontrol over deres kalender
 - Markér medicin som taget (UC7) — så medicinloggen kan bruges som daglig tjekliste
-- Indtastning af eggsRetrieved og eggsFertilised ved End Round (UC11) — så rundehistorikken viser fuldstændige data
+- Indtastning af eggsRetrieved og eggsFertilised ved New/End Round (UC4/UC11) — der er i dag kun felter til rundenummer (ved start) og resultat (ved afslutning); antal udtagne/befrugtede æg kan ikke indtastes noget sted i UI'en, selvom felterne findes i databasen
+- Mulighed for at starte et nyt forløb, når et tidligere forløb er afsluttet (UC1/UC3) — systemet understøtter i dag kun ét aktivt forløb ad gangen, men en patient bør kunne have flere forløb over tid (fx et afsluttet og et nyt)
