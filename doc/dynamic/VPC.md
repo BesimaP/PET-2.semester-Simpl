@@ -1,5 +1,8 @@
+# Value Proposition Canvas — Fertilitetsforløb (eksempel)
 
-## 👩 Kundesegment — Patienten
+*Simpl understøtter fem forløbstyper (fertilitet, kræft, rehabilitering, psykiatri, andet). Denne VPC går i dybden med **fertilitetsforløb** som ét konkret eksempel på, hvordan Simpl løser en specifik patientgruppes behov — samme metode kan anvendes på de øvrige forløbstyper.*
+
+## 👩 Kundesegment — Fertilitetspatienten
 🎯 Customer Jobs:
 - Holde styr på aftaler
 - Holde styr på medicinering
@@ -46,6 +49,6 @@
 ## 💊 Pain Relievers
 - Handleplan strukturerer kompleks information
 - Alt samlet ét sted — reducerer informationsoverload
-- Målrettet fertilitetspatienter — ikke generisk
+- Fælles arkitektur gør systemet let at genbruge til andre patientgrupper
 - Tidslinje reducerer kaos og usikkerhed
 - Medicinpåmindelser forhindrer glemte doser
