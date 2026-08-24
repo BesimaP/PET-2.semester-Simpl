@@ -6,7 +6,7 @@
 Som patient vil jeg kunne oprette et nyt fertilitetsforløb, så jeg kan begynde at følge min behandling fra start.
 
 **Acceptkriterier:**
-- Acceptkriterie 1: "Givet en patient er logget ind, når patienten vælger en forløbstypen og opretter et forløb, så vises det nye forløb på patientens oversigt" → tester at selve oprettelsen virker og bliver synlig (en patient kan godt have flere forløb, fx et afsluttet og et nyt)
+- Acceptkriterie 1: "Givet en patient er logget ind, når patienten vælger fertilitet som forløbstypen og opretter et forløb, så vises det nye forløb på patientens oversigt" → tester at selve oprettelsen virker og bliver synlig (en patient kan godt have flere forløb, fx et afsluttet og et nyt)
 - Acceptkriterie 2: "Givet at forløbet oprettes, når det gennemføres, så sættes startdato automatisk" → tester en specifik teknisk detalje (at man ikke selv skal indtaste dato)
 
 ### User story 2
@@ -14,7 +14,7 @@ Som patient vil jeg kunne se en tidslinje over mit forløbs status, så jeg ved,
 
 **Acceptkriterier:**
 - Acceptkriterie 1: "Givet et aktivt forløb med hændelser, når patienten åbner tidslinjen, så vises hændelserne sorteret efter dato" → tester at sorteringen er korrekt
-- Acceptkriterie 2: "Givet en ny hændelse registreres, når den gemmes, så opdateres tidslinjen automatisk" → tester at tidslinjen reagerer live, uden manuel genindlæsning
+- Acceptkriterie 2: "Givet en ny hændelse registreres (fx en note eller aftale), når den gemmes, så vises hændelsen på tidslinjen i korrekt kronologisk rækkefølge, uden at patienten skal genindlæse siden" → tester at tidslinjen reagerer live, uden manuel genindlæsning
 
 ### User story 3
 Som patient vil jeg kunne se mine kommende aftaler, så jeg ikke overser vigtige tider i mit forløb.
@@ -36,17 +36,17 @@ Som patient vil jeg kunne tilføje dagbogsnoter til mit forløb, så jeg har et 
 Som patient vil jeg kunne logge ind, så jeg kan få adgang til mit eget, private forløb.
 
 **Acceptkriterier:**
-- Acceptkriterie 1: "Givet en ny bruger uden profil prøver at oprette sig- føres videre til User case 6"
+- Acceptkriterie 1: "Givet en bruger uden profil forsøger at logge ind, når login fejler pga. manglende profil, så vises en mulighed for at oprette en ny profil (jf. User story 6)" → tester at nye brugere korrekt henvises videre til oprettelse
 - Acceptkriterie 2: "Givet korrekt brugernavn og adgangskode, når de indtastes, så logges brugeren ind og får adgang til eget forløb" → tester den centrale sikkerhedsfunktion
 - Acceptkriterie 3: "Givet en logget-ind patient, når profilen redigeres, så kan navn, fødselsdato og diagnose opdateres" → tester redigeringsfunktionen
 
 ### User story 6
 Som patient vil jeg kunne oprette en profil og vælge forløbstype
 
-**Acceptkriterier**
+**Acceptkriterier:**
 - Acceptkriterie 1: "Givet en ny bruger uden profil, når navn, fødselsdato, diagnose, brugernavn og adgangskode oprettes, så oprettes en ny patientprofil" → tester at oprettelsen lykkes med alle felter
-- Acceptkriterie 2: "Givet oplysninger står korrekt- oprettes ny profil og der kan vælges forløbstype"
-- Acceptkriterie 3: "Givet oplysninger er indtastet forkert eller brugernavn taget- så kommer fejlmeddelelse om at prøve igen"
+- Acceptkriterie 2: "Givet oplysninger står korrekt, når oprettelsen gennemføres, så oprettes ny profil og der kan vælges forløbstype" → tester at profiloprettelse og forløbsvalg hænger sammen
+- Acceptkriterie 3: "Givet oplysninger er indtastet forkert eller brugernavn taget, så kommer fejlmeddelelse om at prøve igen" → tester fejlhåndtering ved ugyldig oprettelse
 
 ### User story 7
 Som patient vil jeg kunne registrere mit medicinindtag, så jeg kan holde styr på, om jeg har taget min medicin som planlagt.
