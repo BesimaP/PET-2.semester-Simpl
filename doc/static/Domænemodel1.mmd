@@ -1,0 +1,120 @@
+classDiagram
+class Patient {
+name
+dateOfBirth
+diagnosis
+username
+password
+    }
+
+class Journey {
+startDate
+status
+}
+
+class FertilityJourney {
+roundNumber
+eggsRetrieved
+eggsFertilised
+result
+}
+
+class CancerJourney {
+cancerType
+stage
+}
+
+class RehabilitationJourney {
+injuryType
+goal
+}
+
+class PsychiatryJourney {
+condition
+}
+
+class OtherJourney {
+description
+}
+
+class Event {
+date
+type
+description
+}
+
+class Appointment {
+date
+type
+location
+completed
+}
+
+class MedicationLog {
+date
+medication
+dose
+taken
+}
+
+class DiaryEntry {
+date
+title
+content
+}
+
+class HormoneLog {
+date
+hormone
+value
+unit
+}
+
+class Status {
+ACTIVE
+COMPLETED
+PAUSED
+}
+
+class Result {
+POSITIVE
+NEGATIVE
+PENDING
+}
+
+class EventType {
+CONSULTATION
+EXAMINATION
+STIMULATION
+EGG_RETRIEVAL
+FERTILISATION
+TRANSFER
+PREGNANCY_TEST
+OTHER
+}
+
+class AppointmentType {
+SCANNING
+CONSULTATION
+EGG_RETRIEVAL
+TRANSFER
+BLOOD_TEST
+OTHER
+}
+
+Journey <|-- FertilityJourney
+Journey <|-- CancerJourney
+Journey <|-- RehabilitationJourney
+Journey <|-- PsychiatryJourney
+Journey <|-- OtherJourney
+
+Patient "1" *-- "1..*" Journey : has a
+Journey "1" *-- "0..*" Event : has a
+Journey "1" *-- "0..*" Appointment : has a
+Journey "1" *-- "0..*" MedicationLog : has a
+Journey "1" *-- "0..*" DiaryEntry : has a
+FertilityJourney "1" *-- "0..*" HormoneLog : has a
+Journey "1" -- "1" Status : is a
+FertilityJourney "1" -- "1" Result : is a
+Event "1" -- "1" EventType : is a
+Appointment "1" -- "1" AppointmentType : is a
