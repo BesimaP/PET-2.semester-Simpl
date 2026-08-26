@@ -1,120 +1,191 @@
 classDiagram
-class Patient {
-name
-dateOfBirth
-diagnosis
-username
-password
+    class Patient {
+        name
+        dateOfBirth
     }
 
-class Journey {
-startDate
-status
-}
+    class Diagnosis {
+        name
+        description
+    }
 
-class FertilityJourney {
-roundNumber
-eggsRetrieved
-eggsFertilised
-result
-}
+    class FertilityJourney {
+        startDate
+        status
+    }
 
-class CancerJourney {
-cancerType
-stage
-}
+    class Round {
+        roundNumber
+        startDate
+        endDate
+        treatmentType
+        eggsRetrieved
+        eggsFertilised
+        embryosCreated
+        embryosTransferred
+        result
+        status
+    }
 
-class RehabilitationJourney {
-injuryType
-goal
-}
+    class Appointment {
+        dateTime
+        appointmentType
+        location
+        status
+        notes
+        cancellationReason
+    }
 
-class PsychiatryJourney {
-condition
-}
+    class Medication {
+        name
+        description
+    }
 
-class OtherJourney {
-description
-}
+    class MedicationLog {
+        scheduledDateTime
+        takenDateTime
+        dose
+        unit
+        taken
+        note
+    }
 
-class Event {
-date
-type
-description
-}
+    class HormoneLog {
+        dateTime
+        hormoneType
+        value
+        unit
+    }
 
-class Appointment {
-date
-type
-location
-completed
-}
+    class Event {
+        dateTime
+        eventType
+        description
+        notes
+    }
 
-class MedicationLog {
-date
-medication
-dose
-taken
-}
+    class DiaryEntry {
+        dateTime
+        title
+        content
+    }
 
-class DiaryEntry {
-date
-title
-content
-}
+    class Document {
+        title
+        documentType
+        createdDate
+        filePath
+        notes
+    }
 
-class HormoneLog {
-date
-hormone
-value
-unit
-}
+    class Notification {
+        title
+        message
+        dateTime
+        notificationType
+        isRead
+    }
 
-class Status {
-ACTIVE
-COMPLETED
-PAUSED
-}
+    class JourneyStatus {
+        ACTIVE
+        PAUSED
+        COMPLETED
+        CANCELLED
+    }
 
-class Result {
-POSITIVE
-NEGATIVE
-PENDING
-}
+    class RoundResult {
+        POSITIVE
+        NEGATIVE
+        PENDING
+    }
 
-class EventType {
-CONSULTATION
-EXAMINATION
-STIMULATION
-EGG_RETRIEVAL
-FERTILISATION
-TRANSFER
-PREGNANCY_TEST
-OTHER
-}
+    class RoundStatus {
+        PLANNED
+        IN_PROGRESS
+        COMPLETED
+        CANCELLED
+    }
 
-class AppointmentType {
-SCANNING
-CONSULTATION
-EGG_RETRIEVAL
-TRANSFER
-BLOOD_TEST
-OTHER
-}
+    class TreatmentType {
+        IVF
+        ICSI
+        IUI
+        FET
+        OTHER
+    }
 
-Journey <|-- FertilityJourney
-Journey <|-- CancerJourney
-Journey <|-- RehabilitationJourney
-Journey <|-- PsychiatryJourney
-Journey <|-- OtherJourney
+    class AppointmentType {
+        SCANNING
+        CONSULTATION
+        EGG_RETRIEVAL
+        EMBRYO_TRANSFER
+        BLOOD_TEST
+        PREGNANCY_TEST
+        OTHER
+    }
 
-Patient "1" *-- "1..*" Journey : has a
-Journey "1" *-- "0..*" Event : has a
-Journey "1" *-- "0..*" Appointment : has a
-Journey "1" *-- "0..*" MedicationLog : has a
-Journey "1" *-- "0..*" DiaryEntry : has a
-FertilityJourney "1" *-- "0..*" HormoneLog : has a
-Journey "1" -- "1" Status : is a
-FertilityJourney "1" -- "1" Result : is a
-Event "1" -- "1" EventType : is a
-Appointment "1" -- "1" AppointmentType : is a
+    class AppointmentStatus {
+        SCHEDULED
+        COMPLETED
+        CANCELLED
+        NO_SHOW
+    }
+
+    class HormoneType {
+        FSH
+        LH
+        E2_OESTRADIOL
+        PROGESTERONE
+        AMH
+        OTHER
+    }
+
+    class EventType {
+        STIMULATION_START
+        SCANNING_RESULT
+        EGG_RETRIEVAL
+        FERTILISATION
+        EMBRYO_TRANSFER
+        PREGNANCY_TEST
+        OTHER
+    }
+
+    class DocumentType {
+        BLOOD_TEST_RESULT
+        TREATMENT_PLAN
+        INFORMATION
+        CONSENT
+        LAB_RESULT
+        OTHER
+    }
+
+    class NotificationType {
+        MEDICATION_REMINDER
+        APPOINTMENT_REMINDER
+        RESULT_AVAILABLE
+        GENERAL_INFO
+        OTHER
+    }
+
+    Patient "1" *-- "0..*" FertilityJourney : has a
+    Patient "1" *-- "0..*" Diagnosis : has a
+    Patient "1" *-- "0..*" Notification : has a
+    FertilityJourney "1" *-- "0..*" Round : has a
+    FertilityJourney "1" *-- "0..*" Appointment : has a
+    FertilityJourney "1" *-- "0..*" DiaryEntry : has a
+    Round "1" *-- "0..*" MedicationLog : has a
+    Medication "1" -- "0..*" MedicationLog : refers to
+    Round "1" *-- "0..*" HormoneLog : has a
+    Round "1" *-- "0..*" Event : has a
+    Round "1" *-- "0..*" Document : has a
+
+    FertilityJourney "1" -- "1" JourneyStatus : is a
+    Round "1" -- "1" RoundResult : is a
+    Round "1" -- "1" RoundStatus : is a
+    Round "1" -- "1" TreatmentType : is a
+    Appointment "1" -- "1" AppointmentType : is a
+    Appointment "1" -- "1" AppointmentStatus : is a
+    HormoneLog "1" -- "1" HormoneType : is a
+    Event "1" -- "1" EventType : is a
+    Document "1" -- "1" DocumentType : is a
+    Notification "1" -- "1" NotificationType : is a
