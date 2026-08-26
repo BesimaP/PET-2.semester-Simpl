@@ -81,6 +81,8 @@ Som patient vil jeg kunne se dokumenter tilknyttet min runde, så jeg har adgang
 **Acceptkriterier:**
 - Acceptkriterie 1: "Givet en runde med tilknyttede dokumenter, når dokumentlisten åbnes, så vises alle dokumenter med titel og type" → tester at dokumenter vises korrekt
 - Acceptkriterie 2: "Givet et dokument vælges, når det åbnes, så vises filens indhold via den gemte filPath" → tester at det faktiske dokument kan tilgås
+- Acceptkriterie 3: "Givet et dokument tilføjes, når dokumenttype vælges, så kan der vælges mellem Blodprøvesvar, Behandlingsplan og Andet" → tester at dokumenttyperne er faste værdier og matcher ordlisten
+- Acceptkriterie 4: "Givet en ny runde startes, når behandlingstype vælges, så kan der vælges mellem IVF, ICSI, IUI og FET" → tester at behandlingstyperne er faste værdier og matcher ordlisten
 
 ### User story 12
 Som patient vil jeg kunne modtage notifikationer, så jeg ikke overser vigtige påmindelser om medicin eller aftaler.
