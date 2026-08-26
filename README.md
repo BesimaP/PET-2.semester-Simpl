@@ -84,7 +84,7 @@ SQLite-databasen (`simpl.db`) oprettes automatisk i projektets rodmappe, første
 
 Dokumentationen findes i `doc/`-mappen:
 
-- `doc/dynamic/` — idébeskrivelse, VPC, krav, entiteter, user stories med acceptkriterier, tasks, use case-beskrivelser, use case-diagram (`usecase.puml`), navigationsdiagram (`navigation.puml`) og sekvensdiagrammer for UC1–UC14 (`sequence/`)
+- `doc/dynamic/` — idébeskrivelse, VPC, krav, entiteter, user stories med acceptkriterier, tasks, use case-beskrivelser, use case-diagram (`Usecase.puml`), navigationsdiagram (`Navigation.puml`) og sekvensdiagrammer for UC1–UC14 (`UC1 - LogIn.puml` … `UC14 - EndRound.puml`)
 - `doc/static/` — domænemodel (`Domænemodel1.puml`) og klassediagram
 
 Alle diagrammer er skrevet i PlantUML og gemt som PNG ved siden af kildefilen, så de kan ses uden at klone projektet.
