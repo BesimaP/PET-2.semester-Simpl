@@ -1,20 +1,19 @@
-# Value Proposition Canvas — Fertilitetsforløb (eksempel)
+# Value Proposition Canvas — Fertilitetsforløb
 
-*Simpl understøtter fem forløbstyper (fertilitet, kræft, rehabilitering, psykiatri, andet). Denne VPC går i dybden med **fertilitetsforløb** som ét konkret eksempel på, hvordan Simpl løser en specifik patientgruppes behov — samme metode kan anvendes på de øvrige forløbstyper.*
+*Simpl er målrettet patienter i fertilitetsbehandling. VPC'en beskriver, hvilke behov fertilitetspatienten har, og hvordan Simpls funktioner møder dem. Alle produkter og services herunder er dækket af en user story (US1–US12).*
 
 ## 👩 Kundesegment — Fertilitetspatienten
 🎯 Customer Jobs:
 - Holde styr på aftaler
 - Holde styr på medicinering
-- Følge hormonsporinger
+- Følge sine hormonværdier
 - Bearbejde følelser undervejs i forløbet
-- Forstå og navigere sit IVF-forløb
-- Bevare overblikket på tværs af flere IVF-runder
+- Forstå og navigere sit fertilitetsforløb
+- Bevare overblikket på tværs af flere runder
 
 ## 😊 Gains:
 - Tryg og i kontrol over forløbet
 - Bedre overblik
-- Ensomhed reduceres — fællesskab med andre
 - Nemt kunne se fremgang og mønstre
 - Have et privat rum til personlige tanker
 
@@ -22,33 +21,33 @@
 - For meget information til patienten
 - Overvældende mængde materiale at læse igennem
 - Forglemmelse — glemmer medicin eller aftaler
-- Ensomhed i forløbet
 - Angst for at glemme vigtige trin i behandlingen
 - Data spredt på papir, apps og notater
 - Følelsesmæssigt tungt forløb uden støtteværktøj
 
 ## 🎁 Værditilbud
 ## 🛠 Produkter & Services:
-- Kalender med aftaler
-- Dagbog — følelser & refleksioner
-- Medicinlog med tjekliste
-- Hormonlog
-- Dashboard med overblik over aktiv IVF-runde
-- Kronologisk tidslinje over forløbet
-- Rundehistorik med resultater
+- Aftaleoversigt med kommende aftaler (US3)
+- Dagbog — følelser & refleksioner (US4)
+- Medicinlog med tjekliste (US8)
+- Hormonlog (US9)
+- Dashboard med overblik over det aktive forløb og den aktive runde (US1, US10)
+- Kronologisk tidslinje over runden (US2)
+- Rundehistorik med resultater (US10)
+- Dokumenter samlet ét sted — blodprøvesvar og behandlingsplan (US11)
+- Notifikationer med medicinpåmindelser (US12)
+- Diagnoser på profilen (US7)
 
 ## ✅ Gain Creators:
 - Alt i ét — ét samlet overblik
 - Simpel og overskuelig grænseflade
 - Nemmere at følge sit forløb
-- "Mødregruppe" til fertilitetspatienter — fællesskab
-- Hormongrafen giver visuelt overblik over behandlingen
+- Hormonloggen viser udviklingen i behandlingen
 - Dagbogen giver rum til personlig refleksion
-- Rundehistorik giver overblik på tværs af IVF-forløb
+- Rundehistorik giver overblik på tværs af runder
 
 ## 💊 Pain Relievers
-- Handleplan strukturerer kompleks information
+- Dokumenter og tidslinje strukturerer kompleks information
 - Alt samlet ét sted — reducerer informationsoverload
-- Fælles arkitektur gør systemet let at genbruge til andre patientgrupper
 - Tidslinje reducerer kaos og usikkerhed
 - Medicinpåmindelser forhindrer glemte doser

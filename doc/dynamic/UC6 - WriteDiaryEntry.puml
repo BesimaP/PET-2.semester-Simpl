@@ -1,0 +1,34 @@
+@startuml
+!pragma layout smetana
+
+title UC6: WriteDiaryEntry
+
+actor "Patient" as u
+participant "DiaryView" as v
+participant "DiaryController" as c
+participant "DiaryEntry" as m
+database "SQLite" as db
+
+u -> v : Opens diary screen
+v -> c : loadEntries(journeyId)
+c -> db : SELECT * FROM diary_entry WHERE journey_id = ? ORDER BY date_time DESC
+db --> c : ResultSet
+c --> v : showEntries(list)
+v --> u : Shows previous entries
+
+u -> v : Clicks Ny note, fills in date, title, content
+u -> v : Clicks Gem
+v -> c : handleSaveEntry(dateTime, title, content)
+
+alt Title, content or date missing
+  c --> v : showError()
+  v --> u : "Please fill in date, title and content"
+else All OK
+  c -> m : new DiaryEntry(dateTime, title, content, journeyId)
+  c -> db : INSERT INTO diary_entry (journey_id, date_time, title, content) VALUES (?, ?, ?, ?)
+  db --> c : OK
+  c --> v : refreshList()
+  v --> u : Shows updated list
+end
+
+@enduml

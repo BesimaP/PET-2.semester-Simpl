@@ -1,0 +1,41 @@
+@startuml
+!pragma layout smetana
+
+title UC7: ViewNotifications
+
+actor "Patient" as u
+participant "NotificationView" as v
+participant "NotificationController" as c
+participant "Notification" as m
+database "SQLite" as db
+
+== Automatic generation (on app start / timer) ==
+c -> db : SELECT * FROM medication_log WHERE taken = 0 AND scheduled_date_time BETWEEN now AND now + 1h
+db --> c : ResultSet
+loop for each upcoming dose without a notification
+  c -> m : new Notification(now, MEDICATION_REMINDER, title, message, isRead=false)
+  c -> db : INSERT INTO notification (patient_id, date_time, type, title, message, is_read) VALUES (?, ?, ?, ?, ?, 0)
+  db --> c : OK
+end
+
+== Patient opens list ==
+u -> v : Opens notifications screen
+v -> c : loadNotifications(patientId)
+c -> db : SELECT * FROM notification WHERE patient_id = ? ORDER BY date_time DESC
+db --> c : ResultSet
+
+alt No notifications
+  c --> v : showEmptyMessage()
+  v --> u : "No notifications"
+else Notifications found
+  c --> v : showNotifications(list)
+  v --> u : Shows title, message, read status
+  u -> v : Clicks a notification
+  v -> c : handleOpen(notificationId)
+  c -> db : UPDATE notification SET is_read = 1 WHERE id = ?
+  db --> c : OK
+  c --> v : showDetails()
+  v --> u : Shows notification, marked as read
+end
+
+@enduml

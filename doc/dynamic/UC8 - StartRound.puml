@@ -1,0 +1,38 @@
+@startuml
+!pragma layout smetana
+
+title UC8: StartRound
+
+actor "Patient" as u
+participant "NewRoundView" as v
+participant "RoundController" as c
+participant "Round" as m
+database "SQLite" as db
+
+u -> v : Clicks Start Round
+v --> u : Shows form: roundNumber, treatmentType (IVF/ICSI/IUI/FET), startDate = today
+
+u -> v : Fills in roundNumber, selects treatmentType
+u -> v : Clicks Start Round
+v -> c : handleStartRound(journeyId, roundNumber, treatmentType)
+
+alt Round number is empty
+  c --> v : showError()
+  v --> u : "Round number is required"
+else Round IN_PROGRESS already exists
+  c -> db : SELECT id FROM round WHERE journey_id = ? AND status = 'IN_PROGRESS'
+  db --> c : ResultSet (found)
+  c --> v : showError()
+  v --> u : "Afslut den igangværende runde først"
+else All OK
+  c -> m : new Round(journeyId, roundNumber, treatmentType, today, IN_PROGRESS)
+  c -> db : INSERT INTO round (journey_id, round_number, treatment_type, start_date, status) VALUES (?, ?, ?, ?, 'IN_PROGRESS')
+  db --> c : OK (id)
+  c -> db : INSERT INTO event (round_id, date_time, type, description) VALUES (?, now, 'STIMULATION_START', 'Runde startet')
+  db --> c : OK
+  c -> c : Session.setRound(round)
+  c --> v : showDashboard()
+  v --> u : Dashboard shows new round
+end
+
+@enduml
