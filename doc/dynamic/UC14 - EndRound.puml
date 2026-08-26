@@ -1,0 +1,32 @@
+@startuml
+!pragma layout smetana
+
+title UC14: EndRound
+
+actor "Patient" as u
+participant "EndRoundView" as v
+participant "RoundController" as c
+participant "Round" as m
+database "SQLite" as db
+
+u -> v : Clicks End Round
+v --> u : Shows result options: POSITIVE, NEGATIVE
+
+u -> v : Selects result
+u -> v : Clicks End Round
+v -> c : handleEndRound(roundId, result)
+
+alt No result selected
+  c --> v : showError()
+  v --> u : "Please select a result"
+else All OK
+  c -> db : UPDATE round SET status = 'COMPLETED', result = ?, end_date = today WHERE id = ?
+  db --> c : OK
+  c -> db : INSERT INTO event (round_id, date_time, type, description) VALUES (?, now, 'PREGNANCY_TEST', 'Runde afsluttet: ' + result)
+  db --> c : OK
+  c -> c : Session.clearRound()
+  c --> v : showDashboard()
+  v --> u : Dashboard updated - "Start ny runde" available (UC8)
+end
+
+@enduml

@@ -31,9 +31,9 @@ Patienter der er i gang med et fertilitetsforløb, og som har behov for overblik
 
 - Udvide til en **webbaseret frontend** (HTML/CSS/JavaScript) i stedet for/som supplement til JavaFX
 - Eksponere backend-logikken via en API, så en webfrontend kan tilgå samme data og logik
-- Videreudvikle datamodellen med **Diagnosis**, **Document** og **Notification**, som allerede indgår i den opdaterede domænemodel
+- Videreudvikle datamodellen med **UserAccount**, **Diagnosis**, **Medication** (stamdata), **Document** og **Notification**, som indgår i domænemodellen
 - Adskille **Round** som selvstændig entitet fra selve forløbet (FertilityJourney), så et forløb korrekt kan indeholde flere runder
-- Færdiggøre registrering af æg- og embryodata (antal udtagne/befrugtede æg, embryosCreated/embryosTransferred) i UI'en
+- Registrering af æg- og embryodata på Round er planlagt som senere udvidelse (se "Fremtidige features" i `doc/dynamic/UsecaseDescription.md`)
 
 ## Tech stack (nuværende, JavaFX-version)
 
@@ -71,7 +71,7 @@ SQLite-databasen (`simpl.db`) oprettes automatisk i projektets rodmappe, første
 - `hormone_log` — hormonværdi-registreringer
 - `diary_entry` — dagbogsnoter
 
-**Planlagt udvidelse (jf. opdateret domænemodel):** `diagnosis`, `round` (adskilt fra `fertility_journey`), `medication` (stamdata), `document`, `notification`.
+**Planlagt udvidelse (jf. domænemodellen):** `user_account`, `diagnosis`, `round` (adskilt fra `fertility_journey`), `medication` (stamdata), `document`, `notification`.
 
 ## Kom i gang
 
@@ -82,4 +82,21 @@ SQLite-databasen (`simpl.db`) oprettes automatisk i projektets rodmappe, første
 
 ## Dokumentation
 
-Kravspecifikation (idébeskrivelse, funktionelle/non-funktionelle krav, user stories med acceptkriterier, domænemodel) findes i `doc/`-mappen.
+Dokumentationen findes i `doc/`-mappen:
+
+- `doc/dynamic/` — idébeskrivelse, VPC, krav, entiteter, user stories med acceptkriterier, tasks, use case-beskrivelser, use case-diagram (`usecase.puml`), navigationsdiagram (`navigation.puml`) og sekvensdiagrammer for UC1–UC14 (`sequence/`)
+- `doc/static/` — domænemodel (`Domænemodel1.puml`) og klassediagram
+
+Alle diagrammer er skrevet i PlantUML og gemt som PNG ved siden af kildefilen, så de kan ses uden at klone projektet.
+
+### Domænemodel
+
+![Domænemodel](doc/static/Domænemodel1.png)
+
+### Use case-diagram
+
+![Use case-diagram](doc/dynamic/usecase.png)
+
+### Navigationsdiagram
+
+![Navigationsdiagram](doc/dynamic/navigation.png)

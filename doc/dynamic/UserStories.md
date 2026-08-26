@@ -1,6 +1,6 @@
 # User stories med acceptkriterier
 
-*Hvert acceptkriterie følger Givet/Når/Så-formatet (Gherkin), med en kort forklaring af, hvad det konkret tester. Opdateret til at matche den endelige domænemodel (Patient → FertilityJourney → Round, med Diagnosis, Document og Notification tilføjet).*
+*Hvert acceptkriterie følger Givet/Når/Så-formatet (Gherkin), med en kort forklaring af, hvad det konkret tester. User stories matcher domænemodellen (Patient → FertilityJourney → Round, med UserAccount, Diagnosis, Document og Notification): hver kasse og attribut i modellen kan spores til en story herunder.*
 
 ### User story 1
 Som patient vil jeg kunne oprette et nyt fertilitetsforløb, så jeg kan begynde at følge min behandling fra start.
@@ -37,7 +37,7 @@ Som patient vil jeg kunne logge ind, så jeg kan få adgang til mit eget, privat
 **Acceptkriterier:**
 - Acceptkriterie 1: "Givet en bruger uden profil forsøger at logge ind, når login fejler pga. manglende profil, så vises en mulighed for at oprette en ny profil (jf. User story 6)" → tester at nye brugere korrekt henvises videre til oprettelse
 - Acceptkriterie 2: "Givet korrekt brugernavn og adgangskode, når de indtastes, så logges brugeren ind og får adgang til eget forløb" → tester den centrale sikkerhedsfunktion
-- Acceptkriterie 3: "Givet en logget-ind patient, når profilen redigeres, så kan navn og fødselsdato opdateres" → tester redigeringsfunktionen
+- Acceptkriterie 3: "Givet forkert brugernavn eller adgangskode, når der klikkes Log ind, så vises en fejlbesked, og brugeren logges ikke ind" → tester at uautoriseret adgang afvises
 
 ### User story 6
 Som patient vil jeg kunne oprette en profil, så jeg kan blive registreret som bruger af systemet.
@@ -45,6 +45,8 @@ Som patient vil jeg kunne oprette en profil, så jeg kan blive registreret som b
 **Acceptkriterier:**
 - Acceptkriterie 1: "Givet en ny bruger uden profil, når navn, fødselsdato, brugernavn og adgangskode oprettes, så oprettes en ny patientprofil" → tester at oprettelsen lykkes med alle felter
 - Acceptkriterie 2: "Givet oplysninger er indtastet forkert eller brugernavn taget, så kommer fejlmeddelelse om at prøve igen" → tester fejlhåndtering ved ugyldig oprettelse
+- Acceptkriterie 3: "Givet en logget-ind patient, når profilen redigeres, så kan navn og fødselsdato opdateres" → tester redigeringsfunktionen
+- Acceptkriterie 4: "Givet en logget-ind patient, når hun sletter sin konto og bekræfter, så slettes kontoen og alle tilknyttede data (forløb, runder, logs, dokumenter, notifikationer)" → tester at patienten ejer sine data og kan fjerne dem helt
 
 ### User story 7
 Som patient vil jeg kunne registrere mine diagnoser, så min behandler og jeg selv har overblik over min sygdomshistorik.
@@ -59,6 +61,7 @@ Som patient vil jeg kunne registrere mit medicinindtag, så jeg kan holde styr p
 **Acceptkriterier:**
 - Acceptkriterie 1: "Givet en aktiv runde, når en registrering oprettes med en valgt medicin, dosis og tidspunkt, så gemmes registreringen tilknyttet den korrekte medicin" → tester at registreringen refererer korrekt til medicin-stamdata
 - Acceptkriterie 2: "Givet en gemt registrering, når medicinlisten ses, så vises medicinnavn, dosis og tidspunkt korrekt" → tester at data også vises korrekt bagefter
+- Acceptkriterie 3: "Givet en planlagt dosis, når patienten markerer den som taget, så vises den som taget i medicinlisten" → tester at medicinloggen fungerer som daglig tjekliste
 
 ### User story 9
 Som patient vil jeg kunne registrere mine hormonværdier, så jeg kan følge udviklingen i min behandling.
@@ -74,15 +77,15 @@ Som patient vil jeg kunne starte en ny runde og se min rundehistorik, så jeg ka
 - Acceptkriterie 1: "Givet et fertilitetsforløb, når en ny runde startes med rundenummer og behandlingstype, så oprettes runden tilknyttet forløbet" → tester at "start ny runde" opretter en selvstændig runde
 - Acceptkriterie 2: "Givet en runde i gang, når den afsluttes med et resultat, så gemmes resultatet på runden" → tester at afslutning og resultat hænger sammen på det korrekte niveau
 - Acceptkriterie 3: "Givet tidligere gennemførte runder, når rundehistorikken åbnes, så vises alle runder tilknyttet det aktive forløb" → tester at historikken viser alle runder, ikke kun den seneste
+- Acceptkriterie 4: "Givet en ny runde startes, når behandlingstype vælges, så kan der vælges mellem IVF, ICSI, IUI og FET" → tester at behandlingstyperne er faste værdier og matcher ordlisten
 
 ### User story 11
-Som patient vil jeg kunne se dokumenter tilknyttet min runde, så jeg har adgang til blodprøvesvar og behandlingsplan ét sted.
+Som patient vil jeg kunne tilføje og se dokumenter tilknyttet min runde, så jeg har adgang til blodprøvesvar og behandlingsplan ét sted.
 
 **Acceptkriterier:**
 - Acceptkriterie 1: "Givet en runde med tilknyttede dokumenter, når dokumentlisten åbnes, så vises alle dokumenter med titel og type" → tester at dokumenter vises korrekt
 - Acceptkriterie 2: "Givet et dokument vælges, når det åbnes, så vises filens indhold via den gemte filPath" → tester at det faktiske dokument kan tilgås
-- Acceptkriterie 3: "Givet et dokument tilføjes, når dokumenttype vælges, så kan der vælges mellem Blodprøvesvar, Behandlingsplan og Andet" → tester at dokumenttyperne er faste værdier og matcher ordlisten
-- Acceptkriterie 4: "Givet en ny runde startes, når behandlingstype vælges, så kan der vælges mellem IVF, ICSI, IUI og FET" → tester at behandlingstyperne er faste værdier og matcher ordlisten
+- Acceptkriterie 3: "Givet et dokument tilføjes med titel, dokumenttype og fil, når dokumenttype vælges, så kan der vælges mellem Blodprøvesvar, Behandlingsplan og Andet" → tester at patienten selv kan tilføje dokumenter, og at dokumenttyperne er faste værdier, der matcher ordlisten
 
 ### User story 12
 Som patient vil jeg kunne modtage notifikationer, så jeg ikke overser vigtige påmindelser om medicin eller aftaler.
