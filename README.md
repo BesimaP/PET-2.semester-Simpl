@@ -95,8 +95,8 @@ Alle diagrammer er skrevet i PlantUML og gemt som PNG ved siden af kildefilen, s
 
 ### Use case-diagram
 
-![Use case-diagram](doc/dynamic/usecase.png)
+![Use case-diagram](doc/dynamic/Usecase.png)
 
 ### Navigationsdiagram
 
-![Navigationsdiagram](doc/dynamic/navigation.png)
+![Navigationsdiagram](doc/dynamic/Navigation.png)
