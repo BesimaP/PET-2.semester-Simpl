@@ -1,119 +1,197 @@
 @startuml
 !pragma layout smetana
 
-title Domain Model - Patient Journey
+title Domain Model - Fertilitetsforløb (Patientrejse)
 
-object "<b>Patient</b>" as Patient #FFDAB9
+object "<b>Patient</b>" as Patient #FFDAB9 {
+  name
+  dateOfBirth
+}
 
-object "<b>Journey</b>" as Journey #D6EAD8
+object "<b>Diagnosis</b>" as Diagnosis #FFDAB9 {
+  name
+  description
+}
 
-object "<b>FertilityJourney</b>" as FertilityJourney #C1E8C1 {
+object "<b>FertilityJourney</b>" as Journey #D6EAD8 {
+  startDate
+  status
+}
+
+object "<b>Round</b>" as Round #C1E8C1 {
   roundNumber
+  startDate
+  endDate
+  treatmentType
   eggsRetrieved
   eggsFertilised
+  embryosCreated
+  embryosTransferred
   result
+  status
 }
-object "<b>CancerJourney</b>" as CancerJourney #C1E8C1 {
-  cancerType
-  stage
+
+object "<b>Appointment</b>" as Appointment #FFF3B0 {
+  dateTime
+  appointmentType
+  location
+  status
+  notes
+  cancellationReason
 }
-object "<b>RehabilitationJourney</b>" as RehabilitationJourney #C1E8C1 {
-  injuryType
-  goal
-}
-object "<b>PsychiatryJourney</b>" as PsychiatryJourney #C1E8C1 {
-  condition
-}
-object "<b>OtherJourney</b>" as OtherJourney #C1E8C1 {
+
+object "<b>Medication</b>" as Medication #FFF3B0 {
+  name
   description
 }
 
-object "<b>Event</b>" as Event #FFF3B0 {
-  date
-  type
-  description
-}
-object "<b>Appointment</b>" as Appointment #FFF3B0 {
-  date
-  type
-  location
-  completed
-}
 object "<b>MedicationLog</b>" as MedicationLog #FFF3B0 {
-  date
-  medication
+  scheduledDateTime
+  takenDateTime
   dose
+  unit
   taken
+  note
 }
-object "<b>DiaryEntry</b>" as DiaryEntry #FFF3B0 {
-  date
-  title
-  content
-}
+
 object "<b>HormoneLog</b>" as HormoneLog #FFF3B0 {
-  date
-  hormone
+  dateTime
+  hormoneType
   value
   unit
 }
 
-object "<b>Status</b>" as Status #E3D5F0 {
-  ACTIVE
-  COMPLETED
-  PAUSED
+object "<b>Event</b>" as Event #FFF3B0 {
+  dateTime
+  eventType
+  description
+  notes
 }
-object "<b>Result</b>" as Result #E3D5F0 {
+
+object "<b>DiaryEntry</b>" as DiaryEntry #FFF3B0 {
+  dateTime
+  title
+  content
+}
+
+object "<b>Document</b>" as Document #FFF3B0 {
+  title
+  documentType
+  createdDate
+  filePath
+  notes
+}
+
+object "<b>Notification</b>" as Notification #FFF3B0 {
+  title
+  message
+  dateTime
+  notificationType
+  isRead
+}
+
+object "<b>JourneyStatus</b>" as JourneyStatus #E3D5F0 {
+  ACTIVE
+  PAUSED
+  COMPLETED
+  CANCELLED
+}
+
+object "<b>RoundResult</b>" as RoundResult #E3D5F0 {
   POSITIVE
   NEGATIVE
   PENDING
 }
-object "<b>EventType</b>" as EventType #E3D5F0 {
-  CONSULTATION
-  EXAMINATION
-  STIMULATION
-  EGG_RETRIEVAL
-  FERTILISATION
-  TRANSFER
-  PREGNANCY_TEST
+
+object "<b>RoundStatus</b>" as RoundStatus #E3D5F0 {
+  PLANNED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+object "<b>TreatmentType</b>" as TreatmentType #E3D5F0 {
+  IVF
+  ICSI
+  IUI
+  FET
   OTHER
 }
+
 object "<b>AppointmentType</b>" as AppointmentType #E3D5F0 {
   SCANNING
   CONSULTATION
   EGG_RETRIEVAL
-  TRANSFER
+  EMBRYO_TRANSFER
   BLOOD_TEST
+  PREGNANCY_TEST
   OTHER
 }
 
-Patient : name
-Patient : dateOfBirth
-Patient : diagnosis
-Patient : username
-Patient : password
+object "<b>AppointmentStatus</b>" as AppointmentStatus #E3D5F0 {
+  SCHEDULED
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+}
 
-Journey : startDate
-Journey : status
+object "<b>HormoneType</b>" as HormoneType #E3D5F0 {
+  FSH
+  LH
+  E2_OESTRADIOL
+  PROGESTERONE
+  AMH
+  OTHER
+}
 
-' Inheritance
-FertilityJourney --|> Journey
-CancerJourney --|> Journey
-RehabilitationJourney --|> Journey
-PsychiatryJourney --|> Journey
-OtherJourney --|> Journey
+object "<b>EventType</b>" as EventType #E3D5F0 {
+  STIMULATION_START
+  SCANNING_RESULT
+  EGG_RETRIEVAL
+  FERTILISATION
+  EMBRYO_TRANSFER
+  PREGNANCY_TEST
+  OTHER
+}
 
-' Has a
-Patient "1" *-- "1..*" Journey : has a
-Journey "1" *-- "0..*" Event : has a
+object "<b>DocumentType</b>" as DocumentType #E3D5F0 {
+  BLOOD_TEST_RESULT
+  TREATMENT_PLAN
+  INFORMATION
+  CONSENT
+  LAB_RESULT
+  OTHER
+}
+
+object "<b>NotificationType</b>" as NotificationType #E3D5F0 {
+  MEDICATION_REMINDER
+  APPOINTMENT_REMINDER
+  RESULT_AVAILABLE
+  GENERAL_INFO
+  OTHER
+}
+
+Patient "1" *-- "0..*" Journey : has a
+Patient "1" *-- "0..*" Diagnosis : has a
+Patient "1" *-- "0..*" Notification : has a
+Journey "1" *-- "0..*" Round : has a
 Journey "1" *-- "0..*" Appointment : has a
-Journey "1" *-- "0..*" MedicationLog : has a
 Journey "1" *-- "0..*" DiaryEntry : has a
-FertilityJourney "1" *-- "0..*" HormoneLog : has a
+Round "1" *-- "0..*" MedicationLog : has a
+Medication "1" -- "0..*" MedicationLog : refers to
+Round "1" *-- "0..*" HormoneLog : has a
+Round "1" *-- "0..*" Event : has a
+Round "1" *-- "0..*" Document : has a
 
-' Is a
-Journey "1" -- "1" Status : is a
-FertilityJourney "1" -- "1" Result : is a
-Event "1" -- "1" EventType : is a
+Journey "1" -- "1" JourneyStatus : is a
+Round "1" -- "1" RoundResult : is a
+Round "1" -- "1" RoundStatus : is a
+Round "1" -- "1" TreatmentType : is a
 Appointment "1" -- "1" AppointmentType : is a
+Appointment "1" -- "1" AppointmentStatus : is a
+HormoneLog "1" -- "1" HormoneType : is a
+Event "1" -- "1" EventType : is a
+Document "1" -- "1" DocumentType : is a
+Notification "1" -- "1" NotificationType : is a
 
 @enduml

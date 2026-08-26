@@ -65,7 +65,9 @@ Som patient vil jeg kunne registrere mine hormonværdier, så jeg kan følge udv
 ### User story 9
 Som patient vil jeg kunne registrere data for en fertilitetsrunde og se min rundehistorik, så jeg kan følge, hvordan mine tidligere forsøg er gået.
 
+*Note: en runde er modelleret som en selvstændig Round-tilknyttet til FertilityJourney (forløbet), ikke som forløbet selv — det tillader flere runder pr. forløb.*
+
 **Acceptkriterier:**
-- Acceptkriterie 1: "Givet et fertilitetsforløb, når en ny runde startes med rundenummer, så oprettes runden" → tester at "start ny runde" virker
-- Acceptkriterie 2: "Givet en runde i gang, når den afsluttes med et resultat, så gemmes resultatet på forløbet" → tester at afslutning og resultat hænger sammen
-- Acceptkriterie 3: "Givet tidligere gennemførte runder, når rundehistorikken åbnes, så vises alle tidligere runder" → tester at historikken viser alle runder, ikke kun den seneste
+- Acceptkriterie 1: "Givet et fertilitetsforløb, når en ny runde startes med rundenummer, så oprettes en ny Round tilknyttet forløbet" → tester at "start ny runde" opretter en selvstændig runde, ikke et helt nyt forløb
+- Acceptkriterie 2: "Givet en runde i gang, når den afsluttes med et resultat, så gemmes resultatet på runden (ikke på hele forløbet)" → tester at afslutning og resultat hænger sammen på det korrekte niveau
+- Acceptkriterie 3: "Givet tidligere gennemførte runder, når rundehistorikken åbnes, så vises alle runder tilknyttet det aktive forløb" → tester at historikken viser alle runder for forløbet, ikke kun den seneste

@@ -1,4 +1,3 @@
-# PET-2.semester-Simpl
 # Simpl
 
 Simpl er et system til patienter, der gennemgår et behandlingsforløb (fx fertilitet, kræft, rehabilitering, psykiatri eller andet), hvor de kan holde styr på deres forløb, aftaler, medicin, hormonværdier og dagbogsnoter.
@@ -69,22 +68,6 @@ SQLite-databasen (`simpl.db`) oprettes automatisk i projektets rodmappe, første
 - `hormone_log` — hormonværdi-registreringer (tilknyttet fertilitetsforløb)
 - `diary_entry` — dagbogsnoter
 
-## Kom i gang
-
-### Forudsætninger
-
-- Java 21 (JDK)
-- Maven 3.x
-
-### Kør applikationen
-
-```bash
-git clone https://github.com/BesimaP/PET-2.semester-Simpl.git
-cd PET-2.semester-Simpl
-mvn clean javafx:run
-```
-
-Applikationen åbner med login-skærmen. Opret en ny profil for at komme i gang.
 
 ## Dokumentation
 
