@@ -1,6 +1,7 @@
+# PET-2.semester-Simpl
 # Simpl
 
-Simpl er et system til patienter, der gennemgår et behandlingsforløb (fx fertilitet, kræft, rehabilitering, psykiatri eller andet), hvor de kan holde styr på deres forløb, aftaler, medicin, hormonværdier og dagbogsnoter.
+Simpl er et system til patienter, der gennemgår et fertilitetsforløb (fx IVF, ICSI, IUI eller FET), hvor de kan holde styr på deres forløb, diagnoser, aftaler, medicin, hormonværdier, dagbogsnoter, dokumenter og notifikationer.
 
 ## Om projektet
 
@@ -12,18 +13,17 @@ Projektet videreføres i dette semester med planer om at udvide det til et fuldt
 
 ## Målgruppe
 
-Patienter der er i gang med et behandlingsforløb, og som har behov for overblik over status, aftaler, medicin og egne noter/observationer gennem forløbet.
+Patienter der er i gang med et fertilitetsforløb, og som har behov for overblik over status, aftaler, medicin og egne noter/observationer gennem forløbet.
 
 ## Nuværende funktioner (fra 1. semester)
 
 - **Brugerkonti** — oprette profil, logge ind, genoptage sit forløb
-- **Valg af forløbstype** — fertilitet, kræft, psykiatri, rehabilitering eller andet
 - **Dashboard** — overblik med nøgletal
 - **Hormonlog** — registrering af hormonværdier over tid
 - **Medicinlog** — registrering af medicin, dosis og om den er taget
 - **Aftaler** — planlægning og oversigt over kommende aftaler
 - **Dagbog** — daglige dagbogsnoter
-- **Tidslinje** — kronologisk overblik over alle hændelser i forløbet
+- **Tidslinje** — kronologisk overblik over hændelser i en runde
 - **Rundehåndtering** — start/afslut en fertilitetsrunde med resultat
 - **Rundehistorik** — se tidligere gennemførte runder
 
@@ -31,7 +31,9 @@ Patienter der er i gang med et behandlingsforløb, og som har behov for overblik
 
 - Udvide til en **webbaseret frontend** (HTML/CSS/JavaScript) i stedet for/som supplement til JavaFX
 - Eksponere backend-logikken via en API, så en webfrontend kan tilgå samme data og logik
-- Færdiggøre registrering af æg-data (antal udtagne/befrugtede æg) i UI'en
+- Videreudvikle datamodellen med **Diagnosis**, **Document** og **Notification**, som allerede indgår i den opdaterede domænemodel
+- Adskille **Round** som selvstændig entitet fra selve forløbet (FertilityJourney), så et forløb korrekt kan indeholde flere runder
+- Færdiggøre registrering af æg- og embryodata (antal udtagne/befrugtede æg, embryosCreated/embryosTransferred) i UI'en
 
 ## Tech stack (nuværende, JavaFX-version)
 
@@ -57,17 +59,26 @@ src/
 
 ## Database
 
-SQLite-databasen (`simpl.db`) oprettes automatisk i projektets rodmappe, første gang applikationen køres. Databasestrukturen er defineret i `data/schema.sql` og initialiseres ved opstart af `DatabaseInitializer.java`. Den indeholder følgende tabeller:
+SQLite-databasen (`simpl.db`) oprettes automatisk i projektets rodmappe, første gang applikationen køres. Databasestrukturen er defineret i `data/schema.sql` og initialiseres ved opstart af `DatabaseInitializer.java`.
 
+**Nuværende tabeller (JavaFX-versionen):**
 - `patient` — brugerkonti
-- `journey` — patientens overordnede behandlingsforløb
-- `fertility_journey` — fertilitetsspecifik data (rundenummer, udtagne æg, befrugtede æg, resultat)
+- `journey` — patientens overordnede fertilitetsforløb
+- `fertility_journey` — rundenummer, udtagne æg, befrugtede æg, resultat
 - `event` — hændelser på tidslinjen
 - `appointment` — planlagte aftaler
 - `medication_log` — medicinregistreringer
-- `hormone_log` — hormonværdi-registreringer (tilknyttet fertilitetsforløb)
+- `hormone_log` — hormonværdi-registreringer
 - `diary_entry` — dagbogsnoter
 
+**Planlagt udvidelse (jf. opdateret domænemodel):** `diagnosis`, `round` (adskilt fra `fertility_journey`), `medication` (stamdata), `document`, `notification`.
+
+## Kom i gang
+
+### Forudsætninger
+
+- Java 21 (JDK)
+- Maven 3.x
 
 ## Dokumentation
 
