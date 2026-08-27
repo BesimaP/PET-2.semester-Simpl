@@ -36,10 +36,6 @@ import model.Session;
             // ToggleButtons — en per forløbstype
             // createOptionButton() er en hjælpemetode der styler knapperne
             ToggleButton fertilityButton = createOptionButton("🌱  Fertility", group);
-            ToggleButton cancerButton = createOptionButton("🎗  Cancer", group);
-            ToggleButton rehabilitationButton = createOptionButton("💪  Rehabilitation", group);
-            ToggleButton psychiatryButton = createOptionButton("🧠  Psychiatry", group);
-            ToggleButton otherButton = createOptionButton("📋  Other", group);
 
             // Beskedlabel — viser fejl hvis ingen type er valgt
             Label messageLabel = new Label("");
@@ -71,7 +67,7 @@ import model.Session;
 
                 // Hent teksten og fjern emojis og mellemrum
                 // fx "🌱  Fertility" bliver til "Fertility"
-                String type = selected.getText().trim().replaceAll("[^a-zA-Z]", "");
+                String type = "Fertility";
 
                 // Gem forløbet i databasen og hent det nye journey_id
                 int journeyId = controller.handleSelectJourney(
@@ -96,10 +92,6 @@ import model.Session;
                     titleLabel,
                     subtitleLabel,
                     fertilityButton,
-                    cancerButton,
-                    rehabilitationButton,
-                    psychiatryButton,
-                    otherButton,
                     continueButton,
                     backButton,
                     messageLabel
