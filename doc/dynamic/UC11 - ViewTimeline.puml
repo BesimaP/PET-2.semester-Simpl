@@ -1,0 +1,43 @@
+@startuml
+!pragma layout smetana
+
+title UC11: ViewTimeline
+
+actor "Patient" as u
+participant "TimelineView" as v
+participant "TimelineController" as c
+participant "Event" as m
+database "SQLite" as db
+
+u -> v : Opens timeline screen
+v -> c : loadEvents(roundId)
+c -> db : SELECT * FROM event WHERE round_id = ? ORDER BY date_time ASC
+db --> c : ResultSet
+
+alt No events found
+  c --> v : showEmptyMessage()
+  v --> u : "Timeline is empty"
+else Events found
+  c --> v : showEvents(list)
+  v --> u : Shows events chronologically
+end
+
+u -> v : Clicks Tilføj Hændelse, fills in dateTime, eventType, description
+u -> v : Clicks Gem
+v -> c : handleAddEvent(dateTime, eventType, description)
+
+alt Date or type missing
+  c --> v : showError()
+  v --> u : "Date and type are required"
+else All OK
+  c -> m : new Event(dateTime, eventType, description, roundId)
+  c -> db : INSERT INTO event (round_id, date_time, type, description) VALUES (?, ?, ?, ?)
+  db --> c : OK
+  c --> v : insertSorted(event)
+  v --> u : Timeline updated without reload
+end
+
+u -> v : Clicks an event
+v --> u : Shows event details
+
+@enduml

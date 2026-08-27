@@ -1,0 +1,52 @@
+@startuml
+!pragma layout smetana
+
+title UC12: ManageDocuments
+
+actor "Patient" as u
+participant "DocumentView" as v
+participant "DocumentController" as c
+participant "Document" as m
+database "SQLite" as db
+
+u -> v : Opens documents screen
+v -> c : loadDocuments(roundId)
+c -> db : SELECT * FROM document WHERE round_id = ?
+db --> c : ResultSet
+
+alt No documents found
+  c --> v : showEmptyMessage()
+  v --> u : "No documents"
+else Documents found
+  c --> v : showDocuments(list)
+  v --> u : Shows title and type for each document
+end
+
+u -> v : Clicks Tilføj Dokument, fills in title, selects documentType and file
+u -> v : Clicks Gem
+v -> c : handleAddDocument(title, documentType, filePath)
+
+alt Title or file missing
+  c --> v : showError()
+  v --> u : "Title and file are required"
+else All OK
+  c -> m : new Document(title, documentType, filePath, roundId)
+  c -> db : INSERT INTO document (round_id, title, document_type, file_path) VALUES (?, ?, ?, ?)
+  db --> c : OK
+  c --> v : refreshList()
+  v --> u : Shows updated list
+end
+
+u -> v : Clicks a document
+v -> c : handleOpen(documentId)
+c -> db : SELECT file_path FROM document WHERE id = ?
+db --> c : filePath
+alt File cannot be opened
+  c --> v : showError()
+  v --> u : "File not found"
+else File opened
+  c --> v : openFile(filePath)
+  v --> u : Shows document
+end
+
+@enduml

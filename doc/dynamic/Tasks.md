@@ -29,14 +29,16 @@
 - [ ]  Lav layout til login-skærmen
 - [ ]  Tjek brugernavn/adgangskode mod databasen
 - [ ]  Håndter fejlscenariet: bruger uden profil henvises til oprettelse (User story 6)
-- [ ]  Lav layout til at redigere profiloplysninger
-- [ ]  Test både succesfuldt login og fejlscenariet
+- [ ]  Håndter fejlscenariet: forkert brugernavn/adgangskode giver fejlbesked
+- [ ]  Test både succesfuldt login og fejlscenarierne
 
 ## User story 6 – Oprette profil
 - [ ]  Lav layout til profiloprettelse (navn, fødselsdato, brugernavn, adgangskode)
-- [ ]  Gem den nye profil i databasen
+- [ ]  Gem den nye profil i databasen (UserAccount + Patient), adgangskode gemmes som hash
 - [ ]  Tilføj validering: brugernavn allerede taget / manglende felter
-- [ ]  Test både succesfuld oprettelse og fejlmeddelelser
+- [ ]  Lav layout til at redigere profiloplysninger (navn, fødselsdato)
+- [ ]  Implementér "slet konto" med bekræftelse, der fjerner alle patientens data
+- [ ]  Test oprettelse, fejlmeddelelser, redigering og sletning
 
 ## User story 7 – Diagnoser
 - [ ]  Lav layout til at registrere en ny diagnose (navn, beskrivelse)
@@ -49,7 +51,8 @@
 - [ ]  Lav layout til at registrere medicinindtag (vælg medicin, dosis, tidspunkt) på en aktiv runde
 - [ ]  Gem registreringen i databasen, med reference til den valgte Medication
 - [ ]  Lav layout til medicinlisten, der viser tidligere registreringer
-- [ ]  Test at data gemmes og vises korrekt, inkl. korrekt reference til Medication
+- [ ]  Implementér "markér som taget" på en planlagt dosis (taken)
+- [ ]  Test at data gemmes og vises korrekt, inkl. korrekt reference til Medication og taget-status
 
 ## User story 9 – Hormonlog
 - [ ]  Lav layout til at registrere hormontype, værdi, enhed og dato
@@ -58,15 +61,16 @@
 - [ ]  Test registrering og "seneste værdi"-visning
 
 ## User story 10 – Rundedata og rundehistorik
-- [ ]  Lav layout til at starte en ny runde (rundenummer, behandlingstype)
-- [ ]  Lav layout til at afslutte en runde med et resultat
+- [ ]  Lav layout til at starte en ny runde (rundenummer, behandlingstype som dropdown: IVF, ICSI, IUI, FET)
+- [ ]  Lav layout til at afslutte en runde med et resultat (POSITIVE / NEGATIVE)
 - [ ]  Gem resultatet på den specifikke Round, når den afsluttes
 - [ ]  Lav layout til rundehistorik, der viser alle Rounds tilknyttet forløbet
 - [ ]  Test start, afslutning og historikvisning
 
 ## User story 11 – Dokumenter
 - [ ]  Lav layout til dokumentlisten for en runde (titel, type)
-- [ ]  Implementér upload/gemning af dokumenter, tilknyttet filePath
+- [ ]  Lav layout til at tilføje et dokument (titel, dokumenttype som dropdown: Blodprøvesvar, Behandlingsplan, Andet, filvalg)
+- [ ]  Implementér gemning af dokumenter med filePath
 - [ ]  Lav layout til at åbne og vise et valgt dokument
 - [ ]  Test at dokumenter kan gemmes, listes og åbnes korrekt
 

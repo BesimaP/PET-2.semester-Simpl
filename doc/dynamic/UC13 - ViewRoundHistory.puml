@@ -1,0 +1,29 @@
+@startuml
+!pragma layout smetana
+
+title UC13: ViewRoundHistory
+
+actor "Patient" as u
+participant "RoundHistoryView" as v
+participant "RoundHistoryController" as c
+participant "Round" as m
+database "SQLite" as db
+
+u -> v : Opens round history
+v -> c : loadRounds(journeyId)
+c -> db : SELECT * FROM round WHERE journey_id = ? ORDER BY round_number DESC
+db --> c : ResultSet
+
+alt No rounds found
+  c --> v : showEmptyMessage()
+  v --> u : "No round history yet"
+else Rounds found
+  c --> v : showRounds(list)
+  v --> u : Shows all rounds, newest first
+  u -> v : Selects a round
+  v -> c : handleSelectRound(roundId)
+  c --> v : showDetails(round)
+  v --> u : Shows roundNumber, treatmentType, startDate, endDate, status, result
+end
+
+@enduml

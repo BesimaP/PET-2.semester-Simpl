@@ -1,7 +1,14 @@
 @startuml
 !pragma layout smetana
 
-title Domain Model - Fertilitetsforløb (Patientrejse)
+title Domain Model - Simpl (Fertilitetsforløb)
+
+' ---------- Bruger og patient (US5, US6, US7) ----------
+
+object "<b>UserAccount</b>" as UserAccount #FFDAB9 {
+  username
+  password
+}
 
 object "<b>Patient</b>" as Patient #FFDAB9 {
   name
@@ -13,6 +20,8 @@ object "<b>Diagnosis</b>" as Diagnosis #FFDAB9 {
   description
 }
 
+' ---------- Forløb og runde (US1, US10) ----------
+
 object "<b>FertilityJourney</b>" as Journey #D6EAD8 {
   startDate
   status
@@ -20,24 +29,33 @@ object "<b>FertilityJourney</b>" as Journey #D6EAD8 {
 
 object "<b>Round</b>" as Round #C1E8C1 {
   roundNumber
+  treatmentType
   startDate
   endDate
-  treatmentType
-  eggsRetrieved
-  eggsFertilised
-  embryosCreated
-  embryosTransferred
-  result
   status
+  result
 }
+
+' ---------- Ting på forløbet (US3, US4) ----------
 
 object "<b>Appointment</b>" as Appointment #FFF3B0 {
   dateTime
   appointmentType
   location
-  status
-  notes
-  cancellationReason
+}
+
+object "<b>DiaryEntry</b>" as DiaryEntry #FFF3B0 {
+  dateTime
+  title
+  content
+}
+
+' ---------- Ting på runden (US2, US8, US9, US11) ----------
+
+object "<b>Event</b>" as Event #FFF3B0 {
+  dateTime
+  eventType
+  description
 }
 
 object "<b>Medication</b>" as Medication #FFF3B0 {
@@ -47,11 +65,9 @@ object "<b>Medication</b>" as Medication #FFF3B0 {
 
 object "<b>MedicationLog</b>" as MedicationLog #FFF3B0 {
   scheduledDateTime
-  takenDateTime
   dose
   unit
   taken
-  note
 }
 
 object "<b>HormoneLog</b>" as HormoneLog #FFF3B0 {
@@ -61,137 +77,43 @@ object "<b>HormoneLog</b>" as HormoneLog #FFF3B0 {
   unit
 }
 
-object "<b>Event</b>" as Event #FFF3B0 {
-  dateTime
-  eventType
-  description
-  notes
-}
-
-object "<b>DiaryEntry</b>" as DiaryEntry #FFF3B0 {
-  dateTime
-  title
-  content
-}
-
 object "<b>Document</b>" as Document #FFF3B0 {
   title
   documentType
-  createdDate
   filePath
-  notes
 }
 
+' ---------- Notifikationer (US12) ----------
+
 object "<b>Notification</b>" as Notification #FFF3B0 {
-  title
-  message
   dateTime
   notificationType
+  title
+  message
   isRead
 }
 
-object "<b>JourneyStatus</b>" as JourneyStatus #E3D5F0 {
-  ACTIVE
-  PAUSED
-  COMPLETED
-  CANCELLED
-}
+' ---------- Associationer ----------
 
-object "<b>RoundResult</b>" as RoundResult #E3D5F0 {
-  POSITIVE
-  NEGATIVE
-  PENDING
-}
+UserAccount "1" -- "1" Patient : logs in as >
 
-object "<b>RoundStatus</b>" as RoundStatus #E3D5F0 {
-  PLANNED
-  IN_PROGRESS
-  COMPLETED
-  CANCELLED
-}
+Patient "1" *-- "0..*" Diagnosis : registers >
+Patient "1" *-- "0..*" Journey : undergoes >
+Patient "1" *-- "0..*" Notification : receives >
 
-object "<b>TreatmentType</b>" as TreatmentType #E3D5F0 {
-  IVF
-  ICSI
-  IUI
-  FET
-  OTHER
-}
+Journey "1" *-- "0..*" Round : consists of >
+Journey "1" *-- "0..*" Appointment : schedules >
+Journey "1" *-- "0..*" DiaryEntry : contains >
 
-object "<b>AppointmentType</b>" as AppointmentType #E3D5F0 {
-  SCANNING
-  CONSULTATION
-  EGG_RETRIEVAL
-  EMBRYO_TRANSFER
-  BLOOD_TEST
-  PREGNANCY_TEST
-  OTHER
-}
+Round "1" *-- "0..*" Event : has >
+Round "1" *-- "0..*" HormoneLog : records >
+Round "1" *-- "0..*" Document : stores >
+Round "1" *-- "0..*" MedicationLog : logs >
+Medication "1" -- "0..*" MedicationLog : is taken in >
 
-object "<b>AppointmentStatus</b>" as AppointmentStatus #E3D5F0 {
-  SCHEDULED
-  COMPLETED
-  CANCELLED
-  NO_SHOW
-}
-
-object "<b>HormoneType</b>" as HormoneType #E3D5F0 {
-  FSH
-  LH
-  E2_OESTRADIOL
-  PROGESTERONE
-  AMH
-  OTHER
-}
-
-object "<b>EventType</b>" as EventType #E3D5F0 {
-  STIMULATION_START
-  SCANNING_RESULT
-  EGG_RETRIEVAL
-  FERTILISATION
-  EMBRYO_TRANSFER
-  PREGNANCY_TEST
-  OTHER
-}
-
-object "<b>DocumentType</b>" as DocumentType #E3D5F0 {
-  BLOOD_TEST_RESULT
-  TREATMENT_PLAN
-  INFORMATION
-  CONSENT
-  LAB_RESULT
-  OTHER
-}
-
-object "<b>NotificationType</b>" as NotificationType #E3D5F0 {
-  MEDICATION_REMINDER
-  APPOINTMENT_REMINDER
-  RESULT_AVAILABLE
-  GENERAL_INFO
-  OTHER
-}
-
-Patient "1" *-- "0..*" Journey : has a
-Patient "1" *-- "0..*" Diagnosis : has a
-Patient "1" *-- "0..*" Notification : has a
-Journey "1" *-- "0..*" Round : has a
-Journey "1" *-- "0..*" Appointment : has a
-Journey "1" *-- "0..*" DiaryEntry : has a
-Round "1" *-- "0..*" MedicationLog : has a
-Medication "1" -- "0..*" MedicationLog : refers to
-Round "1" *-- "0..*" HormoneLog : has a
-Round "1" *-- "0..*" Event : has a
-Round "1" *-- "0..*" Document : has a
-
-Journey "1" -- "1" JourneyStatus : is a
-Round "1" -- "1" RoundResult : is a
-Round "1" -- "1" RoundStatus : is a
-Round "1" -- "1" TreatmentType : is a
-Appointment "1" -- "1" AppointmentType : is a
-Appointment "1" -- "1" AppointmentStatus : is a
-HormoneLog "1" -- "1" HormoneType : is a
-Event "1" -- "1" EventType : is a
-Document "1" -- "1" DocumentType : is a
-Notification "1" -- "1" NotificationType : is a
+note left of Journey
+  En patient har højst ét forløb
+  med status ACTIVE ad gangen.
+end note
 
 @enduml
