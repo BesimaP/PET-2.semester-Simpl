@@ -37,6 +37,9 @@
                     <exclude>**/*.java</exclude>
                 </excludes>
             </resource>
+            <resource>
+                <directory>data</directory>
+            </resource>
         </resources>
         <plugins>
             <plugin>
@@ -49,5 +52,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
