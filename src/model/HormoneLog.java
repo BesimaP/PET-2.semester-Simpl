@@ -1,36 +1,52 @@
-package model;
+    package model;
 
-import java.time.LocalDate;
+    import enums.HormoneType;
+    import java.time.LocalDateTime;
 
-    // Repræsenterer en hormonmåling i et fertilitetforløb
+    // En hormonmåling i en runde (tabel hormone_log, US9).
     public class HormoneLog {
 
-        // Felter
-        private LocalDate date;
-        private String hormone;
+        private int id;
+        private int roundId;
+        private LocalDateTime dateTime;
+        private HormoneType hormoneType;
         private double value;
         private String unit;
 
-        // Konstruktør — bruges når vi opretter en ny hormonmåling
-        public HormoneLog(LocalDate date, String hormone, double value, String unit) {
-            this.date = date;
-            this.hormone = hormone;
+        public HormoneLog(int id, int roundId, LocalDateTime dateTime, HormoneType hormoneType, double value, String unit) {
+            this.id = id;
+            this.roundId = roundId;
+            this.dateTime = dateTime;
+            this.hormoneType = hormoneType;
             this.value = value;
             this.unit = unit;
         }
 
-        // Hent datoen for målingen
-        public LocalDate getDate() {
-            return date;
+        public int getId() {
+            return id;
         }
 
-        // Hent hormontypen
-        public String getHormone() {
-            return hormone;
+        public void setId(int id) {
+            this.id = id;
         }
 
-        // Hent værdien af målingen
+        public int getRoundId() {
+            return roundId;
+        }
+
+        public LocalDateTime getDateTime() {
+            return dateTime;
+        }
+
+        public HormoneType getHormoneType() {
+            return hormoneType;
+        }
+
         public double getValue() {
             return value;
+        }
+
+        public String getUnit() {
+            return unit;
         }
     }

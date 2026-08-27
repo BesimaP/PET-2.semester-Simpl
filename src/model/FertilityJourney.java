@@ -1,39 +1,45 @@
-package model;
+    package model;
 
-import enums.Result;
-import enums.Status;
-import java.time.LocalDate;
+    import enums.JourneyStatus;
+    import java.time.LocalDate;
 
-    // Repræsenterer et fertilitetforløb — det primære forløb i systemet
-    public class FertilityJourney extends Journey {
+    // Patientens overordnede forløb (tabel fertility_journey, US1).
+    // Indeholder ikke længere rundedata — det ligger i Round (v2).
+    public class FertilityJourney {
 
-        // Felter
-        private int roundNumber;
-        private int eggsRetrieved;
-        private int eggsFertilised;
-        private Result result;
+        private int id;
+        private int patientId;       // FK til patient.id
+        private LocalDate startDate;
+        private JourneyStatus status;
 
-        // Konstruktør — kalder Journey's konstruktør via super()
-        public FertilityJourney(LocalDate startDate, Status status, int roundNumber, int eggsRetrieved, int eggsFertilised, Result result) {
-            super(startDate, status);
-            this.roundNumber = roundNumber;
-            this.eggsRetrieved = eggsRetrieved;
-            this.eggsFertilised = eggsFertilised;
-            this.result = result;
+        public FertilityJourney(int id, int patientId, LocalDate startDate, JourneyStatus status) {
+            this.id = id;
+            this.patientId = patientId;
+            this.startDate = startDate;
+            this.status = status;
         }
 
-        // Opdater resultatet af runden
-        public void setResult(Result result) {
-            this.result = result;
+        public int getId() {
+            return id;
         }
 
-        // Hent rundenummeret
-        public int getRoundNumber() {
-            return roundNumber;
+        public void setId(int id) {
+            this.id = id;
         }
 
-        // Hent resultatet af runden
-        public Result getResult() {
-            return result;
+        public int getPatientId() {
+            return patientId;
+        }
+
+        public LocalDate getStartDate() {
+            return startDate;
+        }
+
+        public JourneyStatus getStatus() {
+            return status;
+        }
+
+        public void setStatus(JourneyStatus status) {
+            this.status = status;
         }
     }
