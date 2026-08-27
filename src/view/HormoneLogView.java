@@ -129,7 +129,13 @@ import model.Session;
                 }
 
                 // Konverter tekst til decimaltal og gem i databasen via controller
-                Double value = Double.parseDouble(valueField.getText());
+                double value;
+                try {
+                    value = Double.parseDouble(valueField.getText().replace(",", "."));
+                } catch (NumberFormatException ex) {
+                    messageLabel.setText("Value must be a number, e.g. 12.5!");
+                    return;
+                }
                 controller.handleSave(date, hormone, value, unit);
                 messageLabel.setText("Hormone value saved!");
             });
