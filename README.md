@@ -80,6 +80,10 @@ SQLite-databasen (`simpl.db`) oprettes automatisk i projektets rodmappe, første
 - Java 21 (JDK)
 - Maven 3.x
 
+### Kør projektet
+
+Åbn en terminal i projektmappen og skriv `mvn javafx:run`.
+
 ## Dokumentation
 
 Dokumentationen findes i `doc/`-mappen:
