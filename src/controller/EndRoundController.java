@@ -21,7 +21,7 @@ public class EndRoundController {
         try {
             // 1. Opdater resultatet i fertility_journey tabellen
             // Sætter fx result = 'POSITIVE' for den aktive runde
-            String sql1 = "UPDATE fertility_journey SET result = ? WHERE journey_id = ?";
+            String sql1 = "UPDATE fertility_journey SET result = ? WHERE journey_id = ? AND result = 'PENDING'";
             PreparedStatement statement1 = connection.prepareStatement(sql1);
             statement1.setString(1, result);    // fx POSITIVE
             statement1.setInt(2, journeyId);    // hvilken runde
