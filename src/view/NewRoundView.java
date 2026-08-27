@@ -43,7 +43,13 @@ import java.time.LocalDate;
                 }
 
                 // Konverter tekst til heltal og gem runden i databasen
-                int roundNumber = Integer.parseInt(roundNumberField.getText());
+                int roundNumber;
+                try {
+                    roundNumber = Integer.parseInt(roundNumberField.getText());
+                } catch (NumberFormatException ex) {
+                    messageLabel.setText("Round number must be a whole number!");
+                    return;
+                }
                 controller.handleStartRound(roundNumber);
                 messageLabel.setText("Round started!");
             });
