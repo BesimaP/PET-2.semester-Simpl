@@ -1,0 +1,11 @@
+# Build-output
+out/
+target/
+
+# IDE
+.idea/
+*.iml
+
+# Database og OS-filer
+*.db
+.DS_Store
