@@ -23,6 +23,7 @@ Som patient vil jeg kunne se mine kommende aftaler, så jeg ikke overser vigtige
 - Acceptkriterie 1: "Givet flere aftaler registreret, når aftaleoversigten åbnes, så vises de sorteret efter dato, nærmeste først" → tester sorteringslogikken
 - Acceptkriterie 2: "Givet en oprettet aftale, når den vises i listen, så fremgår dato, type og lokation" → tester at de rigtige felter faktisk er synlige
 - Acceptkriterie 3: "Givet flere forløb, når aftalerne vises, så knyttes hver aftale til det korrekte forløb" → tester at data ikke blandes sammen mellem forløb
+- Acceptkriterie 4: "Givet en logget-ind patient, når en aftale oprettes med dato, type og lokation, så gemmes den på det aktive forløb og vises i oversigten" → tester at patienten selv kan oprette aftaler
 
 ### User story 4
 Som patient vil jeg kunne tilføje dagbogsnoter til mit forløb, så jeg har et bedre overblik over mine tanker og følelser lige i momentet.
@@ -39,14 +40,21 @@ Som patient vil jeg kunne logge ind, så jeg kan få adgang til mit eget, privat
 - Acceptkriterie 2: "Givet korrekt brugernavn og adgangskode, når de indtastes, så logges brugeren ind og får adgang til eget forløb" → tester den centrale sikkerhedsfunktion
 - Acceptkriterie 3: "Givet forkert brugernavn eller adgangskode, når der klikkes Log ind, så vises en fejlbesked, og brugeren logges ikke ind" → tester at uautoriseret adgang afvises
 
-### User story 6
+### User story 6a
 Som patient vil jeg kunne oprette en profil, så jeg kan blive registreret som bruger af systemet.
 
 **Acceptkriterier:**
 - Acceptkriterie 1: "Givet en ny bruger uden profil, når navn, fødselsdato, brugernavn og adgangskode oprettes, så oprettes en ny patientprofil" → tester at oprettelsen lykkes med alle felter
 - Acceptkriterie 2: "Givet oplysninger er indtastet forkert eller brugernavn taget, så kommer fejlmeddelelse om at prøve igen" → tester fejlhåndtering ved ugyldig oprettelse
-- Acceptkriterie 3: "Givet en logget-ind patient, når profilen redigeres, så kan navn og fødselsdato opdateres" → tester redigeringsfunktionen
-- Acceptkriterie 4: "Givet en logget-ind patient, når hun sletter sin konto og bekræfter, så slettes kontoen og alle tilknyttede data (forløb, runder, logs, dokumenter, notifikationer)" → tester at patienten ejer sine data og kan fjerne dem helt
+
+### User story 6b
+Som patient vil jeg kunne redigere min profil og slette min konto, så mine oplysninger er korrekte, og jeg selv bestemmer over mine data.
+
+**Acceptkriterier:**
+- Acceptkriterie 1: "Givet en logget-ind patient, når profilen redigeres, så kan navn og fødselsdato opdateres" → tester redigeringsfunktionen
+- Acceptkriterie 2: "Givet en logget-ind patient, når hun sletter sin konto og bekræfter, så slettes kontoen og alle tilknyttede data (forløb, runder, logs, dokumenter, notifikationer)" → tester at patienten ejer sine data og kan fjerne dem helt
+
+*US6 er splittet i 6a og 6b efter INVEST-vurdering (Small): oprettelse og redigering/sletning er to selvstændige flows.*
 
 ### User story 7
 Som patient vil jeg kunne registrere mine diagnoser, så min behandler og jeg selv har overblik over min sygdomshistorik.
@@ -70,14 +78,22 @@ Som patient vil jeg kunne registrere mine hormonværdier, så jeg kan følge udv
 - Acceptkriterie 1: "Givet en aktiv runde, når hormontype, værdi, enhed og dato registreres, så gemmes målingen tilknyttet runden" → tester at registreringen lykkes med alle felter
 - Acceptkriterie 2: "Givet flere målinger, når seneste værdi tjekkes, så vises den nyeste måling korrekt" → tester at "seneste" beregnes rigtigt
 
-### User story 10
-Som patient vil jeg kunne starte en ny runde og se min rundehistorik, så jeg kan følge, hvordan mine tidligere forsøg er gået.
+### User story 10a
+Som patient vil jeg kunne starte og afslutte en runde, så mit forløb afspejler, hvor jeg er i behandlingen.
 
 **Acceptkriterier:**
 - Acceptkriterie 1: "Givet et fertilitetsforløb, når en ny runde startes med rundenummer og behandlingstype, så oprettes runden tilknyttet forløbet" → tester at "start ny runde" opretter en selvstændig runde
-- Acceptkriterie 2: "Givet en runde i gang, når den afsluttes med et resultat, så gemmes resultatet på runden" → tester at afslutning og resultat hænger sammen på det korrekte niveau
-- Acceptkriterie 3: "Givet tidligere gennemførte runder, når rundehistorikken åbnes, så vises alle runder tilknyttet det aktive forløb" → tester at historikken viser alle runder, ikke kun den seneste
-- Acceptkriterie 4: "Givet en ny runde startes, når behandlingstype vælges, så kan der vælges mellem IVF, ICSI, IUI og FET" → tester at behandlingstyperne er faste værdier og matcher ordlisten
+- Acceptkriterie 2: "Givet en ny runde startes, når behandlingstype vælges, så kan der vælges mellem IVF, ICSI, IUI og FET" → tester at behandlingstyperne er faste værdier og matcher ordlisten
+- Acceptkriterie 3: "Givet en runde i gang, når den afsluttes med et resultat, så gemmes resultatet på runden" → tester at afslutning og resultat hænger sammen på det korrekte niveau
+
+### User story 10b
+Som patient vil jeg kunne se min rundehistorik, så jeg kan følge, hvordan mine tidligere forsøg er gået.
+
+**Acceptkriterier:**
+- Acceptkriterie 1: "Givet tidligere gennemførte runder, når rundehistorikken åbnes, så vises alle runder tilknyttet det aktive forløb" → tester at historikken viser alle runder, ikke kun den seneste
+- Acceptkriterie 2: "Givet en runde vælges i historikken, når den åbnes, så vises rundenummer, behandlingstype, start- og slutdato, status og resultat" → tester at detaljerne vises korrekt
+
+*US10 er splittet i 10a og 10b efter INVEST-vurdering (Small): at starte/afslutte en runde og at se historik er to selvstændige features.*
 
 ### User story 11
 Som patient vil jeg kunne tilføje og se dokumenter tilknyttet min runde, så jeg har adgang til blodprøvesvar og behandlingsplan ét sted.
@@ -91,5 +107,5 @@ Som patient vil jeg kunne tilføje og se dokumenter tilknyttet min runde, så je
 Som patient vil jeg kunne modtage notifikationer, så jeg ikke overser vigtige påmindelser om medicin eller aftaler.
 
 **Acceptkriterier:**
-- Acceptkriterie 1: "Givet en patient har en kommende medicindosis, når tidspunktet nærmer sig, så oprettes en notifikation af typen MEDICATION_REMINDER" → tester at systemet selv genererer relevante påmindelser
+- Acceptkriterie 1: "Givet en patient har en planlagt medicindosis i dag, når appen åbnes, så oprettes en notifikation af typen MEDICATION_REMINDER for dosen" → tester at systemet selv genererer relevante påmindelser
 - Acceptkriterie 2: "Givet ulæste notifikationer, når patienten åbner listen, så vises de med titel, besked og hvorvidt de er læst (isRead)" → tester visning og læst-status

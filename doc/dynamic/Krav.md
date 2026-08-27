@@ -6,12 +6,12 @@
 
 *Beskriver hvad systemet skal kunne gøre – konkrete handlinger/features.*
 
-1. Patienten skal kunne oprette en brugerkonto (UserAccount) og logge ind (US5, US6)
-2. Patienten skal kunne oprette, redigere og slette sin profil (navn, fødselsdato) (US6)
+1. Patienten skal kunne oprette en brugerkonto (UserAccount) og logge ind (US5, US6a)
+2. Patienten skal kunne oprette, redigere og slette sin profil (navn, fødselsdato) (US6a, US6b)
 3. Patienten skal kunne registrere sine diagnoser (Diagnosis) på profilen (US7)
 4. Patienten skal kunne oprette et nyt fertilitetsforløb (FertilityJourney) (US1)
-5. Patienten skal kunne starte en ny runde (Round) i sit forløb med rundenummer og behandlingstype (IVF, ICSI, IUI, FET) (US10)
-6. Patienten skal kunne afslutte en runde med et resultat og se sin fulde rundehistorik (US10)
+5. Patienten skal kunne starte en ny runde (Round) i sit forløb med rundenummer og behandlingstype (IVF, ICSI, IUI, FET) (US10a)
+6. Patienten skal kunne afslutte en runde med et resultat og se sin fulde rundehistorik (US10a, US10b)
 7. Patienten skal kunne se en tidslinje over hændelser (Event) i en runde (US2)
 8. Patienten skal kunne se og registrere kommende aftaler (Appointment) tilknyttet sit forløb (US3)
 9. Patienten skal kunne registrere medicinindtag (MedicationLog) med reference til medicin-stamdata (Medication), knyttet til en runde (US8)
