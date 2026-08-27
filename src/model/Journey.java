@@ -4,7 +4,7 @@ import enums.Status;
 import java.time.LocalDate;
 
     // Abstrakt klasse der repræsenterer et patientforløb
-    // Kan ikke oprettes direkte — kun via FertilityJourney, CancerJourney osv.
+    // Kan ikke oprettes direkte — kun via FertilityJourney
     public abstract class Journey {
 
         // Felter

@@ -25,7 +25,7 @@ import model.Session;
             titleLabel.setAlignment(Pos.CENTER);
 
             // Undertitel under titlen — centreret
-            Label subtitleLabel = new Label("Select your journey");
+            Label subtitleLabel = new Label("Start your fertility journey");
             subtitleLabel.getStyleClass().add("subtitle-label");
             subtitleLabel.setMaxWidth(Double.MAX_VALUE);
             subtitleLabel.setAlignment(Pos.CENTER);
@@ -65,8 +65,7 @@ import model.Session;
                     return;
                 }
 
-                // Hent teksten og fjern emojis og mellemrum
-                // fx "🌱  Fertility" bliver til "Fertility"
+                // Simpl understøtter kun fertilitetsforløb
                 String type = "Fertility";
 
                 // Gem forløbet i databasen og hent det nye journey_id
