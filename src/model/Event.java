@@ -1,35 +1,45 @@
-package model;
+    package model;
 
-import enums.EventType;
-import java.time.LocalDate;
+    import enums.EventType;
+    import java.time.LocalDateTime;
 
-    // Repræsenterer en hændelse i patientens forløb
-    // Bruges til at bygge tidslinjen og give patienten overblik over forløbet
+    // Et konkret trin i en runde, vises på tidslinjen (tabel event, US2/UC11).
     public class Event {
 
-        // Felter
-        private LocalDate date;
-        private EventType type;
+        private int id;
+        private int roundId;
+        private LocalDateTime dateTime;
+        private EventType eventType;
         private String description;
 
-        // Konstruktør — bruges når vi opretter en ny hændelse
-        public Event(LocalDate date, EventType type, String description) {
-            this.date = date;
-            this.type = type;
+        public Event(int id, int roundId, LocalDateTime dateTime, EventType eventType, String description) {
+            this.id = id;
+            this.roundId = roundId;
+            this.dateTime = dateTime;
+            this.eventType = eventType;
             this.description = description;
         }
 
-        // Hent datoen for hændelsen
-        public LocalDate getDate() {
-            return date;
+        public int getId() {
+            return id;
         }
 
-        // Hent typen af hændelsen
-        public EventType getType() {
-            return type;
+        public void setId(int id) {
+            this.id = id;
         }
 
-        // Hent beskrivelsen af hændelsen
+        public int getRoundId() {
+            return roundId;
+        }
+
+        public LocalDateTime getDateTime() {
+            return dateTime;
+        }
+
+        public EventType getEventType() {
+            return eventType;
+        }
+
         public String getDescription() {
             return description;
         }

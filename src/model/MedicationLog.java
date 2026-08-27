@@ -1,31 +1,63 @@
-package model;
+    package model;
 
-import java.time.LocalDate;
+    import java.time.LocalDateTime;
 
-    // Repræsenterer en medicinindtastning i et forløb
+    // En planlagt dosis af en Medication i en runde, og om den er taget (tabel medication_log, US8).
     public class MedicationLog {
 
-        // Felter
-        private LocalDate date;
-        private String medication;
-        private String dose;
+        private int id;
+        private int roundId;               // FK til round.id
+        private int medicationId;          // FK til medication.id
+        private LocalDateTime scheduledDateTime;
+        private double dose;
+        private String unit;
         private boolean taken;
 
-        // Konstruktør — bruges når vi opretter en ny medicinindtastning
-        public MedicationLog(LocalDate date, String medication, String dose, boolean taken) {
-            this.date = date;
-            this.medication = medication;
+        public MedicationLog(int id, int roundId, int medicationId, LocalDateTime scheduledDateTime,
+                             double dose, String unit, boolean taken) {
+            this.id = id;
+            this.roundId = roundId;
+            this.medicationId = medicationId;
+            this.scheduledDateTime = scheduledDateTime;
             this.dose = dose;
+            this.unit = unit;
             this.taken = taken;
         }
 
-        // Hent datoen for medicinindtastningen
-        public LocalDate getDate() {
-            return date;
+        public int getId() {
+            return id;
         }
 
-        // Hent medicinens navn
-        public String getMedication() {
-            return medication;
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public int getRoundId() {
+            return roundId;
+        }
+
+        public int getMedicationId() {
+            return medicationId;
+        }
+
+        public LocalDateTime getScheduledDateTime() {
+            return scheduledDateTime;
+        }
+
+        public double getDose() {
+            return dose;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public boolean isTaken() {
+            return taken;
+        }
+
+        // Markér som taget (US8 AC3)
+        public void markTaken() {
+            this.taken = true;
         }
     }

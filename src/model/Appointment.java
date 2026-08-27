@@ -1,30 +1,46 @@
-package model;
+    package model;
 
-import enums.AppointmentType;
-import java.time.LocalDate;
+    import enums.AppointmentType;
+    import java.time.LocalDateTime;
 
-    // Repræsenterer en aftale i patientens forløb
+    // En aftale på forløbet (tabel appointment, US3). Ligger på forløbet, fordi første konsultation sker før nogen runde.
     public class Appointment {
 
-        // Felter
-        private LocalDate date;
-        private AppointmentType type;
+        private int id;
+        private int fertilityJourneyId;   // FK til fertility_journey.id
+        private LocalDateTime dateTime;
+        private AppointmentType appointmentType;
         private String location;
 
-        // Konstruktør — bruges når vi opretter en ny aftale
-        public Appointment(LocalDate date, AppointmentType type, String location) {
-            this.date = date;
-            this.type = type;
+        public Appointment(int id, int fertilityJourneyId, LocalDateTime dateTime, AppointmentType appointmentType, String location) {
+            this.id = id;
+            this.fertilityJourneyId = fertilityJourneyId;
+            this.dateTime = dateTime;
+            this.appointmentType = appointmentType;
             this.location = location;
         }
 
-        // Hent datoen for aftalen
-        public LocalDate getDate() {
-            return date;
+        public int getId() {
+            return id;
         }
 
-        // Hent typen af aftalen
-        public AppointmentType getType() {
-            return type;
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public int getFertilityJourneyId() {
+            return fertilityJourneyId;
+        }
+
+        public LocalDateTime getDateTime() {
+            return dateTime;
+        }
+
+        public AppointmentType getAppointmentType() {
+            return appointmentType;
+        }
+
+        public String getLocation() {
+            return location;
         }
     }

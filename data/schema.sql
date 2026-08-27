@@ -1,5 +1,5 @@
 -- ============================================================
--- schema_v2.sql — Simpl databaseskema (2. semester)
+-- schema.sql — Simpl databaseskema (2. semester)
 -- Afspejler domænemodellen 1:1 (doc/static/Domænemodel1.puml):
 --   hver kasse = en tabel, hver attribut = en kolonne,
 --   hver streg = en *_id-kolonne med FOREIGN KEY på "mange"-siden.
