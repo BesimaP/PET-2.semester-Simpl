@@ -16,6 +16,7 @@
 - [ ]  Lav layout til aftaleoversigten
 - [ ]  Hent og sortér aftaler efter dato (nærmeste først)
 - [ ]  Vis dato, type og lokation for hver aftale
+- [ ]  Lav layout til at oprette en aftale (dato, type som dropdown, lokation) og gem den på det aktive forløb
 - [ ]  Sørg for korrekt tilknytning til det rigtige forløb, hvis patienten har flere
 - [ ]  Test sortering og korrekt tilknytning
 
@@ -28,17 +29,21 @@
 ## User story 5 – Login
 - [ ]  Lav layout til login-skærmen
 - [ ]  Tjek brugernavn/adgangskode mod databasen
-- [ ]  Håndter fejlscenariet: bruger uden profil henvises til oprettelse (User story 6)
+- [ ]  Håndter fejlscenariet: bruger uden profil henvises til oprettelse (User story 6a)
 - [ ]  Håndter fejlscenariet: forkert brugernavn/adgangskode giver fejlbesked
 - [ ]  Test både succesfuldt login og fejlscenarierne
 
-## User story 6 – Oprette profil
+## User story 6a – Oprette profil
 - [ ]  Lav layout til profiloprettelse (navn, fødselsdato, brugernavn, adgangskode)
 - [ ]  Gem den nye profil i databasen (UserAccount + Patient), adgangskode gemmes som hash
 - [ ]  Tilføj validering: brugernavn allerede taget / manglende felter
+- [ ]  Test både succesfuld oprettelse og fejlmeddelelser
+
+## User story 6b – Redigér profil og slet konto
 - [ ]  Lav layout til at redigere profiloplysninger (navn, fødselsdato)
+- [ ]  Gem ændringer i databasen
 - [ ]  Implementér "slet konto" med bekræftelse, der fjerner alle patientens data
-- [ ]  Test oprettelse, fejlmeddelelser, redigering og sletning
+- [ ]  Test redigering og sletning
 
 ## User story 7 – Diagnoser
 - [ ]  Lav layout til at registrere en ny diagnose (navn, beskrivelse)
@@ -60,12 +65,16 @@
 - [ ]  Implementér logik til at finde og vise den seneste måling
 - [ ]  Test registrering og "seneste værdi"-visning
 
-## User story 10 – Rundedata og rundehistorik
+## User story 10a – Start og afslut runde
 - [ ]  Lav layout til at starte en ny runde (rundenummer, behandlingstype som dropdown: IVF, ICSI, IUI, FET)
 - [ ]  Lav layout til at afslutte en runde med et resultat (POSITIVE / NEGATIVE)
 - [ ]  Gem resultatet på den specifikke Round, når den afsluttes
+- [ ]  Test start og afslutning
+
+## User story 10b – Rundehistorik
 - [ ]  Lav layout til rundehistorik, der viser alle Rounds tilknyttet forløbet
-- [ ]  Test start, afslutning og historikvisning
+- [ ]  Vis detaljer for en valgt runde
+- [ ]  Test historikvisning
 
 ## User story 11 – Dokumenter
 - [ ]  Lav layout til dokumentlisten for en runde (titel, type)
@@ -75,7 +84,7 @@
 - [ ]  Test at dokumenter kan gemmes, listes og åbnes korrekt
 
 ## User story 12 – Notifikationer
-- [ ]  Implementér logik der genererer en notifikation, når en medicindosis nærmer sig (MEDICATION_REMINDER)
+- [ ]  Implementér logik der genererer en notifikation for dagens planlagte medicindoser, når appen åbnes (MEDICATION_REMINDER)
 - [ ]  Lav layout til notifikationslisten (titel, besked, isRead-status)
 - [ ]  Implementér markering af en notifikation som læst
 - [ ]  Test at notifikationer genereres korrekt og kan markeres som læst

@@ -16,7 +16,7 @@ Regnvejrsdag:
 - Felter er tomme: Systemet viser en fejlbesked og logger ikke ind.
 
 
-## UC2: ManageProfile (US6)
+## UC2: ManageProfile (US6a, US6b)
 Systemet viser en skærm med felter til navn, fødselsdato, brugernavn og adgangskode.
 Brugeren udfylder felterne og klikker Gem.
 Systemet opretter en UserAccount (adgangskoden gemmes som hash) og en tilknyttet Patient, og gemmer dem i databasen.
@@ -80,7 +80,7 @@ Regnvejrsdag:
 - Ingen notifikationer findes: Systemet viser en besked om, at listen er tom.
 
 
-## UC8: StartRound (US10)
+## UC8: StartRound (US10a)
 Systemet viser en skærm til ny runde med dagens dato som startdato.
 Brugeren udfylder rundenummer og vælger behandlingstype (IVF, ICSI, IUI, FET) og klikker Start Round.
 Systemet opretter runden med status IN_PROGRESS og tomt resultat, gemmer den i databasen, tilknyttet det aktive forløb, og sætter den som aktiv runde i Session.
@@ -133,7 +133,7 @@ Regnvejrsdag:
 - Titel eller fil mangler ved tilføjelse: Systemet viser en fejlbesked og gemmer ikke.
 
 
-## UC13: ViewRoundHistory (US10)
+## UC13: ViewRoundHistory (US10b)
 Systemet viser en skærm med alle runder for det aktive forløb, nyeste først.
 Brugeren vælger en runde, og systemet viser detaljer: rundenummer, behandlingstype, start- og slutdato, status og resultat.
 
@@ -141,7 +141,7 @@ Regnvejrsdag:
 - Ingen runder findes: Systemet viser en besked om, at der ingen historik er.
 
 
-## UC14: EndRound (US10)
+## UC14: EndRound (US10a)
 Systemet viser en mulighed for at afslutte den aktive runde.
 Brugeren vælger et resultat (POSITIVE eller NEGATIVE) og klikker End Round.
 Systemet sætter rundens status til COMPLETED, slutdato til dagens dato og gemmer resultatet i databasen.
