@@ -1,0 +1,55 @@
+@startuml
+!pragma layout smetana
+left to right direction
+
+title Use Case Diagram - Simpl
+
+actor "Patient" as u
+
+rectangle "Simpl" {
+  usecase "UC1: LogIn" as UC1
+  usecase "UC2: ManageProfile" as UC2
+  usecase "UC3: CreateJourney" as UC3
+  usecase "UC4: RegisterDiagnosis" as UC4
+  usecase "UC5: ManageAppointments" as UC5
+  usecase "UC6: WriteDiaryEntry" as UC6
+  usecase "UC7: ViewNotifications" as UC7
+  usecase "UC8: StartRound" as UC8
+  usecase "UC9: LogHormoneValue" as UC9
+  usecase "UC10: LogMedication" as UC10
+  usecase "UC11: ViewTimeline" as UC11
+  usecase "UC12: ManageDocuments" as UC12
+  usecase "UC13: ViewRoundHistory" as UC13
+  usecase "UC14: EndRound" as UC14
+}
+
+u -- UC1
+u -- UC2
+u -- UC3
+u -- UC4
+u -- UC5
+u -- UC6
+u -- UC7
+u -- UC8
+u -- UC9
+u -- UC10
+u -- UC11
+u -- UC12
+u -- UC13
+u -- UC14
+
+' Betingede udvidelser af login-flowet
+UC2 .> UC1 : <<extend>>\n(ingen konto)
+UC3 .> UC1 : <<extend>>\n(intet aktivt forløb)
+
+' Runden skriver selv hændelser på tidslinjen
+UC8 .> UC11 : <<include>>
+UC14 .> UC11 : <<include>>
+
+note bottom of UC14
+  Efter afsluttet runde kan
+  patienten starte en ny runde
+  under samme forløb (UC8)
+end note
+
+@enduml
