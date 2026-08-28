@@ -1,0 +1,202 @@
+@startuml
+!pragma layout smetana
+
+title Klassediagram 4a — model og enums (Simpl v2)
+
+' Gettere/settere og setId() er udeladt for læsbarhed.
+' Kun metoder med egen logik vises (endRound, markTaken, markRead).
+' Streger til enums er udeladt — koblingen fremgår af felttyperne
+
+package "model" {
+
+  class UserAccount {
+    - int id
+    - String username
+    - String passwordHash
+  }
+
+  class Patient {
+    - int id
+    - int userAccountId
+    - String name
+    - LocalDate dateOfBirth
+  }
+
+  class Diagnosis {
+    - int id
+    - int patientId
+    - String name
+    - String description
+  }
+
+  class FertilityJourney {
+    - int id
+    - int patientId
+    - LocalDate startDate
+    - JourneyStatus status
+  }
+
+  class Round {
+    - int id
+    - int fertilityJourneyId
+    - int roundNumber
+    - TreatmentType treatmentType
+    - LocalDate startDate
+    - LocalDate endDate
+    - RoundStatus status
+    - Result result
+    + void endRound(Result result, LocalDate endDate)
+  }
+
+  class Appointment {
+    - int id
+    - int fertilityJourneyId
+    - LocalDateTime dateTime
+    - AppointmentType appointmentType
+    - String location
+  }
+
+  class DiaryEntry {
+    - int id
+    - int fertilityJourneyId
+    - LocalDateTime dateTime
+    - String title
+    - String content
+  }
+
+  class Event {
+    - int id
+    - int roundId
+    - LocalDateTime dateTime
+    - EventType eventType
+    - String description
+  }
+
+  class Medication {
+    - int id
+    - String name
+    - String description
+  }
+
+  class MedicationLog {
+    - int id
+    - int roundId
+    - int medicationId
+    - LocalDateTime scheduledDateTime
+    - double dose
+    - String unit
+    - boolean taken
+    + void markTaken()
+  }
+
+  class HormoneLog {
+    - int id
+    - int roundId
+    - LocalDateTime dateTime
+    - HormoneType hormoneType
+    - double value
+    - String unit
+  }
+
+  class Document {
+    - int id
+    - int roundId
+    - String title
+    - DocumentType documentType
+    - String filePath
+  }
+
+  class Notification {
+    - int id
+    - int patientId
+    - LocalDateTime dateTime
+    - NotificationType notificationType
+    - String title
+    - String message
+    - boolean read
+    + void markRead()
+  }
+
+}
+
+package "enums" {
+
+  enum JourneyStatus {
+    ACTIVE
+    COMPLETED
+  }
+
+  enum TreatmentType {
+    IVF
+    ICSI
+    IUI
+    FET
+  }
+
+  enum RoundStatus {
+    IN_PROGRESS
+    COMPLETED
+  }
+
+  enum Result {
+    POSITIVE
+    NEGATIVE
+  }
+
+  enum AppointmentType {
+    CONSULTATION
+    SCANNING
+    BLOOD_TEST
+    EGG_RETRIEVAL
+    EMBRYO_TRANSFER
+    PREGNANCY_TEST
+  }
+
+  enum EventType {
+    STIMULATION_START
+    EGG_RETRIEVAL
+    FERTILISATION
+    EMBRYO_TRANSFER
+    PREGNANCY_TEST
+  }
+
+  enum HormoneType {
+    FSH
+    LH
+    E2_OESTRADIOL
+    PROGESTERONE
+    AMH
+  }
+
+  enum DocumentType {
+    BLOOD_TEST_RESULT
+    TREATMENT_PLAN
+    OTHER
+  }
+
+  enum NotificationType {
+    MEDICATION_REMINDER
+    APPOINTMENT_REMINDER
+  }
+
+}
+
+' ---------- Associationer (samme som domænemodellen) ----------
+
+UserAccount "1" -- "1" Patient
+Patient "1" *-- "0..*" Diagnosis
+Patient "1" *-- "0..*" FertilityJourney
+Patient "1" *-- "0..*" Notification
+
+FertilityJourney "1" *-- "0..*" Round
+FertilityJourney "1" *-- "0..*" Appointment
+FertilityJourney "1" *-- "0..*" DiaryEntry
+
+Round "1" *-- "0..*" Event
+Round "1" *-- "0..*" HormoneLog
+Round "1" *-- "0..*" MedicationLog
+Round "1" *-- "0..*" Document
+Medication "1" -- "0..*" MedicationLog
+
+@enduml
+
