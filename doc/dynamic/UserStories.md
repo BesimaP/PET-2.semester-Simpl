@@ -8,6 +8,7 @@ Som patient vil jeg kunne oprette et nyt fertilitetsforløb, så jeg kan begynde
 **Acceptkriterier:**
 - Acceptkriterie 1: "Givet en patient er logget ind, når patienten opretter et nyt fertilitetsforløb, så vises det nye forløb på patientens oversigt" → tester at selve oprettelsen virker og bliver synlig (en patient kan godt have flere forløb over tid)
 - Acceptkriterie 2: "Givet at forløbet oprettes, når det gennemføres, så sættes startdato automatisk" → tester en specifik teknisk detalje (at man ikke selv skal indtaste dato)
+- Acceptkriterie 3: "Givet patienten allerede har et forløb med status ACTIVE, når hun forsøger at oprette et nyt, så vises en fejlbesked, og der oprettes ikke noget forløb" → tester at en patient højst kan have ét aktivt forløb ad gangen
 
 ### User story 2
 Som patient vil jeg kunne se en tidslinje over hændelser i en runde, så jeg ved, hvor langt jeg er nået, uden at skulle spørge min klinik.
@@ -108,4 +109,4 @@ Som patient vil jeg kunne modtage notifikationer, så jeg ikke overser vigtige p
 
 **Acceptkriterier:**
 - Acceptkriterie 1: "Givet en patient har en planlagt medicindosis i dag, når appen åbnes, så oprettes en notifikation af typen MEDICATION_REMINDER for dosen" → tester at systemet selv genererer relevante påmindelser
-- Acceptkriterie 2: "Givet ulæste notifikationer, når patienten åbner listen, så vises de med titel, besked og hvorvidt de er læst (isRead)" → tester visning og læst-status
+- Acceptkriterie 2: "Givet ulæste notifikationer, når patienten åbner listen, så vises de med titel og besked, og det fremgår tydeligt, hvilke der er læst, og hvilke der ikke er"

@@ -90,7 +90,6 @@ object "<b>Notification</b>" as Notification #FFF3B0 {
   notificationType
   title
   message
-  isRead
 }
 
 ' ---------- Associationer ----------
