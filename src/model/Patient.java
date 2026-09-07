@@ -1,50 +1,47 @@
-package model;
+    package model;
 
-import java.time.LocalDate;
+    import java.time.LocalDate;
 
-    // Repræsenterer en patient i systemet
+    // Patienten — den centrale entitet (tabel patient). Hører til præcis én UserAccount.
     public class Patient {
 
-        // Felter
-        private int id; // unikt id fra databasen
+        private int id;
+        private int userAccountId;   // FK til user_account.id (1–1)
         private String name;
         private LocalDate dateOfBirth;
-        private String diagnosis;
-        private String username;
-        private String password;
 
-        // Konstruktør — bruges når vi opretter en ny patient
-        public Patient(int id, String name, LocalDate dateOfBirth, String diagnosis, String username, String password) {
+        public Patient(int id, int userAccountId, String name, LocalDate dateOfBirth) {
             this.id = id;
+            this.userAccountId = userAccountId;
             this.name = name;
             this.dateOfBirth = dateOfBirth;
-            this.diagnosis = diagnosis;
-            this.username = username;
-            this.password = password;
         }
 
-        // Hent patientens id
         public int getId() {
             return id;
         }
 
-        // Hent patientens navn
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public int getUserAccountId() {
+            return userAccountId;
+        }
+
         public String getName() {
             return name;
         }
 
-        // Hent patientens diagnose
-        public String getDiagnosis() {
-            return diagnosis;
+        public LocalDate getDateOfBirth() {
+            return dateOfBirth;
         }
 
-        // Hent patientens brugernavn
-        public String getUsername() {
-            return username;
+        // Redigér profil (UC2 / US6b): navn og fødselsdato kan ændres
+        public void setName(String name) {
+            this.name = name;
         }
-
-        // Hent patientens adgangskode
-        public String getPassword() {
-            return password;
+        public void setDateOfBirth(LocalDate dateOfBirth) {
+            this.dateOfBirth = dateOfBirth;
         }
     }

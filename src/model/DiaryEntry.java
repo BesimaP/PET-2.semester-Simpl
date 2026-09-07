@@ -1,30 +1,44 @@
-package model;
+    package model;
 
-import java.time.LocalDate;
+    import java.time.LocalDateTime;
 
-    // Repræsenterer en dagbogsnote i patientens forløb
-    // Giver patienten et privat rum til at skrive tanker, symptomer og refleksioner
+    // En dagbogsnote på forløbet (tabel diary_entry, US4).
     public class DiaryEntry {
 
-        // Felter
-        private LocalDate date;
+        private int id;
+        private int fertilityJourneyId;   // FK til fertility_journey.id
+        private LocalDateTime dateTime;
         private String title;
         private String content;
 
-        // Konstruktør — bruges når vi opretter en ny dagbogsnote
-        public DiaryEntry(LocalDate date, String title, String content) {
-            this.date = date;
+        public DiaryEntry(int id, int fertilityJourneyId, LocalDateTime dateTime, String title, String content) {
+            this.id = id;
+            this.fertilityJourneyId = fertilityJourneyId;
+            this.dateTime = dateTime;
             this.title = title;
             this.content = content;
         }
 
-        // Hent datoen for noten
-        public LocalDate getDate() {
-            return date;
+        public int getId() {
+            return id;
         }
 
-        // Hent titlen på noten
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public int getFertilityJourneyId() {
+            return fertilityJourneyId;
+        }
+
+        public LocalDateTime getDateTime() {
+            return dateTime;
+        }
+
         public String getTitle() {
             return title;
+        }
+        public String getContent() {
+            return content;
         }
     }

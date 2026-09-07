@@ -1,14 +1,10 @@
-package enums;
+    package enums;
 
-    // EventType definerer de mulige typer af hændelser i tidslinjen
-    // Bruges når vi gemmer en event i databasen så typen altid er gyldig
+    // Trin i en runde, som vises på tidslinjen (ordlisten). Matcher CHECK på event.event_type.
     public enum EventType {
-        CONSULTATION,    // konsultation
-        EXAMINATION,     // undersøgelse
-        STIMULATION,     // hormonstimulation — bruges ved hormonlog
-        EGG_RETRIEVAL,   // ægudtagning
-        FERTILISATION,   // befrugtning af æg
-        TRANSFER,        // embryotransfer
-        PREGNANCY_TEST,  // graviditetstest — bruges ved afslut runde
-        OTHER            // anden hændelse — bruges ved medicin og dagbog
+        STIMULATION_START,
+        EGG_RETRIEVAL,
+        FERTILISATION,
+        EMBRYO_TRANSFER,
+        PREGNANCY_TEST
     }
