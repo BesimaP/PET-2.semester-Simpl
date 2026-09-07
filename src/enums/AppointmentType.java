@@ -1,13 +1,11 @@
-package enums;
+    package enums;
 
-    // AppointmentType definerer de mulige typer af aftaler i Simpl
-    // Planlagt aftale
-    // En enum sikrer at kun gyldige værdier kan bruges — fx kan man ikke skrive "Scaning" med stavefejl
+    // Aftaletyper (ordlisten). Matcher CHECK på appointment.appointment_type.
     public enum AppointmentType {
-        SCANNING,       // scanning
-        CONSULTATION,   // konsultation
-        EGG_RETRIEVAL,  // ægudtagning
-        TRANSFER,       // embryotransfer
-        BLOOD_TEST,     // blodprøve
-        OTHER           // anden type aftale
+        CONSULTATION,
+        SCANNING,
+        BLOOD_TEST,
+        EGG_RETRIEVAL,
+        EMBRYO_TRANSFER,
+        PREGNANCY_TEST
     }

@@ -1,0 +1,30 @@
+@startuml
+!pragma layout smetana
+
+title Klassediagram 4b — DAO-laget (Simpl v2)
+
+package "dao" {
+
+  class DatabaseConnection {
+    - {static} Connection connection
+    + {static} Connection getConnection()
+  }
+
+  class DatabaseInitializer {
+    + {static} void initialize()
+  }
+
+  class RoundDAO {
+    - Connection connection
+    + RoundDAO(Connection connection)
+    + int save(Round round)
+    + List<Round> findByJourney(int journeyId)
+    + Round findInProgressByJourney(int journeyId)
+    + void update(Round round)
+  }
+
+}
+
+RoundDAO ..> Round : bruger
+
+@enduml
