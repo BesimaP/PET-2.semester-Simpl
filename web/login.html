@@ -6,28 +6,82 @@
     <title>Simpl – Log ind</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:wght@600&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="css/customStyle.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/tokens.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial;
+            color: black;
+            margin: 0;
+        }
+
+        .split {
+            height: 100%;
+            width: 45%;
+            position: fixed;
+            top: 0;
+            overflow-x: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .left {
+            left: 0;
+            width: 40%;
+            background-color: rosybrown;
+        }
+
+        .right {
+            right: 0;
+            width: 60%;
+            background-color: #f0ece4;
+        }
+
+        .centered {
+            text-align: center;
+        }
+
+        .centered img {
+            width: 150px;
+            border-radius: 50%;
+        }
+    </style>
 </head>
 <body>
 
-<main class="card">
-  <h1>Simpl</h1>
-  <p class="subtitle">Log ind på din profil</p>
+<div class="split left">
+    <div class="centered">
+        <img src="Skærmbillede%202026-09-07%20kl.%2009.56.14.png"/>
+        <h2>SIMPL</h2>
+        <p>Dit forløb, din vej</p>
+        <p>Dine data er krypterede og private</p>
+    </div>
+</div>
 
-  <form>
-    <label for="username">Brugernavn</label>
-    <input type="text" id="username" name="username" placeholder="Dit brugernavn" required>
+<div class="split right">
+    <div class="a">
+        <div class="centered">
+            <h2>Velkommen</h2>
+            <h3>Login på din profil</h3>
+            <form action="modtagersider/modtager.html">
+                <label for="username">Brugernavn:</label><br>
+                <input type="text" id="username" name="username" placeholder="Dit brugernavn">
 
-    <label for="password">Adgangskode</label>
-    <input type="password" id="password" name="password" placeholder="Din adgangskode" required>
+                <label for="password">Adgangskode:</label><br>
+                <input type="password" id="password" name="password" placeholder="Din adgangskode">
 
-    <button type="submit">Log ind</button>
-  </form>
-
-  <p class="link-line">Har du ikke en profil? <a href="opretprofil.html">Opret profil</a></p>
-</main>
+                <button type="submit">Login</button>
+            </form>
+            <p>Har du ikke en profil? <a href="opretprofil.html">Opret profil</a></p>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
