@@ -9,42 +9,42 @@
     <link rel="stylesheet" href="css/tokens.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/customStyle.css">
-
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-    </style>
 </head>
 <body>
 
-<div class="split left">
-    <div class="centered">
-        <img src="Skærmbillede%202026-09-07%20kl.%2009.56.14.png"/>
-        <h2>SIMPL</h2>
-        <p>Dit forløb, din vej</p>
-        <p>Dine data er krypterede og private</p>
-    </div>
-</div>
+<div class="split">
 
-<div class="split right">
-    <div class="a">
-        <div class="centered">
+    <section class="brand">
+        <img src="img/spire-ring.svg" alt="" width="104" height="104">
+        <h1 class="wordmark">SIMPL</h1>
+        <p class="tagline">Dit forløb, din vej</p>
+        <p class="privacy">Dine data er krypterede og private</p>
+    </section>
+
+    <main class="form-area">
+        <div class="card login-card">
             <h2>Velkommen</h2>
-            <h3>Login på din profil</h3>
-            <form action="modtagersider/modtager.html">
-                <label for="username">Brugernavn:</label><br>
-                <input type="text" id="username" name="username" placeholder="Dit brugernavn">
+            <p class="subtitle">Log ind på din profil</p>
 
-                <label for="password">Adgangskode:</label><br>
-                <input type="password" id="password" name="password" placeholder="Din adgangskode">
+            <form action="modtagersider/modtager.html" method="get">
+                <label for="username">Brugernavn</label>
+                <input type="text" id="username" name="username"
+                       placeholder="Dit brugernavn" autocomplete="username" required>
 
-                <button type="submit">Login</button>
+                <label for="password">Adgangskode</label>
+                <input type="password" id="password" name="password"
+                       placeholder="Din adgangskode" autocomplete="current-password" required>
+
+                <button type="submit">Log ind</button>
             </form>
-            <p>Har du ikke en profil? <a href="opretprofil.html">Opret profil</a></p>
+
+            <p class="link-line">
+                Har du ikke en profil?
+                <a href="opretprofil.html">Opret profil</a>
+            </p>
         </div>
-    </div>
+    </main>
+
 </div>
 
 </body>

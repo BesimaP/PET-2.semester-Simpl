@@ -2,34 +2,57 @@
 <html lang="da">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simpl — Opret profil</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Simpl – Opret profil</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/customStyle.css">
 </head>
 <body>
 
-<main class="card">
-    <h1>Simpl</h1>
-    <p class="subtitle">Opret din profil</p>
+<div class="split">
 
-    <form>
-        <label for="name">Navn</label>
-        <input type="text" id="name" name="name" placeholder="Dit fulde navn" required>
+    <section class="brand">
+        <img src="img/spire-ring.svg" alt="" width="104" height="104">
+        <h1 class="wordmark">SIMPL</h1>
+        <p class="tagline">Dit forløb, din vej</p>
+        <p class="privacy">Dine data er krypterede og private</p>
+    </section>
 
-        <label for="dateOfBirth">Fødselsdato</label>
-        <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+    <main class="form-area">
+        <div class="card login-card">
+            <h2>Opret profil</h2>
+            <p class="subtitle">Det tager under et minut</p>
 
-        <label for="username">Brugernavn</label>
-        <input type="text" id="username" name="username" placeholder="Vælg et brugernavn" required>
+            <form action="modtagersider/modtager.html" method="get">
+                <label for="name">Navn</label>
+                <input type="text" id="name" name="name"
+                       placeholder="Dit fulde navn" autocomplete="name" required>
 
-        <label for="password">Adgangskode</label>
-        <input type="password" id="password" name="password" placeholder="Vælg en adgangskode" required>
+                <label for="dateOfBirth">Fødselsdato</label>
+                <input type="date" id="dateOfBirth" name="dateOfBirth" required>
 
-        <button type="submit">Opret profil</button>
-    </form>
+                <label for="username">Brugernavn</label>
+                <input type="text" id="username" name="username"
+                       placeholder="Vælg et brugernavn" autocomplete="username" required>
 
-    <p class="link-line">Har du allerede en profil? <a href="login.html">Log ind</a></p>
-</main>
+                <label for="password">Adgangskode</label>
+                <input type="password" id="password" name="password"
+                       placeholder="Mindst 8 tegn" autocomplete="new-password" minlength="8" required>
+
+                <button type="submit">Opret profil</button>
+            </form>
+
+            <p class="link-line">
+                Har du allerede en profil?
+                <a href="login.html">Log ind</a>
+            </p>
+        </div>
+    </main>
+
+</div>
 
 </body>
 </html>
