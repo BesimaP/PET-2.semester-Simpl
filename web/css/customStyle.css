@@ -71,3 +71,35 @@ button[type="submit"]:hover {
     margin-top: 4px;
     margin-bottom: 24px;
 }
+
+.split {
+    height: 100%;
+    width: 45%;
+    position: fixed;
+    top: 0;
+    overflow-x: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left {
+    left: 0;
+    width: 40%;
+    background-color: var(--brand);
+}
+
+.right {
+    right: 0;
+    width: 60%;
+    background-color: var(--bg);
+}
+
+.centered {
+    text-align: center;
+}
+
+.centered img {
+    width: 150px;
+    border-radius: 50%;
+}
