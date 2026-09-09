@@ -1,9 +1,9 @@
-
 /* dashboard.css — KUN dashboardet.
-Mobil først: alt på én lodret akse + bundnav.
-Fra 900 px: sidebar til venstre + grid. Samme HTML. */
+   Mobil først: alt på én lodret akse + bundnav.
+   Fra 900 px: sidebar til venstre + grid. Samme HTML. */
 
 /* ---------- Layout ---------- */
+
 body.dashboard {
     padding-bottom: 88px;   /* plads til bundnav på mobil */
 }
@@ -678,41 +678,11 @@ body.dashboard {
     }
 }
 
-/* ---------- Tom-tilstand: ny bruger uden runde (Nielsen #10) ---------- */
-
-.dashboard .empty {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 40px 24px;
-}
-
-.empty img {
-    margin-bottom: 16px;
-}
-
-.empty h2 {
-    font-family: var(--font-display);
-    font-size: 22px;
-    margin-bottom: 8px;
-}
-
-.empty p {
-    max-width: 420px;
-    margin-bottom: 24px;
-    color: var(--on-brand-muted);
-}
-
 /* ---------- Formularside: Start runde ---------- */
 
 .form-layout {
     display: grid;
     gap: 16px;
-}
-
-.form-card {
-    max-width: 480px;
 }
 
 .form-card .subtitle {
@@ -788,55 +758,4 @@ body.dashboard {
         gap: 20px;
         align-items: start;
     }
-
-    /* Valg som piller — alle muligheder synlige (Nielsen #6) */
-    .choice {
-        border: none;
-        padding: 0;
-        margin: 16px 0 0;
-    }
-
-    .choice legend {
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--muted);
-        margin-bottom: 8px;
-    }
-
-    .choice label {
-        display: inline-block;
-        margin: 0 8px 8px 0;
-    }
-
-    .choice input {
-        position: absolute;
-        opacity: 0;
-        width: 1px;
-        height: 1px;
-    }
-
-    .choice span {
-        display: inline-block;
-        padding: 10px 16px;
-        border: 1px solid var(--border);
-        border-radius: 999px;
-        background: #fff;
-        cursor: pointer;
-    }
-
-    .choice input:checked + span {
-        background: var(--brand);
-        color: #fff;
-        border-color: var(--brand);
-    }
-
-    .choice input:focus-visible + span {
-        outline: 3px solid var(--on-brand-muted);
-        outline-offset: 2px;
-    }
 }
-
-
-
