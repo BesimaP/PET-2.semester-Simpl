@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Simpl – Hormoner</title>
 
+  <!-- skrifttyper og vores css filer -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
@@ -12,6 +13,7 @@
 </head>
 <body class="dashboard">
 
+<!-- menuen - den er ens på alle sider -->
 <nav class="sidenav" aria-label="Hovedmenu">
   <a class="sidenav__logo" href="dashboard.html">
     <img src="img/spire.svg" alt="" width="22" height="22">
@@ -31,6 +33,7 @@
       <li><a href="dagbog.html">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19l1-4L16.5 4.5l2.9 2.9L8.9 18 5 19z"/></svg>
         <span>Dagbog</span></a></li>
+      <!-- desktop-only = vises ikke på mobil -->
       <li class="desktop-only"><a href="aftaler.html">
         <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="16" height="14" rx="2"/><path d="M4 10h16M8 4v4M16 4v4"/></svg>
         <span>Aftaler</span></a></li>
@@ -45,13 +48,16 @@
         <span>Historik</span></a></li>
     </ul>
 
+  <!-- nederst i menuen -->
   <p class="sidenav__footer desktop-only">
     <a href="min-profil.html">Min profil</a> · <a href="login.html">Log ud</a>
   </p>
 </nav>
 
+<!-- selve siden -->
 <main class="content">
 
+  <!-- overskrift + avatar øverst -->
   <header class="topbar">
     <div>
       <h1>Hormoner</h1>
@@ -61,6 +67,7 @@
     </div>
   </header>
 
+  <!-- form-layout gør at kortene står i 2 kolonner -->
   <div class="form-layout">
 
     <!-- VENSTRE: formular -->
@@ -68,7 +75,9 @@
       <h2 id="measure-title">Ny måling</h2>
       <p class="subtitle">Skriv tallet fra klinikken, som det står på svaret.</p>
 
+      <!-- action = siden sender bare til sig selv indtil vi får backend på -->
       <form action="hormoner.html" method="get">
+        <!-- select = dropdown. den tomme option øverst er det man ser før man vælger -->
         <label for="hormone">Hormon</label>
         <select id="hormone" name="hormone" required>
           <option value="">Vælg…</option>
@@ -78,9 +87,11 @@
           <option value="Progesteron">Progesteron</option>
         </select>
 
+        <!-- type number = kun tal. step 0.1 = man må skrive decimaler -->
         <label for="value">Værdi</label>
         <input type="number" id="value" name="value" step="0.1" placeholder="Fx 450" required>
 
+        <!-- enheden er også en dropdown, så man ikke staver den forskelligt -->
         <label for="unit">Enhed</label>
         <select id="unit" name="unit" required>
           <option value="">Vælg…</option>
@@ -89,9 +100,11 @@
           <option value="nmol/L">nmol/L</option>
         </select>
 
+        <!-- type date = kalender -->
         <label for="date">Dato</label>
         <input type="date" id="date" name="date" required>
 
+        <!-- knappen sender formularen -->
         <button type="submit">Gem måling</button>
       </form>
 
@@ -101,6 +114,7 @@
     <!-- HØJRE: seneste målinger -->
     <aside class="card helpbox" aria-labelledby="list-title">
       <h2 id="list-title" class="eyebrow">Seneste målinger</h2>
+      <!-- samme liste-css som dagbogen, så det ser ens ud -->
       <ul class="notes">
         <li>
           <strong>I går · dag 11</strong>

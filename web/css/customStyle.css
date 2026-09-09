@@ -2,6 +2,7 @@
    den todelte skærm med brandflade til venstre og formular til højre.
    Mobil: brandflade øverst, formular nedenunder (som i prototypen). */
 
+/* flex + column = børnene (brand og form-area) stables oven på hinanden. 100vh = mindst hele skærmens højde */
 .split {
     display: flex;
     flex-direction: column;
@@ -9,6 +10,7 @@
 }
 
 /* Brandflade (figur-grund: mørk identitet mod lys handling) */
+/* align-items + justify-content: center = alt indhold midt i boksen, både vandret og lodret */
 .brand {
     display: flex;
     flex-direction: column;
@@ -26,6 +28,7 @@
     margin-bottom: 20px;
 }
 
+/* .brand .wordmark = wordmark der ligger INDE i brand. letter-spacing = luft mellem bogstaverne */
 .brand .wordmark {
     font-family: var(--font-body);
     font-size: 26px;
@@ -49,6 +52,7 @@
 }
 
 /* Formularflade */
+/* flex: 1 = tag al den plads der er tilbage */
 .form-area {
     flex: 1;
     display: flex;
@@ -57,6 +61,7 @@
     padding: 32px 20px;
 }
 
+/* max-width = kortet bliver aldrig bredere end 400px, selv på stor skærm */
 .login-card {
     width: 100%;
     max-width: 400px;
@@ -81,6 +86,7 @@
     font-size: 13.5px;
 }
 
+/* display: block = linket får sin egen linje under spørgsmålet */
 .link-line a {
     display: block;
     margin-top: 4px;
@@ -88,12 +94,15 @@
 }
 
 /* Desktop: side om side, 40/60 som i prototypen */
+/* @media = reglerne herinde gælder KUN når skærmen er mindst 900px bred (desktop). mobil-reglerne ovenfor er standard */
 @media (min-width: 900px) {
     .split {
+        /* row = nu side om side i stedet for oven på hinanden */
         flex-direction: row;
     }
 
     .brand {
+        /* 0 0 43% = brand fylder præcis 43% og må hverken vokse eller krympe */
         flex: 0 0 43%;
         padding: 40px;
     }
@@ -113,6 +122,7 @@
     }
 
     .brand .privacy {
+        /* absolute + bottom = privacy-teksten sættes fast i bunden af brand-boksen (kræver position: relative på .brand lige nedenfor) */
         position: absolute;
         bottom: 48px;
     }

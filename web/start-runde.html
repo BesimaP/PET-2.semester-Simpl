@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Simpl – Start runde</title>
 
+    <!-- skrifttyper og vores css filer -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/tokens.css">
     <link rel="stylesheet" href="css/base.css">
@@ -13,6 +14,7 @@
 <body class="dashboard">
 
 <!-- Navigation: bundnav på mobil, sidebar på desktop (samme HTML) -->
+<!-- menuen - den er ens på alle sider -->
 <nav class="sidenav" aria-label="Hovedmenu">
     <a class="sidenav__logo" href="dashboard.html">
         <img src="img/spire.svg" alt="" width="22" height="22">
@@ -32,6 +34,7 @@
       <li><a href="dagbog.html">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19l1-4L16.5 4.5l2.9 2.9L8.9 18 5 19z"/></svg>
         <span>Dagbog</span></a></li>
+      <!-- desktop-only = vises ikke på mobil -->
       <li class="desktop-only"><a href="aftaler.html">
         <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="16" height="14" rx="2"/><path d="M4 10h16M8 4v4M16 4v4"/></svg>
         <span>Aftaler</span></a></li>
@@ -46,13 +49,16 @@
         <span>Historik</span></a></li>
     </ul>
 
+    <!-- nederst i menuen -->
     <p class="sidenav__footer desktop-only">
         <a href="min-profil.html">Min profil</a> · <a href="login.html">Log ud</a>
     </p>
 </nav>
 
+<!-- selve siden -->
 <main class="content">
 
+    <!-- overskrift + avatar øverst -->
     <header class="topbar">
         <div>
             <h1>Start runde</h1>
@@ -62,13 +68,17 @@
         </div>
     </header>
 
+    <!-- form-layout gør at kortene står i 2 kolonner -->
     <div class="form-layout">
 
+        <!-- VENSTRE: formular til at starte runden -->
         <section class="card form-card" aria-labelledby="start-title">
             <h2 id="start-title">Start en ny runde</h2>
             <p class="subtitle">Du kan altid rette det senere.</p>
 
+            <!-- action = efter tryk sendes man til dashboardet -->
             <form action="dashboard.html" method="get">
+                <!-- select = dropdown med de fire behandlingstyper fra user story 10a -->
                 <label for="type">Type behandling</label>
                 <select id="type" name="type" required>
                     <option value="">Vælg…</option>
@@ -78,20 +88,25 @@
                     <option value="FET">Frossen ægoplægning (FET)</option>
                 </select>
 
+                <!-- type date = kalender -->
                 <label for="startDate">Startdato</label>
                 <input type="date" id="startDate" name="startDate" required>
 
+                <!-- optional = lille grå tekst der viser feltet er valgfrit (ingen required) -->
                 <label for="clinic">Klinik <span class="optional">(valgfrit)</span></label>
                 <input type="text" id="clinic" name="clinic" placeholder="Fx Vitanova">
 
+                <!-- knappen sender formularen -->
                 <button type="submit">Start runde</button>
             </form>
 
             <p class="link-line"><a href="dashboardtom.html">Annullér</a></p>
         </section>
 
+        <!-- HØJRE: hjælpetekst der forklarer hvad der sker -->
         <aside class="card helpbox" aria-labelledby="help-title">
             <h2 id="help-title" class="eyebrow">Hvad sker der nu?</h2>
+            <!-- ol = nummereret liste (1, 2, 3) -->
             <ol class="steps">
                 <li>
                     <strong>Dag-tæller</strong>

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Simpl – Opret profil</title>
 
+    <!-- skrifttyper og vores css filer -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/tokens.css">
     <link rel="stylesheet" href="css/base.css">
@@ -12,8 +13,10 @@
 </head>
 <body>
 
+<!-- split = siden er delt i to: brand til venstre, formular til højre -->
 <div class="split">
 
+    <!-- venstre side: logo og slogan (samme som på login) -->
     <section class="brand">
         <img src="img/spire-ring.svg" alt="" width="104" height="104">
         <h1 class="wordmark">SIMPL</h1>
@@ -21,16 +24,20 @@
         <p class="privacy">Dine data er krypterede og private</p>
     </section>
 
+    <!-- højre side: opret-profil-kortet -->
     <main class="form-area">
         <div class="card login-card">
             <h2>Opret profil</h2>
             <p class="subtitle">Det tager under et minut</p>
 
+            <!-- action = hvor formularen sendes hen, method=get = data ses i adressen -->
             <form action="modtagersider/modtager.html" method="get">
+                <!-- for og id skal være ens, så label og felt hører sammen -->
                 <label for="name">Navn</label>
                 <input type="text" id="name" name="name"
                        placeholder="Dit fulde navn" autocomplete="name" required>
 
+                <!-- type date = browseren viser en kalender -->
                 <label for="dateOfBirth">Fødselsdato</label>
                 <input type="date" id="dateOfBirth" name="dateOfBirth" required>
 
@@ -38,13 +45,16 @@
                 <input type="text" id="username" name="username"
                        placeholder="Vælg et brugernavn" autocomplete="username" required>
 
+                <!-- minlength 8 = koden skal være mindst 8 tegn, required = feltet skal udfyldes -->
                 <label for="password">Adgangskode</label>
                 <input type="password" id="password" name="password"
                        placeholder="Mindst 8 tegn" autocomplete="new-password" minlength="8" required>
 
+                <!-- knappen sender formularen -->
                 <button type="submit">Opret profil</button>
             </form>
 
+            <!-- link tilbage til login, hvis man allerede har en profil -->
             <p class="link-line">
                 Har du allerede en profil?
                 <a href="login.html">Log ind</a>
