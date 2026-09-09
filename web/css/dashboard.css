@@ -4,6 +4,7 @@
 
 /* ---------- Layout ---------- */
 
+/* body.dashboard = kun body med class="dashboard" (alle sider med menu). login-siderne har den ikke */
 body.dashboard {
     padding-bottom: 88px;   /* plads til bundnav på mobil */
 }
@@ -13,12 +14,14 @@ body.dashboard {
     max-width: 1160px;
 }
 
+/* display: none = skjult. længere nede i @media (min-width: 900px) bliver den vist igen - derfor hedder den desktop-only */
 .desktop-only {
     display: none;
 }
 
 /* ---------- Små byggeklodser ---------- */
 
+/* eyebrow = de små grå overskrifter med STORE BOGSTAVER over hvert kort */
 .eyebrow {
     font-family: var(--font-body);
     font-size: 11px;
@@ -28,6 +31,7 @@ body.dashboard {
     color: var(--muted);
 }
 
+/* section-head = overskrift til venstre og et lille link til højre. space-between skubber dem ud i hver sin side */
 .section-head {
     display: flex;
     align-items: baseline;
@@ -45,6 +49,7 @@ body.dashboard {
     font-size: 13px;
 }
 
+/* .btn = fælles grundstil for alle små knapper. varianterne .btn--light osv. herunder ændrer kun farven */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -94,11 +99,13 @@ body.dashboard {
 }
 
 /* Kort på dashboardet er lettere end login-kortet */
+/* .dashboard .card = kort der ligger INDE i dashboard-sider. overskriver padding fra base.css */
 .dashboard .card {
     padding: 18px 20px;
     box-shadow: none;
 }
 
+/* card--dark = det brune runde-kort. tekstfarven skiftes til creme så man kan læse det */
 .card--dark {
     background: var(--brand);
     color: var(--on-brand);
@@ -115,6 +122,7 @@ body.dashboard {
 
 /* ---------- Topbar ---------- */
 
+/* topbar = række øverst: overskrift til venstre, klokke + avatar til højre */
 .topbar {
     display: flex;
     align-items: flex-start;
@@ -133,6 +141,7 @@ body.dashboard {
     align-items: center;
 }
 
+/* iconbtn = den runde knap med klokken. position: relative så den røde prik (.dot) kan placeres oven på den */
 .iconbtn {
     position: relative;
     display: inline-flex;
@@ -182,6 +191,7 @@ body.dashboard {
 
 /* ---------- Runde-kortet ---------- */
 
+/* runde-kortet: flex = ring og tekst side om side, gap = luft imellem */
 .round {
     display: flex;
     align-items: center;
@@ -197,6 +207,7 @@ body.dashboard {
     font-size: 12.5px;
 }
 
+/* ring = dag-tælleren. flex: 0 0 80px = altid præcis 80px bred */
 .ring {
     position: relative;
     flex: 0 0 80px;
@@ -210,6 +221,7 @@ body.dashboard {
     transform: rotate(-90deg);   /* start i toppen */
 }
 
+/* track = den grå cirkel bagved, value = den farvede der viser hvor langt man er */
 .ring__track,
 .ring__value {
     fill: none;
@@ -267,17 +279,20 @@ body.dashboard {
 
 /* ---------- Grid med sektioner ---------- */
 
+/* grid = nederste kort. 1fr 1fr = to lige brede kolonner */
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;   /* mobil: statistik-kort side om side */
     gap: 12px;
 }
 
+/* 1 / -1 = fra første til sidste kolonne, dvs. fuld bredde */
 .grid .next {
     grid-column: 1 / -1;              /* aftale i fuld bredde */
 }
 
 /* Medicin */
+/* list-style: none + margin/padding 0 = fjerner prikker og indrykning fra ul */
 .meds {
     list-style: none;
     margin: 0;
@@ -292,6 +307,7 @@ body.dashboard {
     gap: 14px;
 }
 
+/* med__check = cirklen til venstre. border-radius 50% = rund */
 .med__check {
     flex: 0 0 24px;
     width: 24px;
@@ -412,6 +428,7 @@ body.dashboard {
     color: var(--muted);
 }
 
+/* round-grid = øverste række (runde-kort + dagens medicin). på mobil under hinanden, på desktop side om side */
 .round-grid {
     display: grid;
     gap: 24px;
@@ -421,6 +438,7 @@ body.dashboard {
 
 /* ---------- Navigation (mobil: bundnav) ---------- */
 
+/* MENU PÅ MOBIL: position fixed + bottom 0 = sidder fast i bunden af skærmen, også når man scroller. z-index = ligger oven på alt andet */
 .sidenav {
     position: fixed;
     left: 0;
@@ -431,10 +449,12 @@ body.dashboard {
     border-top: 1px solid #eee7d9;
 }
 
+/* logoet er skjult på mobil (der er ikke plads) */
 .sidenav__logo {
     display: none;
 }
 
+/* space-around = ikonerne fordeles jævnt over bredden */
 .sidenav__list {
     list-style: none;
     margin: 0;
@@ -443,6 +463,7 @@ body.dashboard {
     justify-content: space-around;
 }
 
+/* hvert menupunkt: ikon øverst, tekst nedenunder (column) */
 .sidenav__list a {
     display: flex;
     flex-direction: column;
@@ -456,6 +477,7 @@ body.dashboard {
     text-decoration: none;
 }
 
+/* a.is-active = det menupunkt der har class is-active i html, altså den side man er på */
 .sidenav__list a.is-active {
     color: var(--brand);
     font-weight: 700;
@@ -468,6 +490,7 @@ body.dashboard {
 
 /* ---------- Desktop: sidebar + bredere grid ---------- */
 
+/* DESKTOP (fra 900px): menuen flyttes til venstre side, og body får padding-left så indholdet ikke ligger under den */
 @media (min-width: 900px) {
     body.dashboard {
         padding-bottom: 0;
@@ -624,6 +647,7 @@ body.dashboard {
 
 /* ---------- Bekræftelsesdialog ---------- */
 
+/* confirm = pop-op vinduet på dashboardet. min(92vw, 400px) = 400px, men aldrig bredere end 92% af skærmen */
 .confirm {
     width: min(92vw, 400px);
     padding: 28px 24px;
@@ -633,6 +657,7 @@ body.dashboard {
     color: var(--text);
 }
 
+/* ::backdrop = den mørke gennemsigtige baggrund bag vinduet */
 .confirm::backdrop {
     background: rgba(62, 47, 35, 0.55);
 }
@@ -642,10 +667,12 @@ body.dashboard {
     margin-bottom: 10px;
 }
 
+/* p + p = en p der kommer LIGE EFTER en anden p, får luft ovenover */
 .confirm p + p {
     margin-top: 10px;
 }
 
+/* de to knapper side om side, lige brede */
 .confirm__actions {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -671,6 +698,7 @@ body.dashboard {
 }
 
 /* Respekter "reducer bevægelse" */
+/* transition = blød farveovergang på hover. kun hvis brugeren ikke har slået animationer fra i sit system */
 @media (prefers-reduced-motion: no-preference) {
     .btn,
     .sidenav__list a {
@@ -680,6 +708,7 @@ body.dashboard {
 
 /* ---------- Formularside: Start runde ---------- */
 
+/* form-layout = bruges på alle formular-sider (dagbog, hormoner, start-runde, dokumenter, min-profil). mobil: kortene under hinanden */
 .form-layout {
     display: grid;
     gap: 16px;
@@ -695,6 +724,7 @@ body.dashboard {
     text-align: center;
 }
 
+/* optional = "(valgfrit)" i en label: normal vægt og ikke store bogstaver */
 .optional {
     font-weight: 400;
     text-transform: none;
@@ -754,6 +784,7 @@ body.dashboard {
 
 @media (min-width: 900px) {
     .form-layout {
+        /* desktop: to kolonner, formular max 480px og hjælpeboks max 360px */
         grid-template-columns: minmax(0, 480px) minmax(0, 360px);
         gap: 20px;
         align-items: start;
@@ -762,6 +793,7 @@ body.dashboard {
 
 /* ---------- Tom-tilstand: ny bruger uden runde (Nielsen #10) ---------- */
 
+/* empty = tom-tilstanden på dashboardtom.html: alt centreret */
 .dashboard .empty {
     display: flex;
     flex-direction: column;
@@ -788,6 +820,7 @@ body.dashboard {
 
 /* ---------- Dagbog / hormoner: liste i hjælpeboksen ---------- */
 
+/* notes = listen med tidligere noter / målinger. hver li får en tynd streg under sig */
 .notes {
     list-style: none;
     margin: 0 0 16px;
@@ -807,6 +840,7 @@ body.dashboard {
     color: var(--muted);
 }
 
+/* rounds = listen på rundehistorik og dokumenter. hver li er et hvidt "underkort" */
 .rounds {
     list-style: none;
     margin: 12px 0 0;
@@ -823,6 +857,7 @@ body.dashboard {
     border-radius: 12px;
 }
 
+/* flex: 1 = teksten tager al pladsen, så pil og link skubbes helt til højre */
 .round__info {
     flex: 1;
     display: flex;
@@ -835,6 +870,7 @@ body.dashboard {
     color: var(--muted);
 }
 
+/* pill = den lille afrundede status-boks (Aktiv / Afsluttet) */
 .pill {
     font-size: 10px;
     font-weight: 700;

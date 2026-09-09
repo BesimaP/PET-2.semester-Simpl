@@ -5,13 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Simpl – Min profil</title>
 
+  <!-- skrifttyper og vores css filer -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/tokens.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/tokens.css">     <!-- farver og skrifttyper -->
+  <link rel="stylesheet" href="css/base.css">       <!-- css til alle sider -->
+  <link rel="stylesheet" href="css/dashboard.css">  <!-- css til menu og kort -->
 </head>
 <body class="dashboard">
 
+  <!-- menuen - den er ens på alle sider -->
   <nav class="sidenav" aria-label="Hovedmenu">
     <a class="sidenav__logo" href="dashboard.html">
       <img src="img/spire.svg" alt="" width="22" height="22">
@@ -31,6 +33,7 @@
       <li><a href="dagbog.html">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19l1-4L16.5 4.5l2.9 2.9L8.9 18 5 19z"/></svg>
         <span>Dagbog</span></a></li>
+      <!-- desktop-only = vises ikke på mobil -->
       <li class="desktop-only"><a href="aftaler.html">
         <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="16" height="14" rx="2"/><path d="M4 10h16M8 4v4M16 4v4"/></svg>
         <span>Aftaler</span></a></li>
@@ -45,13 +48,16 @@
         <span>Historik</span></a></li>
     </ul>
 
+    <!-- nederst i menuen -->
     <p class="sidenav__footer desktop-only">
       <a href="min-profil.html">Min profil</a> · <a href="login.html">Log ud</a>
     </p>
   </nav>
 
+  <!-- selve siden -->
   <main class="content">
 
+    <!-- overskrift + klokke og avatar øverst -->
     <header class="topbar">
       <div>
         <h1>Min profil</h1>
@@ -64,46 +70,56 @@
       </div>
     </header>
 
+    <!-- form-layout gør at kortene står i 2 kolonner -->
     <div class="form-layout">
-    <section class="card">
-      <h2 class="eyebrow">Profil</h2>
-      <form>
-      <label for="name">Navn</label>
-      <input type="text" id="name" name="name" placeholder="Dit fulde navn" autocomplete="name" required>
 
-      <label for="dateOfBirth">Fødselsdato</label>
-      <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+      <!-- kort 1: ret sine oplysninger -->
+      <section class="card">
+        <h2 class="eyebrow">Profil</h2>
+        <form>
+          <!-- for og id skal være ens, så label og felt hører sammen -->
+          <label for="name">Navn</label>
+          <input type="text" id="name" name="name" placeholder="Dit fulde navn" autocomplete="name" required>
 
-      <label for="username">Brugernavn</label>
-      <input type="text" id="username" name="username" required>
+          <label for="dateOfBirth">Fødselsdato</label>
+          <input type="date" id="dateOfBirth" name="dateOfBirth" required>
 
-        <button type="submit">Gem ændringer</button>
-      </form>
-    </section>
+          <label for="username">Brugernavn</label>
+          <input type="text" id="username" name="username" required>
 
+          <!-- knappen sender formularen -->
+          <button type="submit">Gem ændringer</button>
+        </form>
+      </section>
+
+      <!-- kort 2: skift adgangskode -->
       <section class="card">
         <h2 class="eyebrow">Adgangskode</h2>
-
         <form>
+          <!-- type password = der kommer prikker når man skriver -->
           <label for="current-password">Nuværende adgangskode</label>
           <input type="password" id="current-password" name="current-password" autocomplete="current-password" required>
 
-          <label for="new-password"> Ny adgangskode</label>
+          <!-- minlength 8 = koden skal være mindst 8 tegn -->
+          <label for="new-password">Ny adgangskode</label>
           <input type="password" id="new-password" name="new-password" autocomplete="new-password" placeholder="Mindst 8 tegn" required minlength="8">
 
           <label for="repeat-password">Gentag ny adgangskode</label>
           <input type="password" id="repeat-password" name="repeat-password" autocomplete="new-password" required>
 
           <button type="submit">Skift adgangskode</button>
-
         </form>
-
       </section>
 
+      <!-- kort 3: log ud og slet konto -->
       <section class="card">
         <h2 class="eyebrow">Konto</h2>
         <p class="muted">Du er logget ind som Anna.</p>
+
+        <!-- et link der ligner en knap -->
         <a href="login.html" class="btn-primary">Log ud</a>
+
+        <!-- slet konto er med vilje lille, så man ikke trykker ved en fejl -->
         <p class="muted centered"><a href="#" id="delete-account">Slet konto</a></p>
       </section>
 

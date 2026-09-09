@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Simpl – Kom i gang</title>
 
+    <!-- skrifttyper og vores css filer -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/tokens.css">
     <link rel="stylesheet" href="css/base.css">
@@ -12,6 +13,7 @@
 </head>
 <body class="dashboard">
 
+<!-- menuen - den er ens på alle sider -->
 <nav class="sidenav" aria-label="Hovedmenu">
     <a class="sidenav__logo" href="dashboard.html">
         <img src="img/spire.svg" alt="" width="22" height="22">
@@ -19,6 +21,7 @@
     </a>
 
     <ul class="sidenav__list">
+      <!-- is-active = menupunktet for den side man er på, bliver fremhævet -->
       <li><a href="dashboard.html" class="is-active" aria-current="page">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11.5 12 5l8 6.5"/><path d="M6 10.5V19h12v-8.5"/></svg>
         <span>Hjem</span></a></li>
@@ -31,6 +34,7 @@
       <li><a href="dagbog.html">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19l1-4L16.5 4.5l2.9 2.9L8.9 18 5 19z"/></svg>
         <span>Dagbog</span></a></li>
+      <!-- desktop-only = vises ikke på mobil -->
       <li class="desktop-only"><a href="aftaler.html">
         <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="16" height="14" rx="2"/><path d="M4 10h16M8 4v4M16 4v4"/></svg>
         <span>Aftaler</span></a></li>
@@ -45,13 +49,16 @@
         <span>Historik</span></a></li>
     </ul>
 
+    <!-- nederst i menuen -->
     <p class="sidenav__footer desktop-only">
         <a href="min-profil.html">Min profil</a> · <a href="login.html">Log ud</a>
     </p>
 </nav>
 
+<!-- selve siden -->
 <main class="content">
 
+    <!-- overskrift + avatar øverst -->
     <header class="topbar">
         <div>
             <h1>Godmorgen, Anna</h1>
@@ -62,11 +69,14 @@
         </div>
     </header>
 
+    <!-- tom-tilstand: det man ser første gang, når der ikke er nogen runde endnu -->
     <div class="round-grid">
+        <!-- card--dark = mørkt kort, empty = ekstra css til den tomme tilstand -->
         <section class="card card--dark empty" aria-labelledby="empty-title">
             <img src="img/spire-ring.svg" alt="" width="72" height="72">
             <h2 id="empty-title">Du har ingen aktiv runde endnu</h2>
             <p>Når du starter en runde, samler Simpl din medicin, dine aftaler og dine noter ét sted.</p>
+            <!-- et link der ligner en knap -->
             <a href="start-runde.html" class="btn btn--light">Start din første runde</a>
         </section>
     </div>

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Simpl – Overblik</title>
 
+    <!-- skrifttyper og vores css filer -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/tokens.css">
     <link rel="stylesheet" href="css/base.css">
@@ -13,6 +14,7 @@
 <body class="dashboard">
 
 <!-- Navigation: bundnav på mobil, sidebar på desktop (samme HTML) -->
+<!-- menuen - den er ens på alle sider -->
 <nav class="sidenav" aria-label="Hovedmenu">
     <a class="sidenav__logo" href="dashboard.html">
         <img src="img/spire.svg" alt="" width="22" height="22">
@@ -32,6 +34,7 @@
       <li><a href="dagbog.html">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19l1-4L16.5 4.5l2.9 2.9L8.9 18 5 19z"/></svg>
         <span>Dagbog</span></a></li>
+      <!-- desktop-only = vises ikke på mobil -->
       <li class="desktop-only"><a href="aftaler.html">
         <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="16" height="14" rx="2"/><path d="M4 10h16M8 4v4M16 4v4"/></svg>
         <span>Aftaler</span></a></li>
@@ -46,13 +49,16 @@
         <span>Historik</span></a></li>
     </ul>
 
+    <!-- nederst i menuen -->
     <p class="sidenav__footer desktop-only">
         <a href="min-profil.html">Min profil</a> · <a href="login.html">Log ud</a>
     </p>
 </nav>
 
+<!-- selve siden -->
 <main class="content">
 
+    <!-- overskrift + klokke og avatar øverst -->
     <header class="topbar">
         <div>
             <h1>Godmorgen, Anna</h1>
@@ -61,18 +67,22 @@
         <div class="topbar__actions">
             <a href="notifikationer.html" class="iconbtn" aria-label="Notifikationer, 1 ulæst">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 10a6 6 0 0 1 12 0c0 4 1.5 5.5 1.5 5.5H4.5S6 14 6 10"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+                <!-- dot = den lille røde prik der viser der er en ulæst notifikation -->
                 <span class="dot" aria-hidden="true"></span>
             </a>
             <a href="min-profil.html" class="avatar desktop-only" aria-label="Min profil">A</a>
         </div>
     </header>
 
+    <!-- round-grid = øverste række: runde-kortet til venstre, dagens medicin til højre -->
     <div class="round-grid">
     <!-- Runde-kortet: det eneste mørke element (Von Restorff) -->
     <section class="round card card--dark" aria-labelledby="round-title">
+        <!-- ring = den runde dag-tæller. tegnet med svg: én grå cirkel bagved og én farvet foran -->
         <div class="ring" role="img" aria-label="Dag 12 af stimulation">
             <svg viewBox="0 0 100 100" aria-hidden="true">
                 <circle class="ring__track" cx="50" cy="50" r="44"/>
+                <!-- stroke-dasharray "43 100" = 43% af cirklen er fyldt (dag 12 af ca. 28) -->
                 <circle class="ring__value" cx="50" cy="50" r="44"
                         pathLength="100" stroke-dasharray="43 100"/>
             </svg>
@@ -81,23 +91,27 @@
                 <small>stimulation</small>
             </div>
         </div>
+        <!-- teksten ved siden af ringen -->
         <div class="round__body">
             <p class="eyebrow">Aktiv runde</p>
             <h2 id="round-title">Runde 2 · IVF</h2>
             <p class="round__meta desktop-only">Startet 21. august</p>
             <div class="round__actions">
                 <a href="tidslinje.html" class="btn btn--light">Se tidslinje</a>
+                <!-- type button = sender IKKE en formular. id bruges af scriptet nederst -->
                 <button type="button" class="btn btn--ghost" id="end-round">Afslut runde</button>
             </div>
         </div>
     </section>
 
+    <!-- dagens medicin -->
     <section class="today" aria-labelledby="today-title">
             <div class="section-head">
                 <h2 id="today-title" class="eyebrow">I dag</h2>
                 <a href="medicin.html">Medicinlog →</a>
             </div>
             <ul class="meds">
+                <!-- med--taken = ekstra css der gør kortet grønt og sætter flueben -->
                 <li class="card med med--taken">
                     <span class="med__check" aria-hidden="true">
                         <svg viewBox="0 0 24 24"><path d="M7 12.5l3.5 3.5 6.5-7"/></svg>
@@ -108,6 +122,7 @@
                     </span>
                     <time class="muted" datetime="08:00">08:00</time>
                 </li>
+                <!-- uden med--taken = stadig planlagt -->
                 <li class="card med">
                     <span class="med__check" aria-hidden="true"></span>
                     <span class="med__text">
@@ -120,15 +135,18 @@
         </section>
     </div>
 
+    <!-- grid = nederste række med tre små kort -->
     <div class="grid">
 
 
+        <!-- kort 1: næste aftale -->
         <section class="next card" aria-labelledby="next-title">
             <div class="section-head">
                 <h2 id="next-title" class="eyebrow">Næste aftale</h2>
                 <a href="aftaler.html">Alle aftaler →</a>
             </div>
             <div class="appt">
+                <!-- datebox = den lille kalender-firkant med dato -->
                 <time class="datebox" datetime="2026-09-05">
                     <strong>5</strong><small>sep</small>
                 </time>
@@ -139,6 +157,7 @@
             </div>
         </section>
 
+        <!-- kort 2: seneste hormonværdi -->
         <section class="stat card" aria-labelledby="hormone-title">
             <div class="section-head">
                 <h2 id="hormone-title" class="eyebrow">Seneste hormonværdi</h2>
@@ -148,6 +167,7 @@
             <p class="muted">Østradiol · målt i går</p>
         </section>
 
+        <!-- kort 3: dagbog -->
         <section class="stat card" aria-labelledby="diary-title">
             <div class="section-head">
                 <h2 id="diary-title" class="eyebrow">Dagbog</h2>
@@ -161,7 +181,9 @@
 </main>
 
 <!-- Bekræftelse (Nielsen #3 + #5): rolig, neutral, med udvej -->
+<!-- dialog = et pop-op vindue. er skjult indtil scriptet åbner det -->
 <dialog id="confirm-end" class="confirm">
+    <!-- method dialog = knapperne lukker bare vinduet, sender ikke noget -->
     <form method="dialog">
         <h2>Afslut runde 2?</h2>
         <p class="muted">Runden markeres som afsluttet, og du kan starte en ny.
