@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Simpl – Start runde</title>
+    <title>Simpl – Dagbog</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/tokens.css">
@@ -12,7 +12,6 @@
 </head>
 <body class="dashboard">
 
-<!-- Navigation: bundnav på mobil, sidebar på desktop (samme HTML) -->
 <nav class="sidenav" aria-label="Hovedmenu">
     <a class="sidenav__logo" href="dashboard.html">
         <img src="img/spire.svg" alt="" width="22" height="22">
@@ -20,16 +19,16 @@
     </a>
 
     <ul class="sidenav__list">
-        <li><a href="dashboard.html" class="is-active" aria-current="page">
+        <li><a href="dashboard.html">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11.5 12 5l8 6.5"/><path d="M6 10.5V19h12v-8.5"/></svg>
             <span>Hjem</span></a></li>
         <li><a href="#">
             <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="m8.5 12.2 2.3 2.3 4.7-4.8"/></svg>
             <span>Medicin</span></a></li>
-        <li><a href="#">
+        <li><a href="hormoner.html">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17l5-5.5 3.5 3L19 7"/><path d="M15 7h4v4"/></svg>
             <span>Hormoner</span></a></li>
-        <li><a href="dagbog.html">
+        <li><a href="dagbog.html" class="is-active" aria-current="page">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19l1-4L16.5 4.5l2.9 2.9L8.9 18 5 19z"/></svg>
             <span>Dagbog</span></a></li>
         <li class="desktop-only"><a href="#">
@@ -55,7 +54,7 @@
 
     <header class="topbar">
         <div>
-            <h1>Start runde</h1>
+            <h1>Dagbog</h1>
         </div>
         <div class="topbar__actions">
             <a href="#" class="avatar desktop-only" aria-label="Min profil">A</a>
@@ -64,49 +63,42 @@
 
     <div class="form-layout">
 
-        <section class="card form-card" aria-labelledby="start-title">
-            <h2 id="start-title">Start en ny runde</h2>
-            <p class="subtitle">Du kan altid rette det senere.</p>
+        <!-- VENSTRE: formular -->
+        <section class="card form-card" aria-labelledby="note-title">
+            <h2 id="note-title">Skriv dagens note</h2>
+            <p class="subtitle">Kun til dig. Du kan altid rette den senere.</p>
 
-            <form action="dashboard.html" method="get">
-                <label for="type">Type behandling</label>
-                <select id="type" name="type" required>
-                    <option value="">Vælg…</option>
-                    <option value="IVF">IVF</option>
-                    <option value="ICSI">ICSI</option>
-                    <option value="IUI">Insemination (IUI)</option>
-                    <option value="FET">Frossen ægoplægning (FET)</option>
-                </select>
+            <form action="dagbog.html" method="get">
+                <label for="date">Dato</label>
+                <input type="date" id="date" name="date" required>
 
-                <label for="startDate">Startdato</label>
-                <input type="date" id="startDate" name="startDate" required>
+                <label for="note">Note</label>
+                <textarea id="note" name="note" rows="6" placeholder="Hvordan har dagen været?" required></textarea>
 
-                <label for="clinic">Klinik <span class="optional">(valgfrit)</span></label>
-                <input type="text" id="clinic" name="clinic" placeholder="Fx Vitanova">
-
-                <button type="submit">Start runde</button>
+                <button type="submit">Gem note</button>
             </form>
 
-            <p class="link-line"><a href="dashboard-tom.html">Annullér</a></p>
+            <p class="link-line"><a href="dashboard.html">Annullér</a></p>
         </section>
 
-        <aside class="card helpbox" aria-labelledby="help-title">
-            <h2 id="help-title" class="eyebrow">Hvad sker der nu?</h2>
-            <ol class="steps">
+        <!-- HØJRE: tidligere noter -->
+        <aside class="card helpbox" aria-labelledby="notes-title">
+            <h2 id="notes-title" class="eyebrow">Tidligere noter</h2>
+            <ul class="notes">
                 <li>
-                    <strong>Dag-tæller</strong>
-                    <span>Simpl tæller dagene fra din startdato, så du altid ved, hvor i runden du er.</span>
+                    <strong>I dag · dag 12</strong>
+                    <span>Lidt træt efter scanningen, men det ser fint ud.</span>
                 </li>
                 <li>
-                    <strong>Medicin og aftaler</strong>
-                    <span>Du tilføjer din medicinplan og dine aftaler — Simpl minder dig om dem.</span>
+                    <strong>I går · dag 11</strong>
+                    <span>Første Orgalutran. Ingen bivirkninger.</span>
                 </li>
                 <li>
-                    <strong>Noter og værdier</strong>
-                    <span>Dagbog og hormonværdier samles på rundens tidslinje.</span>
+                    <strong>Lørdag · dag 9</strong>
+                    <span>Blodprøve. Ventetid.</span>
                 </li>
-            </ol>
-            <p class="muted">Kun én runde kan være aktiv ad gangen.</p>
+            </ul>
+            <p class="muted">7 noter i denne runde.</p>
         </aside>
 
     </div>

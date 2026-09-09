@@ -57,7 +57,8 @@ form label {
 }
 
 form input,
-form select {
+form select,
+form textarea {
     display: block;
     width: 100%;
     padding: 12px 14px;
@@ -69,12 +70,19 @@ form select {
     appearance: none;
 }
 
-form input::placeholder {
+form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+form input::placeholder,
+form textarea::placeholder {
     color: var(--muted);
 }
 
 form input:focus,
-form select:focus {
+form select:focus,
+form textarea:focus {
     outline: none;
     border-color: var(--brand);
     box-shadow: 0 0 0 3px rgba(62, 47, 35, 0.12);
