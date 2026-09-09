@@ -70,6 +70,23 @@ form textarea {
     appearance: none;
 }
 
+form input[type="file"] {
+    padding: 9px 14px;
+}
+
+form input[type="file"]::file-selector-button {
+    margin-right: 12px;
+    padding: 6px 12px;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--brand);
+    background: var(--bg);
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
 form textarea {
     resize: vertical;
     min-height: 120px;
@@ -116,6 +133,7 @@ button[type="submit"] {
     border: none;
     border-radius: var(--radius-input);
     cursor: pointer;
+    text-align: center;
 }
 
 .btn-primary:hover,
@@ -136,4 +154,5 @@ button[type="submit"]:focus-visible {
 
 .centered {
     text-align: center;
+    margin-top: 16px;
 }
