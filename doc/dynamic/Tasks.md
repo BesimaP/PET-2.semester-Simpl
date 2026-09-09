@@ -1,5 +1,7 @@
 # Tasks per user story
 
+*Opdateret 9. sep 2026: [x] = HTML/CSS-layout er lavet i `web/`. Gem/test venter på backend.*
+
 ## User story 1 – Oprette fertilitetsforløb
 - [ ]  Lav layout til at oprette et nyt fertilitetsforløb
 - [ ]  Gem det nye forløb i databasen med startdato sat automatisk
@@ -21,34 +23,34 @@
 - [ ]  Test sortering og korrekt tilknytning
 
 ## User story 4 – Dagbogsnoter (Journey)
-- [ ]  Lav layout til at skrive og gemme en note
+- [x]  Lav layout til at skrive og gemme en note *(HTML/CSS lavet)*
 - [ ]  Gem noten i databasen med dato, titel og forløbs-tilknytning
-- [ ]  Vis listen af tidligere noter til patienten
+- [x]  Vis listen af tidligere noter til patienten *(HTML/CSS lavet)*
 - [ ]  Test hele flowet fra start til slut
 
 ## User story 5 – Login
-- [ ]  Lav layout til login-skærmen
+- [x]  Lav layout til login-skærmen *(HTML/CSS lavet)*
 - [ ]  Tjek brugernavn/adgangskode mod databasen
 - [ ]  Håndter fejlscenariet: bruger uden profil henvises til oprettelse (User story 6a)
 - [ ]  Håndter fejlscenariet: forkert brugernavn/adgangskode giver fejlbesked
 - [ ]  Test både succesfuldt login og fejlscenarierne
 
 ## User story 6a – Oprette profil
-- [ ]  Lav layout til profiloprettelse (navn, fødselsdato, brugernavn, adgangskode)
+- [x]  Lav layout til profiloprettelse (navn, fødselsdato, brugernavn, adgangskode) *(HTML/CSS lavet)*
 - [ ]  Gem den nye profil i databasen (UserAccount + Patient), adgangskode gemmes som hash
 - [ ]  Tilføj validering: brugernavn allerede taget / manglende felter
 - [ ]  Test både succesfuld oprettelse og fejlmeddelelser
 
 ## User story 6b – Redigér profil og slet konto
-- [ ]  Lav layout til at redigere profiloplysninger (navn, fødselsdato)
+- [x]  Lav layout til at redigere profiloplysninger (navn, fødselsdato) *(HTML/CSS lavet)*
 - [ ]  Gem ændringer i databasen
 - [ ]  Implementér "slet konto" med bekræftelse, der fjerner alle patientens data
 - [ ]  Test redigering og sletning
 
 ## User story 7 – Diagnoser
-- [ ]  Lav layout til at registrere en ny diagnose (navn, beskrivelse)
+- [x]  Lav layout til at registrere en ny diagnose (navn, beskrivelse) *(HTML/CSS lavet)*
 - [ ]  Gem diagnosen i databasen, tilknyttet patienten
-- [ ]  Lav layout til at vise alle patientens registrerede diagnoser
+- [x]  Lav layout til at vise alle patientens registrerede diagnoser *(HTML/CSS lavet)*
 - [ ]  Test at flere diagnoser kan registreres og vises samtidig
 
 ## User story 8 – Medicin
@@ -60,25 +62,25 @@
 - [ ]  Test at data gemmes og vises korrekt, inkl. korrekt reference til Medication og taget-status
 
 ## User story 9 – Hormonlog
-- [ ]  Lav layout til at registrere hormontype, værdi, enhed og dato
+- [x]  Lav layout til at registrere hormontype, værdi, enhed og dato *(HTML/CSS lavet)*
 - [ ]  Gem målingen i databasen, tilknyttet den aktive Round
 - [ ]  Implementér logik til at finde og vise den seneste måling
 - [ ]  Test registrering og "seneste værdi"-visning
 
 ## User story 10a – Start og afslut runde
-- [ ]  Lav layout til at starte en ny runde (rundenummer, behandlingstype som dropdown: IVF, ICSI, IUI, FET)
-- [ ]  Lav layout til at afslutte en runde med et resultat (POSITIVE / NEGATIVE)
+- [x]  Lav layout til at starte en ny runde (rundenummer, behandlingstype som dropdown: IVF, ICSI, IUI, FET) *(HTML/CSS lavet)*
+- [x]  Lav layout til at afslutte en runde med et resultat (POSITIVE / NEGATIVE) *(HTML/CSS lavet)*
 - [ ]  Gem resultatet på den specifikke Round, når den afsluttes
 - [ ]  Test start og afslutning
 
 ## User story 10b – Rundehistorik
-- [ ]  Lav layout til rundehistorik, der viser alle Rounds tilknyttet forløbet
+- [x]  Lav layout til rundehistorik, der viser alle Rounds tilknyttet forløbet *(HTML/CSS lavet)*
 - [ ]  Vis detaljer for en valgt runde
 - [ ]  Test historikvisning
 
 ## User story 11 – Dokumenter
-- [ ]  Lav layout til dokumentlisten for en runde (titel, type)
-- [ ]  Lav layout til at tilføje et dokument (titel, dokumenttype som dropdown: Blodprøvesvar, Behandlingsplan, Andet, filvalg)
+- [x]  Lav layout til dokumentlisten for en runde (titel, type) *(HTML/CSS lavet)*
+- [x]  Lav layout til at tilføje et dokument (titel, dokumenttype som dropdown: Blodprøvesvar, Behandlingsplan, Andet, filvalg) *(HTML/CSS lavet)*
 - [ ]  Implementér gemning af dokumenter med filePath
 - [ ]  Lav layout til at åbne og vise et valgt dokument
 - [ ]  Test at dokumenter kan gemmes, listes og åbnes korrekt
