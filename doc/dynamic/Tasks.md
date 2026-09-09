@@ -1,6 +1,6 @@
 # Tasks per user story
 
-*Opdateret 9. sep 2026: [x] = HTML/CSS-layout er lavet i `web/`, [~] = delvist (JavaScript lavet, backend mangler). Gem/test venter på backend.*
+*Opdateret 9. sep 2026: [x] = HTML/CSS-layout er lavet i `web/`. Gem/test venter på backend.*
 
 ## User story 1 – Oprette fertilitetsforløb
 - [x]  Lav layout til at oprette et nyt fertilitetsforløb *(HTML/CSS lavet – tom-tilstanden i dashboardtom.html; knappen opretter forløb og går videre til start-runde)*
@@ -38,13 +38,13 @@
 ## User story 6a – Oprette profil
 - [x]  Lav layout til profiloprettelse (navn, fødselsdato, brugernavn, adgangskode) *(HTML/CSS lavet)*
 - [ ]  Gem den nye profil i databasen (UserAccount + Patient), adgangskode gemmes som hash
-- [~]  Tilføj validering: brugernavn allerede taget / manglende felter *(JavaScript-delen lavet i js/opretprofil.js; "brugernavn taget" venter på backend)*
+- [ ]  Tilføj validering: brugernavn allerede taget / manglende felter
 - [ ]  Test både succesfuld oprettelse og fejlmeddelelser
 
 ## User story 6b – Redigér profil og slet konto
 - [x]  Lav layout til at redigere profiloplysninger (navn, fødselsdato) *(HTML/CSS lavet)*
 - [ ]  Gem ændringer i databasen
-- [~]  Implementér "slet konto" med bekræftelse, der fjerner alle patientens data *(bekræftelsen lavet i js/min-profil.js; sletningen venter på backend)*
+- [ ]  Implementér "slet konto" med bekræftelse, der fjerner alle patientens data
 - [ ]  Test redigering og sletning
 
 ## User story 7 – Diagnoser
