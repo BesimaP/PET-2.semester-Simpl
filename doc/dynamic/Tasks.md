@@ -3,7 +3,7 @@
 *Opdateret 9. sep 2026: [x] = HTML/CSS-layout er lavet i `web/`. Gem/test venter på backend.*
 
 ## User story 1 – Oprette fertilitetsforløb
-- [ ]  Lav layout til at oprette et nyt fertilitetsforløb
+- [x]  Lav layout til at oprette et nyt fertilitetsforløb *(HTML/CSS lavet – tom-tilstanden i dashboardtom.html; knappen opretter forløb og går videre til start-runde)*
 - [ ]  Gem det nye forløb i databasen med startdato sat automatisk
 - [ ]  Vis det nye forløb på patientens oversigt
 - [ ]  Test at oprettelsen virker og bliver synlig
