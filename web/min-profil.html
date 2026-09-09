@@ -64,7 +64,50 @@
       </div>
     </header>
 
-    <!-- INDHOLD: byg videre her (se tegningen i simpl-sider-plan.html) -->
+    <div class="form-layout">
+    <section class="card">
+      <h2 class="eyebrow">Profil</h2>
+      <form>
+      <label for="name">Navn</label>
+      <input type="text" id="name" name="name" placeholder="Dit fulde navn" autocomplete="name" required>
+
+      <label for="dateOfBirth">Fødselsdato</label>
+      <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+
+      <label for="username">Brugernavn</label>
+      <input type="text" id="username" name="username" required>
+
+        <button type="submit">Gem ændringer</button>
+      </form>
+    </section>
+
+      <section class="card">
+        <h2 class="eyebrow">Adgangskode</h2>
+
+        <form>
+          <label for="current-password">Nuværende adgangskode</label>
+          <input type="password" id="current-password" name="current-password" autocomplete="current-password" required>
+
+          <label for="new-password"> Ny adgangskode</label>
+          <input type="password" id="new-password" name="new-password" autocomplete="new-password" placeholder="Mindst 8 tegn" required minlength="8">
+
+          <label for="repeat-password">Gentag ny adgangskode</label>
+          <input type="password" id="repeat-password" name="repeat-password" autocomplete="new-password" required>
+
+          <button type="submit">Skift adgangskode</button>
+
+        </form>
+
+      </section>
+
+      <section class="card">
+        <h2 class="eyebrow">Konto</h2>
+        <p class="muted">Du er logget ind som Anna.</p>
+        <a href="login.html" class="btn-primary">Log ud</a>
+        <p class="muted centered"><a href="#" id="delete-account">Slet konto</a></p>
+      </section>
+
+    </div>
 
   </main>
 

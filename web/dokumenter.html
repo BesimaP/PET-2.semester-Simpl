@@ -64,7 +64,53 @@
       </div>
     </header>
 
-    <!-- INDHOLD: byg videre her (se tegningen i simpl-sider-plan.html) -->
+    <div class="form-layout">
+
+      <section class="card">
+        <h2 class="eyebrow">Dokumenter</h2>
+        <ul class="rounds">
+          <li>
+            <div class="round__info">
+              <strong>Behandlingsplan.pdf</strong>
+              <span>PDF · 240 KB</span>
+            </div>
+            <span>21 aug</span>
+            <a href="#">Åbn</a>
+          </li>
+          <li>
+            <div class="round__info">
+              <strong>Blodprøvesvar-2sep.pdf</strong>
+              <span>PDF · 88 KB</span>
+            </div>
+            <span>2 sep</span>
+            <a href="#">Åbn</a>
+          </li>
+          <li>
+            <div class="round__info">
+              <strong>Scanning-2sep.jpg</strong>
+              <span>Billede · 1,2 MB</span>
+            </div>
+            <span>2 sep</span>
+            <a href="#">Åbn</a>
+          </li>
+        </ul>
+      </section>
+
+      <aside class="card helpbox" aria-labelledby="upload-title">
+        <h2 id="upload-title" class="eyebrow">Upload</h2>
+        <form action="dokumenter.html" method="get">
+          <label for="file">Vælg fil</label>
+          <input type="file" id="file" name="file" required>
+
+          <label for="title">Titel <span class="optional">(valgfrit)</span></label>
+          <input type="text" id="title" name="title" placeholder="Fx Behandlingsplan">
+
+          <button type="submit">Upload</button>
+        </form>
+        <p class="muted">PDF, JPG, PNG · maks 10 MB</p>
+      </aside>
+
+    </div>
 
   </main>
 
