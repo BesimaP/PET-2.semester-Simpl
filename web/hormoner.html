@@ -12,6 +12,10 @@
   <link rel="stylesheet" href="css/layout.css">     <!-- menu, topbar, sidens ramme -->
   <link rel="stylesheet" href="css/components.css"> <!-- knapper, kort, lister, pop-op -->
   <link rel="stylesheet" href="css/pages.css">      <!-- det der er specielt for denne side -->
+
+  <!-- javascript: defer = vent med at køre til hele siden er læst. common.js først, så sidens egen fil -->
+  <script src="js/common.js" defer></script>
+  <script src="js/hormoner.js" defer></script>
 </head>
 <body class="dashboard">
 
@@ -80,13 +84,15 @@
       <!-- action = siden sender bare til sig selv indtil vi får backend på -->
       <form action="hormoner.html" method="get">
         <!-- select = dropdown. den tomme option øverst er det man ser før man vælger -->
+        <!-- value = præcis det navn databasen kræver (hormone_type i schema.sql), teksten er den danske -->
         <label for="hormone">Hormon</label>
         <select id="hormone" name="hormone" required>
           <option value="">Vælg…</option>
-          <option value="Østradiol">Østradiol</option>
+          <option value="E2_OESTRADIOL">Østradiol</option>
           <option value="LH">LH</option>
           <option value="FSH">FSH</option>
-          <option value="Progesteron">Progesteron</option>
+          <option value="PROGESTERONE">Progesteron</option>
+          <option value="AMH">AMH</option>
         </select>
 
         <!-- type number = kun tal. step 0.1 = man må skrive decimaler -->
