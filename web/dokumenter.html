@@ -12,6 +12,10 @@
   <link rel="stylesheet" href="css/layout.css">     <!-- menu, topbar, sidens ramme -->
   <link rel="stylesheet" href="css/components.css"> <!-- knapper, kort, lister, pop-op -->
   <link rel="stylesheet" href="css/pages.css">      <!-- det der er specielt for denne side -->
+
+  <!-- javascript: defer = vent med at køre til hele siden er læst. common.js først, så sidens egen fil -->
+  <script src="js/common.js" defer></script>
+  <script src="js/dokumenter.js" defer></script>
 </head>
 <body class="dashboard">
 
@@ -118,9 +122,18 @@
           <label for="file">Vælg fil</label>
           <input type="file" id="file" name="file" required>
 
-          <!-- optional = lille grå tekst der viser feltet er valgfrit -->
-          <label for="title">Titel <span class="optional">(valgfrit)</span></label>
-          <input type="text" id="title" name="title" placeholder="Fx Behandlingsplan">
+          <!-- title er påkrævet i document-tabellen -->
+          <label for="title">Titel</label>
+          <input type="text" id="title" name="title" placeholder="Fx Behandlingsplan" required>
+
+          <!-- value = databasens navn (document_type i schema.sql), teksten er dansk -->
+          <label for="documentType">Type</label>
+          <select id="documentType" name="documentType" required>
+            <option value="">Vælg…</option>
+            <option value="BLOOD_TEST_RESULT">Blodprøvesvar</option>
+            <option value="TREATMENT_PLAN">Behandlingsplan</option>
+            <option value="OTHER">Andet</option>
+          </select>
 
           <!-- knappen sender formularen -->
           <button type="submit">Upload</button>

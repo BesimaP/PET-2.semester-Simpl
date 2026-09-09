@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="css/layout.css">     <!-- menu, topbar, sidens ramme -->
     <link rel="stylesheet" href="css/components.css"> <!-- knapper, kort, lister, pop-op -->
     <link rel="stylesheet" href="css/pages.css">      <!-- det der er specielt for denne side -->
+
+    <!-- javascript: defer = vent med at køre til hele siden er læst. common.js først, så sidens egen fil -->
+    <script src="js/common.js" defer></script>
+    <script src="js/start-runde.js" defer></script>
 </head>
 <body class="dashboard">
 
@@ -93,10 +97,6 @@
                 <!-- type date = kalender -->
                 <label for="startDate">Startdato</label>
                 <input type="date" id="startDate" name="startDate" required>
-
-                <!-- optional = lille grå tekst der viser feltet er valgfrit (ingen required) -->
-                <label for="clinic">Klinik <span class="optional">(valgfrit)</span></label>
-                <input type="text" id="clinic" name="clinic" placeholder="Fx Vitanova">
 
                 <!-- knappen sender formularen -->
                 <button type="submit">Start runde</button>
