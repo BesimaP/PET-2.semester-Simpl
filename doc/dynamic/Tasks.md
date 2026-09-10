@@ -65,6 +65,8 @@
 
 ## User story 9 – Hormonlog
 - [x]  Lav layout til at registrere hormontype, værdi, enhed og dato *(HTML/CSS lavet)*
+- [x]  JavaScript: dagens dato sættes automatisk i dato-feltet *(js/hormoner.js)*
+- [x]  JavaScript: enheden vælges automatisk ud fra hormonet *(js/hormoner.js)*
 - [ ]  Gem målingen i databasen, tilknyttet den aktive Round
 - [ ]  Implementér logik til at finde og vise den seneste måling
 - [ ]  Test registrering og "seneste værdi"-visning
