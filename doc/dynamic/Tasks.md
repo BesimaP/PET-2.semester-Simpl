@@ -26,6 +26,8 @@
 - [x]  Lav layout til at skrive og gemme en note *(HTML/CSS lavet)*
 - [ ]  Gem noten i databasen med dato, titel og forløbs-tilknytning
 - [x]  Vis listen af tidligere noter til patienten *(HTML/CSS lavet)*
+- [x]  JavaScript: dagens dato sættes automatisk i dato-feltet *(js/dagbog.js)*
+- [x]  JavaScript: antal noter tælles og vises under listen *(js/dagbog.js)*
 - [ ]  Test hele flowet fra start til slut
 
 ## User story 5 – Login
