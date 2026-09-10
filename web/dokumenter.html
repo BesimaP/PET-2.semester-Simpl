@@ -121,6 +121,9 @@
           <!-- type file = åbner fil-vælgeren på computeren -->
           <label for="file">Vælg fil</label>
           <input type="file" id="file" name="file" required>
+          <p id="file-error" class="field-error"></p>
+          <!-- type="button" = sender IKKE formularen. Knappen tømmer fil-feltet (se js/dokumenter.js) -->
+          <button type="button" id="remove-file" class="muted-link">Fjern fil</button>
 
           <!-- title er påkrævet i document-tabellen -->
           <label for="title">Titel</label>
