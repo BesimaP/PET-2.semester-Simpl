@@ -73,6 +73,7 @@
 
 ## User story 10a – Start og afslut runde
 - [x]  Lav layout til at starte en ny runde (rundenummer, behandlingstype som dropdown: IVF, ICSI, IUI, FET) *(HTML/CSS lavet)*
+- [x]  JavaScript: dagens dato sættes automatisk i startdato-feltet *(js/start-runde.js, fælles funktion i common.js)*
 - [x]  Lav layout til at afslutte en runde med et resultat (POSITIVE / NEGATIVE) *(HTML/CSS lavet)*
 - [ ]  Gem resultatet på den specifikke Round, når den afsluttes
 - [ ]  Test start og afslutning
