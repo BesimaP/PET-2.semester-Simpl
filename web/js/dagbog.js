@@ -4,14 +4,7 @@
 
 // find <input type="date" id="date"> i html'en og gem det i en variabel
 const datoFelt = document.getElementById("date");
-
-const now = new Date();                 // "lige nu" som en dato-værdi
-const text = now.toISOString();         // lavet om til tekst, fx "2026-09-10T13:45:00.000Z"
-const today = text.slice(0, 10);        // behold kun de første 10 tegn: "2026-09-10" (det format et datofelt forstår)
-datoFelt.value = today;                 // skriv datoen i feltet
-
-
-
+setTodayIn(datoFelt);
 
 // --- Tæl noterne og skriv tallet i teksten under listen ---
 

@@ -5,13 +5,8 @@
 // 1) Sæt dagens dato i dato-feltet, så man ikke skal vælge den selv
 // ============================================================
 
-// find <input type="date" id="date"> i html'en og gem feltet i en variabel
 const dateField = document.getElementById("date");
-
-const now = new Date();                 // spørg computeren: hvad er dato og klokkeslæt lige nu?
-const text = now.toISOString();         // lav det om til tekst, fx "2026-09-10T13:45:00.000Z"
-const today = text.slice(0, 10);        // behold kun de første 10 tegn: "2026-09-10" (formatet et datofelt forstår)
-dateField.value = today;                // .value = det der står i feltet. skriv datoen der
+setTodayIn(dateField);
 
 // ============================================================
 // 2) Vælg enheden automatisk, når man vælger et hormon
