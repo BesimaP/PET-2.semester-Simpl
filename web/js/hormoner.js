@@ -1,17 +1,13 @@
 // hormoner.js — JavaScript kun til hormoner.html (US9)
 // TODO senere: kurve over målinger (når backend kan hente rigtige data)
 
-// ============================================================
 // 1) Sæt dagens dato i dato-feltet, så man ikke skal vælge den selv
-// ============================================================
 
 const dateField = document.getElementById("date");
 setTodayIn(dateField);
 
-// ============================================================
 // 2) Vælg enheden automatisk, når man vælger et hormon
 //    (østradiol måles i pmol/L, LH og FSH i IU/L osv. - det skal patienten ikke selv vide)
-// ============================================================
 
 // find de to dropdowns (<select>) og gem dem i hver sin variabel
 const hormonSelect = document.getElementById("hormone");

@@ -45,8 +45,9 @@
 
 ## User story 6b – Redigér profil og slet konto
 - [x]  Lav layout til at redigere profiloplysninger (navn, fødselsdato) *(HTML/CSS lavet)*
+- [x]  JavaScript: de to nye adgangskoder skal være ens, ellers fejlbesked og formularen sendes ikke *(js/min-profil.js)*
 - [ ]  Gem ændringer i databasen
-- [ ]  Implementér "slet konto" med bekræftelse, der fjerner alle patientens data
+- [ ]  Implementér "slet konto" med bekræftelse, der fjerner alle patientens data *(bekræftelsen er lavet i js/min-profil.js – selve sletningen venter på backend)*
 - [ ]  Test redigering og sletning
 
 ## User story 7 – Diagnoser
