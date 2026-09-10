@@ -85,6 +85,7 @@
 ## User story 11 – Dokumenter
 - [x]  Lav layout til dokumentlisten for en runde (titel, type) *(HTML/CSS lavet)*
 - [x]  Lav layout til at tilføje et dokument (titel, dokumenttype som dropdown: Blodprøvesvar, Behandlingsplan, Andet, filvalg) *(HTML/CSS lavet)*
+- [x]  JavaScript: filtype (PDF/JPG/PNG) og størrelse (maks 10 MB) tjekkes, når filen vælges; forkert fil afvises med fejlbesked; "Fjern fil"-knap *(js/dokumenter.js)*
 - [ ]  Implementér gemning af dokumenter med filePath
 - [ ]  Lav layout til at åbne og vise et valgt dokument
 - [ ]  Test at dokumenter kan gemmes, listes og åbnes korrekt
