@@ -1,40 +1,53 @@
 // min-profil.js — JavaScript kun til min-profil.html (US6b)
 
-// 1) Skift adgangskode: de to nye koder skal være ens
+// --- 1) Skift adgangskode: de to nye koder skal være ens ---
 
-// find de to felter og det tomme <p id="password-error"> under dem
+// FIND de to felter og det tomme <p id="password-error"> under dem
 const newPasswordField = document.getElementById("new-password");
 const repeatPasswordField = document.getElementById("repeat-password");
 const passwordError = document.getElementById("password-error");
 
-// der er tre formularer på siden, så vi finder den rigtige ved at gå ud fra feltet:
-// closest("form") = den nærmeste <form> udenom feltet
+// FIND den rigtige formular (der er tre på siden): den nærmeste <form> udenom feltet
 const passwordForm = newPasswordField.closest("form");
 
-// "submit" = når man trykker på knappen (eller Enter). event = selve hændelsen, som vi kan stoppe
+// NÅR formularen sendes (tryk på "Skift adgangskode"):
 passwordForm.addEventListener("submit", function (event) {
-    if (newPasswordField.value !== repeatPasswordField.value) {      // !== = "er ikke lig med"
+
+    // HVIS de to koder ikke er ens:
+    if (newPasswordField.value !== repeatPasswordField.value) {
+
+        // vis fejl under feltet
         passwordError.textContent = "De to adgangskoder er ikke ens.";
-        event.preventDefault();                                       // stop formularen i at blive sendt
+
+        // og stop formularen i at blive sendt
+        event.preventDefault();
     }
 });
 
-// 2) Slet konto: spørg først, så man ikke sletter ved en fejl (Nielsen #5)
 
+// --- 2) Slet konto: spørg først, så man ikke sletter ved en fejl (Nielsen #5) ---
+
+// FIND "Slet konto"-linket og vores egen <dialog> nederst i html'en
 const deleteLink = document.getElementById("delete-account");
-const deleteDialog = document.getElementById("confirm-delete");      // vores egen <dialog> nederst i html'en
+const deleteDialog = document.getElementById("confirm-delete");
 
-// "click" = når man klikker på linket
+// NÅR man klikker på linket:
 deleteLink.addEventListener("click", function (event) {
-    event.preventDefault();                                           // linket skal ikke gå nogen steder af sig selv
-    deleteDialog.showModal();                                         // åbn dialogen (modal = resten af siden låses imens)
+
+    // linket skal ikke gå nogen steder af sig selv
+    event.preventDefault();
+
+    // åbn dialogen (modal = resten af siden låses imens)
+    deleteDialog.showModal();
 });
 
-// "close" = når dialogen lukkes - uanset hvilken knap man trykkede
+// NÅR dialogen lukkes (uanset hvilken knap man trykkede):
 deleteDialog.addEventListener("close", function () {
-    // returnValue = value fra den knap der lukkede dialogen: "cancel" eller "confirm"
+
+    // HVIS det var "Slet konto"-knappen (value="confirm"), der lukkede den:
     if (deleteDialog.returnValue === "confirm") {
-        // TODO: her skal backend slette kontoen (US6b). Indtil da sender vi bare til login
-        window.location.href = "login.html";                          // window.location.href = "gå til denne side"
+
+        // TODO: her skal backend slette kontoen. Indtil da: gå til login
+        window.location.href = "login.html";
     }
 });
