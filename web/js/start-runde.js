@@ -1,5 +1,9 @@
 // start-runde.js — JavaScript kun til start-runde.html (US10a)
 
-// --- Sæt dagens dato i startdato-feltet (funktionen ligger i common.js) ---
+// --- Dagens dato i startdato-feltet ---
+
+// FIND startdato-feltet
 const dateField = document.getElementById("startDate");
+
+// KØR opskriften fra common.js, der skriver dagens dato i feltet
 setTodayIn(dateField);

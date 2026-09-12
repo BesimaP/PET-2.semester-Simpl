@@ -54,6 +54,7 @@
 - [x]  Lav layout til at registrere en ny diagnose (navn, beskrivelse) *(HTML/CSS lavet)*
 - [ ]  Gem diagnosen i databasen, tilknyttet patienten
 - [x]  Lav layout til at vise alle patientens registrerede diagnoser *(HTML/CSS lavet)*
+- [x]  JavaScript: ny diagnose tilføjes til listen med det samme, tæller opdateres *(js/diagnoser.js)*
 - [ ]  Test at flere diagnoser kan registreres og vises samtidig
 
 ## User story 8 – Medicin

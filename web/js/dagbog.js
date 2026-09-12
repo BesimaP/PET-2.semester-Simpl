@@ -1,18 +1,24 @@
 // dagbog.js — JavaScript kun til dagbog.html (US4)
 
-// --- Sæt dagens dato som standard i dato-feltet ---
+// --- 1) Dagens dato i dato-feltet ---
 
-// find <input type="date" id="date"> i html'en og gem det i en variabel
+// FIND dato-feltet
 const datoFelt = document.getElementById("date");
+
+// KØR opskriften fra common.js, der skriver dagens dato i feltet
 setTodayIn(datoFelt);
 
-// --- Tæl noterne og skriv tallet i teksten under listen ---
 
-// querySelectorAll = find ALLE der matcher (getElementById finder kun ét).
-// ".notes li" = de <li> der ligger inde i <ul class="notes"> - altså én pr. note
+// --- 2) Tæl noterne og skriv tallet under listen ---
+
+// FIND alle noterne (hvert <li> inde i <ul class="notes"> er én note)
 const noter = document.querySelectorAll(".notes li");
-const count = noter.length;             // .length = hvor mange der er i listen
 
-// <p id="note-count"> er teksten "x noter i denne runde"
+// tæl hvor mange der er
+const count = noter.length;
+
+// FIND teksten "x noter i denne runde"
 const countText = document.getElementById("note-count");
-countText.textContent = count + " noter i denne runde.";   // textContent = elementets tekst. + sætter tal og tekst sammen
+
+// skriv tallet i teksten
+countText.textContent = count + " noter i denne runde.";
