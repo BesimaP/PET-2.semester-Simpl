@@ -1,13 +1,25 @@
 // dashboard.js — JavaScript kun til dashboard.html
-// Ikke lavet endnu. Pseudokode = plan for, hvad der skal skrives:
 
-// FIND "Afslut runde"-knappen (id="end-round") og dialogen (id="confirm-end")
+// --- "Afslut runde": spørg først i vores egen dialog (samme mønster som slet konto på min profil) ---
+
+// FIND "Afslut runde"-knappen og dialogen nederst i html'en
+const endRoundButton = document.getElementById("end-round");
+const endRoundDialog = document.getElementById("confirm-end");
 
 // NÅR man klikker på knappen:
-//     åbn dialogen (showModal)
+endRoundButton.addEventListener("click", function () {
 
-// NÅR dialogen lukkes:
-//     HVIS det var "Afslut runde"-knappen (returnValue === "confirm"):
-//         (backend skal afslutte runden - indtil da: gå til rundehistorik.html)
+    // åbn dialogen (modal = resten af siden låses imens)
+    endRoundDialog.showModal();
+});
 
-// TODO: flyt de fem linjer <script> fra bunden af dashboard.html herind, så al js ligger i js-mappen
+// NÅR dialogen lukkes (uanset hvilken knap man trykkede):
+endRoundDialog.addEventListener("close", function () {
+
+    // HVIS det var "Afslut runde"-knappen (value="confirm"), der lukkede den:
+    if (endRoundDialog.returnValue === "confirm") {
+
+        // TODO: her skal backend afslutte runden (US10a). Indtil da: gå til rundehistorik
+        window.location.href = "rundehistorik.html";
+    }
+});
