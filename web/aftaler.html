@@ -78,6 +78,92 @@
 
     <!-- INDHOLD: byg videre her (se tegningen i simpl-sider-plan.html) -->
 
+    <!-- form-layout gør at kortene står i 2 kolonner (samme som hormoner.html) -->
+    <div class="form-layout">
+
+      <!-- VENSTRE: formular til at oprette en aftale -->
+      <section class="card form-card" aria-labelledby="aftale-title">
+        <h2 id="aftale-title">Ny aftale</h2>
+        <p class="subtitle">Skriv aftalen ind, så den dukker op i din oversigt.</p>
+
+        <!-- action = siden sender bare til sig selv indtil vi får backend på -->
+        <form action="aftaler.html" method="get">
+          <!-- value = det navn databasen bruger, teksten er den danske visning -->
+          <label for="type">Type</label>
+          <select id="type" name="type" required>
+            <option value="">Vælg…</option>
+            <option value="SCANNING">Scanning</option>
+            <option value="BLODPROVE">Blodprøve</option>
+            <option value="AEGUDTAGNING">Ægudtagning</option>
+            <option value="OPFOELGNING">Opfølgning</option>
+            <option value="OPLAEGNING">Oplægning</option>
+          </select>
+
+          <label for="klinik">Klinik</label>
+          <input type="text" id="klinik" name="klinik" placeholder="Fx Vitanova" required>
+
+          <!-- type date = kalender -->
+          <label for="date">Dato</label>
+          <input type="date" id="date" name="date" required>
+
+          <label for="time">Klokkeslæt</label>
+          <input type="time" id="time" name="time" required>
+
+          <label for="note">Note <span class="optional">(valgfrit)</span></label>
+          <textarea id="note" name="note" rows="3" placeholder="Fx husk fastende"></textarea>
+
+          <!-- knappen sender formularen -->
+          <button type="submit">Gem aftale</button>
+        </form>
+
+        <p class="link-line"><a href="dashboard.html">Annullér</a></p>
+      </section>
+
+      <!-- HØJRE: kommende og tidligere aftaler, som .rounds-underkort med datebox (samme mønster som rundehistorik/dashboard) -->
+      <aside class="card helpbox" aria-labelledby="list-title">
+        <h2 id="list-title" class="eyebrow">Kommende aftaler</h2>
+
+        <ul class="rounds">
+          <li>
+            <div class="datebox">
+              <strong>5</strong>
+              <small>SEP</small>
+            </div>
+            <div class="round__info">
+              <strong class="appt__title">Scanning</strong>
+              <span>Vitanova · kl. 9.30</span>
+            </div>
+          </li>
+          <li>
+            <div class="datebox">
+              <strong>9</strong>
+              <small>SEP</small>
+            </div>
+            <div class="round__info">
+              <strong class="appt__title">Blodprøve</strong>
+              <span>Vitanova · kl. 8.00</span>
+            </div>
+          </li>
+        </ul>
+
+        <h2 class="eyebrow">Tidligere aftaler</h2>
+        <ul class="rounds">
+          <li>
+            <div class="datebox">
+              <strong>21</strong>
+              <small>AUG</small>
+            </div>
+            <div class="round__info">
+              <strong class="appt__title">Opstartssamtale</strong>
+              <span>Vitanova · kl. 10.00</span>
+            </div>
+          </li>
+        </ul>
+
+        <p class="muted">Kalendervisning kommer, når der er JavaScript.</p>
+      </aside>
+
+    </div>
   </main>
 
 </body>

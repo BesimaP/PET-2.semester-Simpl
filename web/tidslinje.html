@@ -77,6 +77,56 @@
     </header>
 
     <!-- INDHOLD: byg videre her (se tegningen i simpl-sider-plan.html) -->
+    <!-- Tidslinjen genbruger .rounds-mønsteret (samme som rundehistorik), da der ikke findes en separat timeline-klasse -->
+    <section class="card" aria-labelledby="tidslinje-title">
+      <div class="section-head">
+        <h2 id="tidslinje-title">Dit forløb</h2>
+      </div>
+      <p class="muted">Alle runder og vigtige begivenheder, i rækkefølge.</p>
+
+      <!-- én <li> = én begivenhed. round__info = titel + dato/meta, pill = status hvor relevant -->
+      <ul class="rounds">
+
+        <li>
+          <div class="round__info">
+            <strong>Runde 2 · IVF</strong>
+            <span>Startet 21. august · dag 12, stimulation</span>
+          </div>
+          <span class="pill">Aktiv</span>
+        </li>
+
+        <li>
+          <div class="round__info">
+            <strong>Blodprøve</strong>
+            <span>1. september · Østradiol 450 pmol/L</span>
+          </div>
+        </li>
+
+        <li>
+          <div class="round__info">
+            <strong>Scanning</strong>
+            <span>5. september · Vitanova kl. 9.30</span>
+          </div>
+        </li>
+
+        <li>
+          <div class="round__info">
+            <strong>Runde 1 · IVF</strong>
+            <span>Maj–juni · ingen graviditet, forløb afsluttet</span>
+          </div>
+          <span class="pill">Afsluttet</span>
+        </li>
+
+        <li>
+          <div class="round__info">
+            <strong>Opstartssamtale</strong>
+            <span>Maj · Vitanova, plan for behandling lagt</span>
+          </div>
+        </li>
+
+      </ul>
+    </section>
+
 
   </main>
 
